@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+  <rect width="600" height="400" fill="#57b6ff"/>
+  <text x="50%" y="50%" font-size="40" text-anchor="middle" fill="#fff" dy=".3em">
+    Artwork 1
+  </text>
+</svg>
