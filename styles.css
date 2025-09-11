@@ -1,1 +1,155 @@
-body{font-family:sans-serif;}
+/* Tone & Toon website styles */
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.6;
+  background: #f8f9fc;
+  color: #222;
+}
+
+/* Header */
+.site-header {
+  background: #111;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-header nav a {
+  color: #fff;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-header nav a:hover {
+  color: #7cf3cf;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #7cf3cf, #57b6ff);
+  color: #111;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.btn {
+  background: #111;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #333;
+}
+
+/* Sections */
+section {
+  padding: 3rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  border-bottom: 2px solid #7cf3cf;
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+/* Work images */
+#work img {
+  max-width: 45%;
+  margin: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Pricing list */
+#pricing ul {
+  list-style: none;
+  padding: 0;
+}
+
+#pricing li {
+  background: #fff;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-left: 5px solid #7cf3cf;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Form */
+form {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+form label {
+  display: block;
+  margin: 0.75rem 0 0.25rem;
+  font-weight: 600;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+form button {
+  background: #57b6ff;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #3398e9;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #111;
+  color: #aaa;
+  margin-top: 2rem;
+}
+
+footer a {
+  color: #7cf3cf;
+}
