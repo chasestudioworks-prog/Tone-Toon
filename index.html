@@ -1,1 +1,89 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'><title>Tone & Toon</title></head><body><h1>Hello from Tone & Toon</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tone & Toon — Art by Chase Tone</title>
+  <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="brand">🎨 Tone & Toon</h1>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#commission">Commission</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h2>Pop-Art • Adventure • Comics</h2>
+      <p>Original paintings and custom commissions by <strong>Chase Tone</strong>. Based in Vancouver, shipping Canada-wide.</p>
+      <a class="btn" href="#commission">Request a Commission</a>
+    </section>
+
+    <!-- Work -->
+    <section id="work">
+      <h2>Recent Work</h2>
+      <p>[Replace these placeholders later with your own images]</p>
+      <img src="assets/sample1.svg" alt="Sample artwork 1" />
+      <img src="assets/sample2.svg" alt="Sample artwork 2" />
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <p>Hey, I’m <strong>Chase</strong> — a pop-art and adventure-inspired painter. My work blends bold color, comic energy, and stories from my life between Japan and Canada. I take a handful of commissions each month while studying business at SFU.</p>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+      <h2>Simple Pricing</h2>
+      <ul>
+        <li><strong>Small</strong> (8×10 / 9×12): $80–$150</li>
+        <li><strong>Medium</strong> (12×16 / 16×20): $180–$350</li>
+        <li><strong>Large</strong> (18×24 / 24×30): $380–$700</li>
+      </ul>
+      <p>Final quotes depend on time, detail, and shipping.</p>
+    </section>
+
+    <!-- Commission form -->
+    <section id="commission">
+      <h2>Request a Commission</h2>
+      <form action="https://formspree.io/f/your-id" method="POST">
+        <label>Your Name: <input type="text" name="name" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
+        <label>Size:
+          <select name="size" required>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>Custom</option>
+          </select>
+        </label><br>
+        <label>Details:<br>
+          <textarea name="details" rows="5"></textarea>
+        </label><br>
+        <button type="submit">Send Request</button>
+      </form>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:hello@toneandtoon.art">hello@toneandtoon.art</a></p>
+      <p>Instagram: <a href="https://instagram.com/yourhandle">@yourhandle</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
+    <script src="script.js"></script>
+  </footer>
+</body>
+</html>
