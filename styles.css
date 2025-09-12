@@ -81,14 +81,6 @@ h2 {
   padding-bottom: 0.25rem;
 }
 
-/* Work images */
-#work img {
-  max-width: 45%;
-  margin: 0.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
 /* Pricing list */
 #pricing ul {
   list-style: none;
