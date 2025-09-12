@@ -204,3 +204,36 @@ footer a {
 @media (max-width: 900px) {
   .detail { grid-template-columns: 1fr; }
 }
+
+/* ----- Interactive pop on hover/touch ----- */
+.gallery .card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  /* create a new compositor layer for smoother transforms */
+  transform: translateZ(0);
+}
+
+.gallery .card figure {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  will-change: transform;
+}
+
+/* Hover (mouse), keyboard focus, and mobile touch (class added via JS) */
+.gallery .card:hover figure,
+.gallery .card:focus-visible figure,
+.gallery .card.touch-hover figure {
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+/* Make focus outline clear for keyboard users */
+.gallery .card:focus-visible {
+  outline: 3px solid #7cf3cf;
+  border-radius: 10px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .gallery .card figure { transition: none; }
+}
