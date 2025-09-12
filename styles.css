@@ -229,3 +229,137 @@ footer a:hover{ text-decoration:underline }
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; scroll-behavior:auto !important }
 }
+
+/* ==============================
+   Fullscreen Cover Hero
+   ============================== */
+.hero--fullscreen{
+  position: relative;
+  min-height: 100svh; /* mobile-friendly full height */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 0; /* overrides section padding */
+  border-bottom: 1px solid color-mix(in srgb, var(--brown) 10%, transparent);
+}
+
+/* Centered text/content */
+.hero--fullscreen .hero-content{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1.25rem;
+  max-width: 900px;
+}
+
+.hero--fullscreen h1{
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--ink) 92%, var(--brown) 8%);
+  margin-bottom: 0.8rem;
+}
+
+.hero--fullscreen p{
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: color-mix(in srgb, var(--muted) 90%, var(--brown) 10%);
+  max-width: 60ch;
+  margin: 0 auto 1.4rem;
+}
+
+.hero--fullscreen .hero-cta{
+  display: inline-flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Animated background: softly moving blobs + film grain */
+.hero--fullscreen .hero-bg{
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(1200px 800px at 80% -20%, color-mix(in srgb, var(--green) 12%, transparent) 0 60%, transparent 60%),
+    radial-gradient(1000px 700px at 10% -10%, color-mix(in srgb, var(--orange) 14%, transparent) 0 60%, transparent 60%),
+    var(--cream);
+}
+
+/* “Blobs” using gradients inside spans so we can animate them */
+.hero--fullscreen .blob{
+  position: absolute;
+  width: 60vmin; height: 60vmin;
+  filter: blur(24px) saturate(105%);
+  opacity: .65;
+  border-radius: 40% 60% 60% 40% / 45% 35% 65% 55%;
+  mix-blend-mode: multiply;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.hero--fullscreen .blob-1{
+  left: -10vmin; top: 10vmin;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--green) 85%, white) 0%, transparent 70%);
+  animation: blobFloat1 16s ease-in-out infinite;
+}
+
+.hero--fullscreen .blob-2{
+  right: -12vmin; top: -8vmin;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--orange) 80%, white) 0%, transparent 70%);
+  animation: blobFloat2 18s ease-in-out infinite;
+}
+
+.hero--fullscreen .blob-3{
+  left: 40%; bottom: -20vmin;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--brown) 35%, white) 0%, transparent 70%);
+  animation: blobFloat3 20s ease-in-out infinite;
+  opacity: .45;
+}
+
+/* Subtle film grain for a premium tactile feel */
+.hero--fullscreen .grain{
+  position: absolute; inset: -40px; z-index: 1; pointer-events:none;
+  background-image: repeating-conic-gradient(from 0deg, rgba(0,0,0,.015) 0 25%, transparent 0 50%);
+  filter: contrast(110%) brightness(102%);
+  animation: grainMove 12s linear infinite;
+  opacity: .6;
+}
+
+/* Scroll cue */
+.scroll-cue{
+  position: absolute; left: 50%; bottom: 1.25rem; transform: translateX(-50%);
+  text-decoration: none; color: color-mix(in srgb, var(--ink) 70%, var(--brown) 30%);
+  font-size: 1.4rem; line-height: 1; padding: .3rem .6rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--cream) 70%, white);
+  border: 1px solid color-mix(in srgb, var(--brown) 12%, transparent);
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, background .12s ease;
+  z-index: 3;
+}
+.scroll-cue:hover{ transform: translateX(-50%) translateY(-2px) }
+
+/* Keyframes for organic motion */
+@keyframes blobFloat1{
+  0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  50%  { transform: translate3d(2vmin,-1vmin,0) rotate(10deg) scale(1.06); }
+  100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+}
+@keyframes blobFloat2{
+  0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  50%  { transform: translate3d(-1vmin,2vmin,0) rotate(-8deg) scale(1.05); }
+  100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+}
+@keyframes blobFloat3{
+  0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  50%  { transform: translate3d(1.5vmin,-1.5vmin,0) rotate(6deg) scale(1.07); }
+  100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+}
+@keyframes grainMove{
+  0% { transform: translate3d(0,0,0) }
+  100% { transform: translate3d(-6%, -6%, 0) }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hero--fullscreen .blob,
+  .hero--fullscreen .grain { animation: none !important }
+}
+
