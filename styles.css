@@ -237,3 +237,20 @@ footer a {
 @media (prefers-reduced-motion: reduce) {
   .gallery .card figure { transition: none; }
 }
+
+/* Explore More button under gallery */
+.explore-more {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.explore-more .btn {
+  background: #57b6ff;
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.explore-more .btn:hover {
+  background: #3398e9;
+}
