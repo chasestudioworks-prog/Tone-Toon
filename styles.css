@@ -222,3 +222,38 @@ form button{ margin-top:.25rem }
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; animation:none !important; scroll-behavior:auto !important }
 }
+
+/* --- Hero centering & sizing tweaks --- */
+.hero--fullscreen{
+  /* ensure the content is dead-center regardless of other layers */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100svh;             /* full screen */
+  padding: 0;                      /* no extra section padding */
+}
+
+.hero--fullscreen .hero-content{
+  text-align: center;
+  padding: 0 1.25rem;
+  max-width: 980px;
+}
+
+/* Bigger headline + subline */
+.hero--fullscreen h1{
+  font-size: clamp(3rem, 8vw, 5.5rem);  /* larger */
+  line-height: 1.02;
+  letter-spacing: .5px;                  /* poster feel */
+  margin-bottom: .6rem;                  /* tighter gap */
+}
+
+.hero--fullscreen p{
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  margin: 0 auto 1.1rem;                 /* closer to headline */
+}
+
+/* Button row spacing */
+.hero--fullscreen .hero-cta{
+  gap: .8rem;
+  margin-top: .2rem;
+}
