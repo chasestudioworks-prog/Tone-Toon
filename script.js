@@ -14,26 +14,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // For touch devices: add a temporary 'touch-hover' class while finger is down
   cards.forEach((card) => {
-    // Use pointer events so it works for both touch and pen
-    card.addEventListener("pointerdown", (e) => {
-      // only apply for touch/pen, not mouse
-      if (e.pointerType !== "mouse") {
-        card.classList.add("touch-hover");
-      }
-    }, { passive: true });
+    card.addEventListener(
+      "pointerdown",
+      (e) => {
+        if (e.pointerType !== "mouse") {
+          card.classList.add("touch-hover");
+        }
+      },
+      { passive: true }
+    );
 
-    card.addEventListener("pointerup", () => {
-      card.classList.remove("touch-hover");
-    }, { passive: true });
+    card.addEventListener(
+      "pointerup",
+      () => {
+        card.classList.remove("touch-hover");
+      },
+      { passive: true }
+    );
 
-    card.addEventListener("pointercancel", () => {
-      card.classList.remove("touch-hover");
-    }, { passive: true });
+    card.addEventListener(
+      "pointercancel",
+      () => {
+        card.classList.remove("touch-hover");
+      },
+      { passive: true }
+    );
 
-    // Also clean up when finger leaves the element
-    card.addEventListener("pointerleave", () => {
-      card.classList.remove("touch-hover");
-    }, { passive: true });
+    card.addEventListener(
+      "pointerleave",
+      () => {
+        card.classList.remove("touch-hover");
+      },
+      { passive: true }
+    );
   });
 });
 
@@ -47,16 +60,22 @@ document.addEventListener("scroll", () => {
 
 // === Reveal-on-scroll for sections ===
 const revealItems = document.querySelectorAll("section, .card");
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (e.isIntersecting) {
-      e.target.classList.add("is-visible");
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
+const io = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("is-visible");
+        io.unobserve(e.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
 
-revealItems.forEach((el) => el.classList.add("reveal") && io.observe(el));
+revealItems.forEach((el) => {
+  el.classList.add("reveal");
+  io.observe(el);
+});
 
 // === Gentle parallax for hero shapes ===
 (() => {
@@ -87,7 +106,9 @@ revealItems.forEach((el) => el.classList.add("reveal") && io.observe(el));
       const cy = rect.top + rect.height / 2;
       const dx = (e.clientX - cx) / (rect.width / 2);
       const dy = (e.clientY - cy) / (rect.height / 2);
-      fig.style.transform = `rotateX(${(-dy * maxDeg).toFixed(2)}deg) rotateY(${(dx * maxDeg).toFixed(2)}deg)`;
+      fig.style.transform = `rotateX(${(-dy * maxDeg).toFixed(
+        2
+      )}deg) rotateY(${(dx * maxDeg).toFixed(2)}deg)`;
     });
     card.addEventListener("pointerleave", () => {
       fig.style.transform = "";
