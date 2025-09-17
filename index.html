@@ -15,7 +15,6 @@
       <a href="#work">Work</a>
       <a href="#commissions">Past Commissions</a>
       <a href="#poster-wall">Poster Wall</a>
-      <a href="#spinning">Now Spinning</a>
       <a href="#pricing">Pricing</a>
       <a href="#commission">Commission</a>
       <a href="#contact">Contact</a>
@@ -78,7 +77,7 @@
       </div>
     </section>
 
-    <!-- ===== Past Commissions (NEW) ===== -->
+    <!-- ===== Past Commissions ===== -->
     <section id="commissions">
       <h2>Past Commissions</h2>
       <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
@@ -117,38 +116,27 @@
       </div>
     </section>
 
-    <!-- ===== Poster Wall ===== -->
+    <!-- ===== Poster Wall (Horizontal Reel of Circles) ===== -->
     <section id="poster-wall">
       <h2>Poster Wall</h2>
-      <p class="section-lead">A rotating mix of prints, canvases, and studies — the wall keeps changing.</p>
-      <div class="poster-wall">
-        <a class="poster-card tilt" href="darthvader.html">
-          <img src="assets/darthvader.paint.jpg" alt="" />
-          <span class="frame-label">Darth</span>
-        </a>
-        <a class="poster-card tilt rotate-2" href="spongebob.html">
-          <img src="assets/spongebob.paint.jpg" alt="" />
-          <span class="frame-label">SB Window</span>
-        </a>
-        <a class="poster-card tilt rotate-1" href="spiderman.html">
-          <img src="assets/spiderman.paint.jpg" alt="" />
-          <span class="frame-label">Spider Love</span>
-        </a>
-      </div>
-    </section>
+      <p class="section-lead">A rolling strip of paintings — tap/drag to browse. I’ll keep adding new ones here.</p>
 
-    <!-- ===== Now Spinning (vinyl reel) ===== -->
-    <section id="spinning">
-      <h2>Now Spinning</h2>
-      <p class="section-lead">What’s on the easel & turntable — a quick scroll of favorites.</p>
-      <div class="reel" data-auto>
-        <a class="record" href="darthvader.html"><span class="label">DV</span><img src="assets/darthvader.paint.jpg" alt=""></a>
-        <a class="record" href="spongebob.html"><span class="label">SB</span><img src="assets/spongebob.paint.jpg" alt=""></a>
-        <a class="record" href="spiderman.html"><span class="label">SM</span><img src="assets/spiderman.paint.jpg" alt=""></a>
-        <!-- duplicates for seamless loop -->
-        <a class="record" href="darthvader.html"><span class="label">DV</span><img src="assets/darthvader.paint.jpg" alt=""></a>
-        <a class="record" href="spongebob.html"><span class="label">SB</span><img src="assets/spongebob.paint.jpg" alt=""></a>
-        <a class="record" href="spiderman.html"><span class="label">SM</span><img src="assets/spiderman.paint.jpg" alt=""></a>
+      <div class="poster-reel" data-auto>
+        <!-- Use any images you like; add/remove as needed. Duplicates help the loop feel seamless. -->
+        <a class="puck" href="darthvader.html" aria-label="Darth Vader">
+          <img src="assets/darthvader.paint.jpg" alt="">
+        </a>
+        <a class="puck" href="spongebob.html" aria-label="Spongebob">
+          <img src="assets/spongebob.paint.jpg" alt="">
+        </a>
+        <a class="puck" href="spiderman.html" aria-label="Spiderman & Mary Jane">
+          <img src="assets/spiderman.paint.jpg" alt="">
+        </a>
+
+        <!-- duplicates for a long seamless scroll -->
+        <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt=""></a>
+        <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt=""></a>
+        <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt=""></a>
       </div>
     </section>
 
