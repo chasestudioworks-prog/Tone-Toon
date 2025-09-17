@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
-
-  <!-- Google Fonts for Retro Theme -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <h1 class="brand">🎨 Tone & Toon</h1>
+    <h1 class="brand">🎨 TONE & TOON</h1>
     <nav>
       <a href="#work">Work</a>
       <a href="#commissions">Past Commissions</a>
-      <a href="#about">About</a>
+      <a href="#poster-wall">Poster Wall</a>
+      <a href="#spinning">Now Spinning</a>
       <a href="#pricing">Pricing</a>
       <a href="#commission">Commission</a>
       <a href="#contact">Contact</a>
@@ -25,93 +23,136 @@
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="hero hero--fullscreen">
-      <div class="poster-stripes" aria-hidden="true"></div>
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="decor" aria-hidden="true">
-        <span class="shape ring"></span>
-        <span class="shape star"></span>
-        <span class="shape pill"></span>
-        <span class="grain"></span>
+    <!-- ===== Room Scene Hero (cover) ===== -->
+    <section class="hero hero--room">
+      <div class="room-bg" aria-hidden="true">
+        <span class="lamp-glow lamp-left"></span>
+        <span class="lamp-glow lamp-right"></span>
+        <span class="vignette"></span>
       </div>
-
+      <div class="room-decor" aria-hidden="true">
+        <div class="poster p1"></div>
+        <div class="poster p2"></div>
+        <div class="poster p3"></div>
+        <div class="rug"></div>
+      </div>
       <div class="hero-content">
         <h1>Imagine it. Hang it.</h1>
         <p>Custom paintings made from your ideas, for your walls.</p>
         <div class="hero-cta">
-          <a class="btn alt" href="#commission">Request a Commission</a>
           <a class="btn pop" href="#work">Explore Work</a>
+          <a class="btn alt" href="#commission">Request a Commission</a>
         </div>
       </div>
       <a class="scroll-cue" href="#work" aria-label="Scroll to gallery">⌄</a>
     </section>
 
-    <!-- Recent Work -->
+    <!-- ===== Recent Work ===== -->
     <section id="work">
       <h2>Recent Work</h2>
       <div class="gallery">
-
         <a class="card" href="darthvader.html">
           <figure>
             <img src="assets/darthvader.paint.jpg" alt="Darth Vader painting" />
             <figcaption>Darth Vader — Pop art with comic energy</figcaption>
           </figure>
         </a>
-
         <a class="card" href="spongebob.html">
           <figure>
             <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
             <figcaption>Spongebob — playful underwater love scene</figcaption>
           </figure>
         </a>
-
         <a class="card" href="spiderman.html">
           <figure>
             <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
             <figcaption>Spiderman &amp; Mary Jane — classic comic vibe</figcaption>
           </figure>
         </a>
+      </div>
 
+      <div class="explore-more">
+        <a class="btn" href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F" target="_blank" rel="noopener noreferrer">
+          Explore More Works →
+        </a>
       </div>
     </section>
 
-    <!-- Past Commissions -->
+    <!-- ===== Past Commissions (NEW) ===== -->
     <section id="commissions">
       <h2>Past Commissions</h2>
-      <div class="gallery">
+      <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
 
-        <figure>
-          <img src="assets/Buzz.paint.jpg" alt="Buzz Lightyear commission" />
-          <figcaption>Custom jacket — Buzz Lightyear design</figcaption>
+      <div class="commission-grid">
+        <figure class="commission-card rotate-1">
+          <img src="assets/Buzz.paint.jpg" alt="Buzz Lightyear jacket commission" />
+          <figcaption>
+            <span class="badge">Jacket</span>
+            <strong>Buzz Lightyear Back Graphic</strong>
+            <small>Acrylic on workwear</small>
+          </figcaption>
         </figure>
 
-        <figure>
+        <figure class="commission-card">
           <img src="assets/Sunsetcommision.paint.jpg" alt="Sunset couple painting commission" />
-          <figcaption>Romantic sunset couple portrait</figcaption>
+          <figcaption>
+            <span class="badge">Portrait</span>
+            <strong>Sunset Couple</strong>
+            <small>Warm gradient sky, soft silhouettes</small>
+          </figcaption>
         </figure>
 
-        <figure>
+        <figure class="commission-card rotate-2">
           <img src="assets/sunsetcommision2.paint.jpg" alt="Silhouette couple sunset commission" />
-          <figcaption>Silhouette couple at sunset</figcaption>
+          <figcaption>
+            <span class="badge">Diptych</span>
+            <strong>Twilight Kiss (2-panel)</strong>
+            <small>Night-sky stars, comic edges</small>
+          </figcaption>
         </figure>
+      </div>
 
+      <div class="commissions-cta">
+        <a class="btn alt" href="#commission">Start your commission</a>
       </div>
     </section>
 
-    <!-- Poster Wall -->
+    <!-- ===== Poster Wall ===== -->
     <section id="poster-wall">
       <h2>Poster Wall</h2>
-      <p>(You can keep whatever content you had here.)</p>
+      <p class="section-lead">A rotating mix of prints, canvases, and studies — the wall keeps changing.</p>
+      <div class="poster-wall">
+        <a class="poster-card tilt" href="darthvader.html">
+          <img src="assets/darthvader.paint.jpg" alt="" />
+          <span class="frame-label">Darth</span>
+        </a>
+        <a class="poster-card tilt rotate-2" href="spongebob.html">
+          <img src="assets/spongebob.paint.jpg" alt="" />
+          <span class="frame-label">SB Window</span>
+        </a>
+        <a class="poster-card tilt rotate-1" href="spiderman.html">
+          <img src="assets/spiderman.paint.jpg" alt="" />
+          <span class="frame-label">Spider Love</span>
+        </a>
+      </div>
     </section>
 
-    <!-- About -->
-    <section id="about">
-      <h2>About</h2>
-      <p>Hey, I’m <strong>Chase</strong> — a pop-art and adventure-inspired painter. My work blends bold color, comic energy, and stories from my life between Japan and Canada. I take a handful of commissions each month while studying business at SFU.</p>
+    <!-- ===== Now Spinning (vinyl reel) ===== -->
+    <section id="spinning">
+      <h2>Now Spinning</h2>
+      <p class="section-lead">What’s on the easel & turntable — a quick scroll of favorites.</p>
+      <div class="reel" data-auto>
+        <a class="record" href="darthvader.html"><span class="label">DV</span><img src="assets/darthvader.paint.jpg" alt=""></a>
+        <a class="record" href="spongebob.html"><span class="label">SB</span><img src="assets/spongebob.paint.jpg" alt=""></a>
+        <a class="record" href="spiderman.html"><span class="label">SM</span><img src="assets/spiderman.paint.jpg" alt=""></a>
+        <!-- duplicates for seamless loop -->
+        <a class="record" href="darthvader.html"><span class="label">DV</span><img src="assets/darthvader.paint.jpg" alt=""></a>
+        <a class="record" href="spongebob.html"><span class="label">SB</span><img src="assets/spongebob.paint.jpg" alt=""></a>
+        <a class="record" href="spiderman.html"><span class="label">SM</span><img src="assets/spiderman.paint.jpg" alt=""></a>
+      </div>
     </section>
 
-    <!-- Pricing -->
+    <!-- ===== Pricing ===== -->
     <section id="pricing">
       <h2>Simple Pricing</h2>
       <ul>
@@ -122,7 +163,7 @@
       <p>Final quotes depend on time, detail, and shipping.</p>
     </section>
 
-    <!-- Commission form -->
+    <!-- ===== Commission form ===== -->
     <section id="commission">
       <h2>Request a Commission</h2>
       <form action="https://formspree.io/f/mandkyor" method="POST">
@@ -139,11 +180,11 @@
         <label>Details:<br>
           <textarea name="details" rows="5"></textarea>
         </label><br>
-        <button type="submit">Send Request</button>
+        <button type="submit" class="btn pop">Send Request</button>
       </form>
     </section>
 
-    <!-- Contact -->
+    <!-- ===== Contact ===== -->
     <section id="contact">
       <h2>Contact</h2>
       <p>Email: <a href="mailto:chasestudioworks@gmail.com">chasestudioworks@gmail.com</a></p>
@@ -153,7 +194,8 @@
 
   <footer>
     <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
-    <script src="script.js"></script>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
