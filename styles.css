@@ -110,6 +110,53 @@ footer{text-align:center;padding:2.2rem 1rem;color:#3b392f;background:color-mix(
   .puck{width:130px;height:130px}
   h1{font-size:clamp(2.6rem,9vw,4.6rem)}
 }
+/* ===== Fun Hero ===== */
+.hero--fun{
+  position:relative;
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; overflow:hidden;
+  background: linear-gradient(135deg, var(--cream), color-mix(in srgb, var(--orange) 30%, white));
+  border-bottom:4px solid var(--green);
+}
+.hero--fun .hero-content{
+  position:relative; z-index:3; max-width:900px;
+}
+.hero--fun h1{
+  font-family:"Bebas Neue", sans-serif;
+  font-size:clamp(3rem, 9vw, 6rem);
+  line-height:1.05;
+  margin-bottom:.6rem;
+}
+.shadow-text{
+  color:var(--orange);
+  text-shadow:4px 4px 0 var(--green), -4px -4px 0 var(--cream);
+}
+.hero--fun p{
+  font-size:clamp(1.2rem, 2vw, 1.5rem);
+  margin-bottom:1.4rem;
+  color:#222;
+}
+
+/* Buttons with tilt */
+.tilt{transform:rotate(-2deg);transition:transform .15s ease, box-shadow .15s ease}
+.tilt:hover{transform:rotate(1deg) translateY(-3px)}
+
+/* Background blobs & squiggles */
+.fun-bg{position:absolute; inset:0; z-index:1; overflow:hidden}
+.blob{position:absolute; border-radius:50%; filter:blur(30px); opacity:.6; animation:float 14s ease-in-out infinite alternate}
+.blob.b1{width:40vmin;height:40vmin;top:10%;left:5%;background:var(--orange)}
+.blob.b2{width:50vmin;height:50vmin;bottom:10%;right:8%;background:var(--green)}
+@keyframes float{0%{transform:translateY(0)}100%{transform:translateY(-30px)}}
+
+.squiggle{position:absolute;width:120px;height:30px;background:var(--orange-2);border-radius:15px;opacity:.8}
+.squiggle.s1{top:20%;right:15%;transform:rotate(20deg)}
+.squiggle.s2{bottom:20%;left:10%;transform:rotate(-25deg)}
+
+/* Confetti grid overlay */
+.confetti{position:absolute;inset:0;background-image:radial-gradient(var(--orange) 1px, transparent 2px),radial-gradient(var(--green) 1px, transparent 2px);background-size:30px 30px;opacity:.2;animation:scrollConfetti 20s linear infinite}
+@keyframes scrollConfetti{from{background-position:0 0}to{background-position:60px 60px}}
+
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
