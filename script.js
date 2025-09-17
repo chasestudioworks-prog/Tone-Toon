@@ -59,15 +59,15 @@ revealItems.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
   });
 })();
 
-// Draggable Now Spinning reel (auto loops via CSS)
+// Draggable Poster Wall reel (auto-loops via CSS)
 (() => {
-  const reel = document.querySelector(".reel");
+  const reel = document.querySelector(".poster-reel");
   if (!reel) return;
 
   let isDown = false, startX = 0, scrollLeft = 0;
   const start = (e) => { isDown = true; startX = (e.pageX || e.touches?.[0]?.pageX || 0); scrollLeft = reel.scrollLeft; };
-  const move = (e) => { if (!isDown) return; const x = (e.pageX || e.touches?.[0]?.pageX || 0); reel.scrollLeft = scrollLeft - (x - startX); };
-  const end  = () => { isDown = false; };
+  const move  = (e) => { if (!isDown) return; const x = (e.pageX || e.touches?.[0]?.pageX || 0); reel.scrollLeft = scrollLeft - (x - startX); };
+  const end   = () => { isDown = false; };
 
   reel.addEventListener("mousedown", start);
   reel.addEventListener("mousemove", move);
