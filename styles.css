@@ -57,7 +57,7 @@ section{padding:3.5rem 1.25rem;max-width:1120px;margin-inline:auto}
 #commissions .section-lead{color:#3f4338}
 .commission-grid{margin-top:.8rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;align-items:stretch}
 .commission-card{position:relative;background:#fff;border:3px solid color-mix(in srgb,var(--green) 28%,black);border-radius:12px;overflow:hidden;box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 20%,black);transition:transform .12s ease,box-shadow .12s ease}
-.commission-card img{width:100%;height:300px;object-fit:cover;display:block} /* <= shrink height for order */
+.commission-card img{width:100%;height:300px;object-fit:cover;display:block}
 .commission-card figcaption{position:relative;padding:.8rem 1rem 1rem;background:color-mix(in srgb,var(--cream) 88%,white);border-top:2px solid color-mix(in srgb,var(--orange) 30%,transparent)}
 .commission-card .badge{position:absolute;top:-14px;left:1rem;background:linear-gradient(180deg,var(--orange-2),var(--orange));color:#2b190a;font-weight:900;font-size:.8rem;padding:.2rem .55rem;border-radius:999px;border:2px solid color-mix(in srgb,var(--orange) 45%,black);box-shadow:3px 4px 0 color-mix(in srgb,var(--orange) 30%,black)}
 .commission-card strong{display:block;font-size:1.05rem;margin-bottom:.15rem}
@@ -66,25 +66,34 @@ section{padding:3.5rem 1.25rem;max-width:1120px;margin-inline:auto}
 .rotate-1{transform:rotate(-1.5deg)}.rotate-2{transform:rotate(1.5deg)}
 .commissions-cta{text-align:center;margin-top:1.2rem}
 
-/* ===== Poster Wall ===== */
+/* ===== Poster Wall — Horizontal Reel of Circles ===== */
 #poster-wall .section-lead{color:#3f4338}
-.poster-wall{margin-top:.8rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem}
-.poster-card{position:relative;display:block;text-decoration:none;color:inherit;background:#fff;border:3px solid color-mix(in srgb,var(--green) 30%,black);box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 20%,black);border-radius:8px;overflow:hidden;transition:transform .12s ease,box-shadow .12s ease}
-.poster-card img{width:100%;height:260px;object-fit:cover;display:block}
-.poster-card .frame-label{position:absolute;left:.5rem;bottom:.4rem;background:#fff;padding:.2rem .4rem;border-radius:4px;border:2px solid color-mix(in srgb,var(--orange) 45%,black);font-weight:900}
-.poster-card:hover{transform:translate(-2px,-2px) rotate(-1.5deg);box-shadow:10px 12px 0 color-mix(in srgb,var(--green) 22%,black)}
-.rotate-1{transform:rotate(-2deg)}.rotate-2{transform:rotate(2.2deg)}
+.poster-reel{
+  --speed: 34s;
+  margin-top:.8rem;
+  display:flex;
+  gap:1.1rem;
+  overflow:hidden;
+  padding:.4rem 0;
+}
+.poster-reel[data-auto]{ animation: posterScroll var(--speed) linear infinite }
+@keyframes posterScroll{ from{ transform: translateX(0) } to{ transform: translateX(-50%) } }
 
-/* ===== Now Spinning (vinyl reel) ===== */
-.reel{--speed:30s;margin-top:.8rem;display:flex;gap:1.2rem;overflow:hidden;padding:.4rem 0}
-.reel[data-auto]{animation:reelScroll var(--speed) linear infinite}
-@keyframes reelScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.record{position:relative;flex:0 0 auto;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#111 0 20%,#222 21% 60%,#000 61% 100%);border:3px solid color-mix(in srgb,var(--green) 22%,black);box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 20%,black);overflow:hidden;display:grid;place-items:center;transition:transform .12s ease}
-.record:hover{transform:translateY(-3px) rotate(-3deg)}
-.record img{position:absolute;inset:8% 8% 8% 8%;border-radius:50%;object-fit:cover;filter:contrast(110%) saturate(110%)}
-.record .label{position:relative;z-index:2;width:46px;height:46px;border-radius:50%;background:linear-gradient(180deg,var(--orange-2),var(--orange));color:#2b190a;border:2px solid color-mix(in srgb,var(--orange) 45%,black);display:grid;place-items:center;font-weight:900}
+.puck{
+  position:relative; flex:0 0 auto;
+  width: 150px; height: 150px; border-radius: 50%;
+  background:#fff;
+  border:3px solid color-mix(in srgb, var(--green) 22%, black);
+  box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
+  overflow:hidden;
+  display:grid; place-items:center;
+  transition: transform .12s ease, box-shadow .12s ease;
+  text-decoration:none;
+}
+.puck:hover{ transform: translateY(-3px) rotate(-3deg); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black) }
+.puck img{ position:absolute; inset:8% 8% 8% 8%; border-radius:50%; object-fit:cover; filter: contrast(110%) saturate(110%) }
 
-/* Forms, Pricing, Reveal */
+/* Forms, Pricing, Reveal, Footer */
 #pricing ul{list-style:none;padding:0;display:grid;gap:.8rem}
 #pricing li{background:#fff;padding:1rem 1.1rem;border-left:8px solid var(--orange);border:2px solid color-mix(in srgb,var(--green) 16%,transparent);box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 18%,black)}
 form{background:#fff;padding:1.5rem;border-radius:18px;border:2px solid color-mix(in srgb,var(--green) 16%,transparent);box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 18%,black)}
@@ -98,6 +107,7 @@ footer{text-align:center;padding:2.2rem 1rem;color:#3b392f;background:color-mix(
 @media (max-width:980px){
   #work .gallery img{height:300px}
   .commission-card img{height:260px}
+  .puck{width:130px;height:130px}
   h1{font-size:clamp(2.6rem,9vw,4.6rem)}
 }
 @media (prefers-reduced-motion:reduce){
