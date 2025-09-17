@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <h1 class="brand">🎨 TONE & TOON</h1>
     <nav>
@@ -22,27 +27,26 @@
   </header>
 
   <main>
-    <!-- ===== Room Scene Hero (cover) ===== -->
-    <section class="hero hero--room">
-      <div class="room-bg" aria-hidden="true">
-        <span class="lamp-glow lamp-left"></span>
-        <span class="lamp-glow lamp-right"></span>
-        <span class="vignette"></span>
+    <!-- ===== Super Fun Hero (bright + animated) ===== -->
+    <section class="hero hero--fun">
+      <div class="fun-bg" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+        <span class="squiggle s1"></span>
+        <span class="squiggle s2"></span>
+        <span class="confetti"></span>
       </div>
-      <div class="room-decor" aria-hidden="true">
-        <div class="poster p1"></div>
-        <div class="poster p2"></div>
-        <div class="poster p3"></div>
-        <div class="rug"></div>
-      </div>
+
       <div class="hero-content">
-        <h1>Imagine it. Hang it.</h1>
-        <p>Custom paintings made from your ideas, for your walls.</p>
+        <h1><span class="shadow-text">Imagine it.</span><br>Hang it.</h1>
+        <p>Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
+
         <div class="hero-cta">
-          <a class="btn pop" href="#work">Explore Work</a>
-          <a class="btn alt" href="#commission">Request a Commission</a>
+          <a class="btn pop tilt" href="#work">🎨 Explore Work</a>
+          <a class="btn alt tilt" href="#commission">💌 Request a Commission</a>
         </div>
       </div>
+
       <a class="scroll-cue" href="#work" aria-label="Scroll to gallery">⌄</a>
     </section>
 
@@ -56,12 +60,14 @@
             <figcaption>Darth Vader — Pop art with comic energy</figcaption>
           </figure>
         </a>
+
         <a class="card" href="spongebob.html">
           <figure>
             <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
             <figcaption>Spongebob — playful underwater love scene</figcaption>
           </figure>
         </a>
+
         <a class="card" href="spiderman.html">
           <figure>
             <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
@@ -77,7 +83,7 @@
       </div>
     </section>
 
-    <!-- ===== Past Commissions ===== -->
+    <!-- ===== Past Commissions (tidy grid) ===== -->
     <section id="commissions">
       <h2>Past Commissions</h2>
       <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
@@ -116,13 +122,13 @@
       </div>
     </section>
 
-    <!-- ===== Poster Wall (Horizontal Reel of Circles) ===== -->
+    <!-- ===== Poster Wall (horizontal reel of circles) ===== -->
     <section id="poster-wall">
       <h2>Poster Wall</h2>
       <p class="section-lead">A rolling strip of paintings — tap/drag to browse. I’ll keep adding new ones here.</p>
 
       <div class="poster-reel" data-auto>
-        <!-- Use any images you like; add/remove as needed. Duplicates help the loop feel seamless. -->
+        <!-- Add/remove items as you upload more images. Duplicates create a seamless loop. -->
         <a class="puck" href="darthvader.html" aria-label="Darth Vader">
           <img src="assets/darthvader.paint.jpg" alt="">
         </a>
@@ -133,7 +139,7 @@
           <img src="assets/spiderman.paint.jpg" alt="">
         </a>
 
-        <!-- duplicates for a long seamless scroll -->
+        <!-- duplicates for a longer seamless scroll -->
         <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt=""></a>
         <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt=""></a>
         <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt=""></a>
@@ -180,10 +186,12 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
