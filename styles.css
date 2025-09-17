@@ -289,3 +289,58 @@ form button{ margin-top:.25rem }
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; animation:none !important; scroll-behavior:auto !important }
 }
+
+/* ===== Recent Commissions ===== */
+#commissions .section-lead{ color:#3f4338 }
+
+.commission-grid{
+  margin-top:.8rem;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:1rem;
+  align-items:stretch;
+}
+
+.commission-card{
+  position:relative;
+  background:#fff;
+  border:3px solid color-mix(in srgb, var(--green) 28%, black);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.commission-card img{
+  width:100%; height:320px; object-fit:cover; display:block;
+}
+
+.commission-card figcaption{
+  position:relative;
+  padding:.8rem 1rem 1rem;
+  background: color-mix(in srgb, var(--cream) 88%, white);
+  border-top:2px solid color-mix(in srgb, var(--orange) 30%, transparent);
+}
+
+.commission-card .badge{
+  position:absolute; top:-14px; left:1rem;
+  background: linear-gradient(180deg, var(--orange-2), var(--orange));
+  color:#2b190a; font-weight:900; font-size:.8rem;
+  padding:.2rem .55rem; border-radius:999px;
+  border:2px solid color-mix(in srgb, var(--orange) 45%, black);
+  box-shadow:3px 4px 0 color-mix(in srgb, var(--orange) 30%, black);
+}
+
+.commission-card strong{ display:block; font-size:1.05rem; margin-bottom:.15rem }
+.commission-card small{ color:#555 }
+
+.commission-card:hover{
+  transform: translate(-2px,-2px) rotate(-1deg);
+  box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black);
+}
+
+/* fun slight rotations to feel pinned-on */
+.rotate-1{ transform: rotate(-1.5deg) }
+.rotate-2{ transform: rotate(1.5deg) }
+
+.commissions-cta{ text-align:center; margin-top:1.2rem }
