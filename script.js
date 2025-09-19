@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (y) y.textContent = new Date().getFullYear();
 });
 
-// Sticky header color change
+// Sticky header
 document.addEventListener("scroll", () => {
   const header = document.querySelector(".site-header");
   if (!header) return;
@@ -21,7 +21,7 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 revealItems.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
 
-// 3D tilt on Work cards (desktop)
+// Tilt on Work cards (desktop)
 (() => {
   const figs = document.querySelectorAll("#work .gallery figure");
   const maxDeg = 6;
@@ -40,7 +40,7 @@ revealItems.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
   });
 })();
 
-// Draggable Poster Wall reel (kept)
+// Draggable Poster Wall reel
 (() => {
   const reel = document.querySelector(".poster-reel");
   if (!reel) return;
@@ -58,32 +58,27 @@ revealItems.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
   reel.addEventListener("touchend", end);
 })();
 
-// HERO: gentle parallax for splash PNGs so they feel alive
+// Hero parallax for paint PNGs (safe if images absent)
 (() => {
-  const container = document.querySelector(".hero--splash-real");
-  if (!container) return;
-
-  const s1 = container.querySelector(".splash.s1");
-  const s2 = container.querySelector(".splash.s2");
-  const s3 = container.querySelector(".splash.s3");
-  const tube = container.querySelector(".tube");
-  const overlay = container.querySelector(".overlay");
-
+  const hero = document.querySelector(".hero--splash-real");
+  if (!hero) return;
+  const s1 = hero.querySelector(".splash.s1");
+  const s2 = hero.querySelector(".splash.s2");
+  const s3 = hero.querySelector(".splash.s3");
+  const tube = hero.querySelector(".tube");
+  const overlay = hero.querySelector(".overlay");
   let raf;
-  const onMove = (e) => {
+  window.addEventListener("mousemove", (e) => {
     if (raf) return;
     raf = requestAnimationFrame(() => {
-      const nx = (e.clientX / window.innerWidth - 0.5);
-      const ny = (e.clientY / window.innerHeight - 0.5);
-
-      if (s1) s1.style.transform = `translateX(${nx*10}px) translateY(${ny*6}px) rotate(-2deg)`;
-      if (s2) s2.style.transform = `translateX(${nx*16}px) translateY(${ny*10}px) rotate(18deg)`;
-      if (s3) s3.style.transform = `translateX(${nx*12}px) translateY(${ny*12}px) rotate(-12deg)`;
-      if (overlay) overlay.style.transform = `translateX(calc(-50% + ${nx*12}px)) translateY(${ny*6}px) rotate(-4deg)`;
-      if (tube) tube.style.transform = `rotate(${20 + nx*6}deg) translate(${nx*20}px, ${-ny*8}px)`;
-
+      const nx = (e.clientX / innerWidth - 0.5);
+      const ny = (e.clientY / innerHeight - 0.5);
+      if (s1) s1.style.transform = `translateX(calc(-50% + ${nx*14}px)) translateY(${ny*8}px) rotate(-2deg)`;
+      if (s2) s2.style.transform = `translate(${nx*24}px, ${ny*16}px) rotate(18deg)`;
+      if (s3) s3.style.transform = `translate(${nx*18}px, ${ny*18}px) rotate(-12deg)`;
+      if (overlay) overlay.style.transform = `translateX(calc(-50% + ${nx*16}px)) translateY(${ny*10}px) rotate(-4deg)`;
+      if (tube) tube.style.transform = `rotate(${20 + nx*8}deg) translate(${nx*22}px, ${-ny*10}px)`;
       raf = null;
     });
-  };
-  window.addEventListener("mousemove", onMove, { passive: true });
+  }, { passive: true });
 })();
