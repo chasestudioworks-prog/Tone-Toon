@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (y) y.textContent = new Date().getFullYear();
 });
 
-// Transparent header over hero: toggle .at-top on body
+// Toggle lime header at top vs cream after scroll
 const setTopClass = () => {
   if (window.scrollY < 10) document.body.classList.add("at-top");
   else document.body.classList.remove("at-top");
@@ -26,7 +26,7 @@ document.querySelectorAll("section, .card").forEach((el) => {
   io.observe(el);
 });
 
-// Tilt on Work cards (desktop)
+// Gentle tilt on Work cards (desktop only)
 (() => {
   const figs = document.querySelectorAll("#work .gallery figure");
   const maxDeg = 6;
