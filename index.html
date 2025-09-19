@@ -6,12 +6,12 @@
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
 
-  <!-- Fonts: headline pop + body -->
+  <!-- Fonts (headline pop + body) -->
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body class="at-top">
-  <!-- Header (turns transparent over the hero) -->
+  <!-- Header (lime when at top; cream after scroll) -->
   <header class="site-header">
     <h1 class="brand">🎨 TONE & TOON</h1>
     <nav>
@@ -25,14 +25,11 @@
   </header>
 
   <main>
-    <!-- ===== HERO: Lime background + giant orange headline ===== -->
-    <section class="hero hero--pop-lime">
-      <div class="lime-bg" aria-hidden="true"></div>
-
+    <!-- ===== FULL-BLEED LIME HERO ===== -->
+    <section class="hero hero--limewashed">
+      <!-- background & wash layers are in CSS -->
       <div class="hero-content">
-        <h1 class="mega-pop">
-          IMAGINE IT.<br />HANG IT.
-        </h1>
+        <h1 class="mega-pop">IMAGINE IT.<br />HANG IT.</h1>
         <p class="tagline dark">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
 
         <div class="hero-cta">
@@ -52,12 +49,14 @@
             <figcaption>Darth Vader — Pop art with comic energy</figcaption>
           </figure>
         </a>
+
         <a class="card" href="spongebob.html">
           <figure>
             <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
             <figcaption>Spongebob — playful underwater love scene</figcaption>
           </figure>
         </a>
+
         <a class="card" href="spiderman.html">
           <figure>
             <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
@@ -172,6 +171,6 @@
     <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
   </footer>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
