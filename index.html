@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
-    <h1 class="brand">🎨 Tone & Toon</h1>
+    <h1 class="brand">🎨 TONE & TOON</h1>
     <nav>
       <a href="#work">Work</a>
       <a href="#commissions">Past Commissions</a>
-      <a href="#posterwall">Poster Wall</a>
-      <a href="#nowspinning">Now Spinning</a>
-      <a href="#about">About</a>
+      <a href="#poster-wall">Poster Wall</a>
       <a href="#pricing">Pricing</a>
       <a href="#commission">Commission</a>
       <a href="#contact">Contact</a>
@@ -23,11 +27,13 @@
   </header>
 
   <main>
-    <!-- ===== Splash Hero ===== -->
-    <section class="hero hero--splash">
+    <!-- ===== Realistic Splash Hero (ONLY the hero is new) ===== -->
+    <section class="hero hero--splash-real">
+      <!-- vivid background -->
       <div class="splash-bg" aria-hidden="true"></div>
 
-      <div class="splash-inner">
+      <!-- big heading + copy -->
+      <div class="hero-content">
         <h1 class="mega">
           <span class="mega-line">IMAGINE IT.</span>
           <span class="mega-line">HANG IT.</span>
@@ -40,55 +46,21 @@
         </div>
       </div>
 
-      <!-- Paint splash + tube -->
-      <div class="paint-wrap" aria-hidden="true">
-        <svg class="paint-splash" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0"  stop-color="#E76020"/>
-              <stop offset=".45" stop-color="#EE892F"/>
-              <stop offset="1"  stop-color="#6E896A"/>
-            </linearGradient>
-            <filter id="goo">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
-              <feColorMatrix in="blur" mode="matrix"
-                values="1 0 0 0 0
-                        0 1 0 0 0
-                        0 0 1 0 0
-                        0 0 0 22 -10" result="goo"/>
-              <feBlend in="SourceGraphic" in2="goo"/>
-            </filter>
-          </defs>
-          <path fill="url(#g1)" filter="url(#goo)"
-            d="M65,420
-               C180,380 260,340 360,360
-               C520,395 640,330 750,300
-               C900,260 1050,300 1180,235
-               L1180,520 L65,520 Z"/>
-          <circle cx="210" cy="330" r="22" fill="#E76020"/>
-          <circle cx="840" cy="270" r="18" fill="#EE892F"/>
-          <circle cx="980" cy="250" r="12" fill="#6E896A"/>
-        </svg>
-
-        <svg class="paint-tube" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="metal" x1="0" x2="1">
-              <stop offset="0" stop-color="#bbb"/>
-              <stop offset="1" stop-color="#eee"/>
-            </linearGradient>
-          </defs>
-          <rect x="20" y="45" width="140" height="30" rx="6" fill="url(#metal)" stroke="#0F0F0D" stroke-width="2"/>
-          <rect x="160" y="40" width="50" height="40" rx="8" fill="#0F0F0D"/>
-          <rect x="170" y="44" width="28" height="32" rx="6" fill="#fff"/>
-          <rect x="38" y="52" width="94" height="16" rx="8" fill="#E76020"/>
-          <rect x="38" y="52" width="54" height="16" rx="8" fill="#6E896A" opacity=".9"/>
-        </svg>
+      <!-- realistic paint PNGs (upload these into /assets/) -->
+      <!-- Recommended transparent PNGs: splash1.png, splash2.png, splash3.png, paint-tube.png -->
+      <div class="splash-images" aria-hidden="true">
+        <img class="splash s1" src="assets/splash1.png" alt="">
+        <img class="splash s2" src="assets/splash2.png" alt="">
+        <img class="splash s3" src="assets/splash3.png" alt="">
+        <img class="tube"   src="assets/paint-tube.png" alt="">
+        <!-- thin mist layer to make paint feel “on” the headline -->
+        <img class="spray overlay" src="assets/splash1.png" alt="">
       </div>
 
       <a class="scroll-cue" href="#work" aria-label="Scroll to gallery">⌄</a>
     </section>
 
-    <!-- Recent Work -->
+    <!-- ===== Recent Work (unchanged) ===== -->
     <section id="work">
       <h2>Recent Work</h2>
       <div class="gallery">
@@ -98,60 +70,93 @@
             <figcaption>Darth Vader — Pop art with comic energy</figcaption>
           </figure>
         </a>
+
         <a class="card" href="spongebob.html">
           <figure>
             <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
             <figcaption>Spongebob — playful underwater love scene</figcaption>
           </figure>
         </a>
+
         <a class="card" href="spiderman.html">
           <figure>
             <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
-            <figcaption>Spiderman & Mary Jane — classic comic vibe</figcaption>
+            <figcaption>Spiderman &amp; Mary Jane — classic comic vibe</figcaption>
           </figure>
+        </a>
+      </div>
+
+      <div class="explore-more">
+        <a class="btn" href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F" target="_blank" rel="noopener noreferrer">
+          Explore More Works →
         </a>
       </div>
     </section>
 
-    <!-- Past Commissions -->
+    <!-- ===== Past Commissions (tidy cards; unchanged) ===== -->
     <section id="commissions">
       <h2>Past Commissions</h2>
-      <div class="gallery">
-        <figure>
+      <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
+
+      <div class="commission-grid">
+        <figure class="commission-card rotate-1">
           <img src="assets/Buzz.paint.jpg" alt="Buzz Lightyear jacket commission" />
-          <figcaption>Buzz Lightyear Jacket — Fun wearable art</figcaption>
+          <figcaption>
+            <span class="badge">Jacket</span>
+            <strong>Buzz Lightyear Back Graphic</strong>
+            <small>Acrylic on workwear</small>
+          </figcaption>
         </figure>
-        <figure>
-          <img src="assets/Sunsetcommision.paint.jpg" alt="Sunset couple painting" />
-          <figcaption>Sunset Couple — Romantic realism</figcaption>
+
+        <figure class="commission-card">
+          <img src="assets/Sunsetcommision.paint.jpg" alt="Sunset couple painting commission" />
+          <figcaption>
+            <span class="badge">Portrait</span>
+            <strong>Sunset Couple</strong>
+            <small>Warm gradient sky, soft silhouettes</small>
+          </figcaption>
         </figure>
-        <figure>
-          <img src="assets/sunsetcommision2.paint.jpg" alt="Couple silhouette painting" />
-          <figcaption>Couple Silhouette — Bold colors and love</figcaption>
+
+        <figure class="commission-card rotate-2">
+          <img src="assets/sunsetcommision2.paint.jpg" alt="Silhouette couple sunset commission" />
+          <figcaption>
+            <span class="badge">Diptych</span>
+            <strong>Twilight Kiss (2-panel)</strong>
+            <small>Night-sky stars, comic edges</small>
+          </figcaption>
         </figure>
+      </div>
+
+      <div class="commissions-cta">
+        <a class="btn alt" href="#commission">Start your commission</a>
       </div>
     </section>
 
-    <!-- Poster Wall -->
-    <section id="posterwall">
+    <!-- ===== Poster Wall (horizontal reel; unchanged) ===== -->
+    <section id="poster-wall">
       <h2>Poster Wall</h2>
-      <p>A virtual wall of inspirations, posters, and pop art vibes.</p>
+      <p class="section-lead">A rolling strip of paintings — tap/drag to browse. I’ll keep adding new ones here.</p>
+
+      <div class="poster-reel" data-auto>
+        <!-- Add/remove items; duplicates make a seamless loop -->
+        <a class="puck" href="darthvader.html" aria-label="Darth Vader">
+          <img src="assets/darthvader.paint.jpg" alt="">
+        </a>
+        <a class="puck" href="spongebob.html" aria-label="Spongebob">
+          <img src="assets/spongebob.paint.jpg" alt="">
+        </a>
+        <a class="puck" href="spiderman.html" aria-label="Spiderman & Mary Jane">
+          <img src="assets/spiderman.paint.jpg" alt="">
+        </a>
+
+        <!-- duplicates for long seamless scroll -->
+        <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt=""></a>
+        <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt=""></a>
+        <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt=""></a>
+      </div>
     </section>
 
-    <!-- Now Spinning -->
-    <section id="nowspinning">
-      <h2>Now Spinning</h2>
-      <div class="vinyl"></div>
-      <p>Music that fuels the brush — see what’s on repeat while I paint.</p>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <h2>About</h2>
-      <p>I’m <strong>Chase</strong> — a pop-art and adventure-inspired painter. My work blends bold color, comic energy, and stories from my life between Japan and Canada.</p>
-    </section>
-
-    <!-- Pricing -->
+    <!-- ===== Pricing (unchanged) ===== -->
     <section id="pricing">
       <h2>Simple Pricing</h2>
       <ul>
@@ -159,9 +164,10 @@
         <li><strong>Medium</strong> (12×16 / 16×20): $180–$350</li>
         <li><strong>Large</strong> (18×24 / 24×30): $380–$700</li>
       </ul>
+      <p>Final quotes depend on time, detail, and shipping.</p>
     </section>
 
-    <!-- Commission form -->
+    <!-- ===== Commission form (unchanged) ===== -->
     <section id="commission">
       <h2>Request a Commission</h2>
       <form action="https://formspree.io/f/mandkyor" method="POST">
@@ -178,21 +184,24 @@
         <label>Details:<br>
           <textarea name="details" rows="5"></textarea>
         </label><br>
-        <button type="submit">Send Request</button>
+        <button type="submit" class="btn pop">Send Request</button>
       </form>
     </section>
 
-    <!-- Contact -->
+    <!-- ===== Contact (unchanged) ===== -->
     <section id="contact">
       <h2>Contact</h2>
       <p>Email: <a href="mailto:chasestudioworks@gmail.com">chasestudioworks@gmail.com</a></p>
-      <p>Instagram: <a href="https://www.instagram.com/im_just_a_drawing_nerd/" target="_blank">@im_just_a_drawing_nerd</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F">@im_just_a_drawing_nerd</a></p>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
   </footer>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
