@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Fonts: headline pop + body -->
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
-<body>
-  <!-- Header -->
+<body class="at-top">
+  <!-- Header (turns transparent over the hero) -->
   <header class="site-header">
     <h1 class="brand">🎨 TONE & TOON</h1>
     <nav>
@@ -23,51 +25,24 @@
   </header>
 
   <main>
-    <!-- ===== HERO (new) ===== -->
-    <section class="hero hero--splash-real">
-      <div class="splash-bg" aria-hidden="true"></div>
+    <!-- ===== HERO: Lime background + giant orange headline ===== -->
+    <section class="hero hero--pop-lime">
+      <div class="lime-bg" aria-hidden="true"></div>
 
       <div class="hero-content">
-        <h1 class="mega">
-          <span class="mega-line">IMAGINE IT.</span>
-          <span class="mega-line">HANG IT.</span>
+        <h1 class="mega-pop">
+          IMAGINE IT.<br />HANG IT.
         </h1>
-        <p class="tagline">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
+        <p class="tagline dark">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
 
         <div class="hero-cta">
-          <a class="btn pop tilt" href="#work">🎨 Explore Work</a>
-          <a class="btn alt tilt" href="#commission">💌 Request a Commission</a>
+          <a class="btn pop" href="#work">🎨 Explore Work</a>
+          <a class="btn alt" href="#commission">💌 Request a Commission</a>
         </div>
       </div>
-
-      <!-- Realistic PNGs you can upload into /assets/ (hidden if missing) -->
-      <div class="splash-images" aria-hidden="true">
-        <img class="splash s1" src="assets/splash1.png" alt="" onerror="this.style.display='none'">
-        <img class="splash s2" src="assets/splash2.png" alt="" onerror="this.style.display='none'">
-        <img class="splash s3" src="assets/splash3.png" alt="" onerror="this.style.display='none'">
-        <img class="tube"   src="assets/paint-tube.png" alt="" onerror="this.style.display='none'">
-        <img class="spray overlay" src="assets/splash1.png" alt="" onerror="this.style.display='none'">
-      </div>
-
-      <!-- SVG fallback (shows if PNGs aren’t there yet) -->
-      <svg class="splash-fallback" viewBox="0 0 1200 500" aria-hidden="true">
-        <defs>
-          <linearGradient id="gS" x1="0" x2="1">
-            <stop offset="0" stop-color="#E76020"/><stop offset=".5" stop-color="#EE892F"/><stop offset="1" stop-color="#6E896A"/>
-          </linearGradient>
-          <filter id="goo"><feGaussianBlur stdDeviation="10"/><feColorMatrix type="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10"/></filter>
-        </defs>
-        <g filter="url(#goo)" fill="url(#gS)" opacity=".9">
-          <path d="M0,360 C180,330 280,300 390,320 C560,350 680,300 820,280 C970,260 1130,280 1200,230 L1200,500 L0,500 Z"/>
-          <circle cx="220" cy="320" r="18"/><circle cx="930" cy="290" r="14"/><circle cx="1030" cy="260" r="10"/>
-        </g>
-      </svg>
-
-      <a class="scroll-cue" href="#work" aria-label="Scroll to gallery">⌄</a>
     </section>
 
-    <!-- ===== Recent Work (restored) ===== -->
+    <!-- ===== Recent Work ===== -->
     <section id="work">
       <h2>Recent Work</h2>
       <div class="gallery">
@@ -77,14 +52,12 @@
             <figcaption>Darth Vader — Pop art with comic energy</figcaption>
           </figure>
         </a>
-
         <a class="card" href="spongebob.html">
           <figure>
             <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
             <figcaption>Spongebob — playful underwater love scene</figcaption>
           </figure>
         </a>
-
         <a class="card" href="spiderman.html">
           <figure>
             <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
@@ -100,7 +73,7 @@
       </div>
     </section>
 
-    <!-- ===== Past Commissions (restored) ===== -->
+    <!-- ===== Past Commissions ===== -->
     <section id="commissions">
       <h2>Past Commissions</h2>
       <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
@@ -139,7 +112,7 @@
       </div>
     </section>
 
-    <!-- ===== Poster Wall (horizontal reel; restored) ===== -->
+    <!-- ===== Poster Wall (horizontal reel) ===== -->
     <section id="poster-wall">
       <h2>Poster Wall</h2>
       <p class="section-lead">A rolling strip of paintings — tap/drag to browse.</p>
@@ -155,7 +128,7 @@
       </div>
     </section>
 
-    <!-- ===== Pricing (restored) ===== -->
+    <!-- ===== Pricing ===== -->
     <section id="pricing">
       <h2>Simple Pricing</h2>
       <ul>
@@ -166,7 +139,7 @@
       <p>Final quotes depend on time, detail, and shipping.</p>
     </section>
 
-    <!-- ===== Commission form (restored) ===== -->
+    <!-- ===== Commission form ===== -->
     <section id="commission">
       <h2>Request a Commission</h2>
       <form action="https://formspree.io/f/mandkyor" method="POST">
@@ -187,7 +160,7 @@
       </form>
     </section>
 
-    <!-- ===== Contact (restored) ===== -->
+    <!-- ===== Contact ===== -->
     <section id="contact">
       <h2>Contact</h2>
       <p>Email: <a href="mailto:chasestudioworks@gmail.com">chasestudioworks@gmail.com</a></p>
@@ -199,6 +172,6 @@
     <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
