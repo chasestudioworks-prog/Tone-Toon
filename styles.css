@@ -1,128 +1,252 @@
-/* ===== Core palette (unchanged) ===== */
+/* =========================
+   Tone & Toon — Lime Washed Hero
+   ========================= */
+
+/* Palette */
 :root{
-  --orange:#E76020; --orange-2:#EE892F;
-  --cream-raw:#E0BB76; --cream: color-mix(in srgb,#E0BB76 55%, white);
+  --orange:#FF6A00;          /* headline orange (brighter) */
+  --orange-2:#EE892F;
+  --lime:#8dd63f;            /* main lime */
+  --lime-dark:#6bb52a;       /* deeper lime */
+  --lime-wash:#a6e664;       /* lighter wash */
+  --cream:#F4E6C6;           /* site base elsewhere */
   --sage:#6E896A; --green:#325434; --ink:#0F0F0D;
   --ring: color-mix(in srgb, var(--orange) 55%, white);
 }
 
-/* Base */
+/* Reset & base */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+body{
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+}
+
+/* Header (lime at top, cream after scroll) */
+.site-header{
+  position:sticky; top:0; z-index:30;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:.9rem 1.1rem;
+  background:var(--cream);
+  border-bottom:3px solid color-mix(in srgb, var(--green) 18%, transparent);
+  transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.site-header nav a{ text-decoration:none; color:var(--ink); font-weight:800; opacity:.9; margin-left:1rem }
+.site-header nav a:hover{ opacity:1; color:var(--green) }
+
+/* When at top of the page, header blends with hero (full lime, no separator) */
+.at-top .site-header{
+  background:var(--lime);
+  border-bottom:none;
+  box-shadow:none;
+}
+
+/* Sections (default) */
+section{ padding:3.5rem 1.25rem; max-width:1120px; margin-inline:auto }
+
+/* Buttons (unchanged aesthetic) */
+.btn{
+  display:inline-block; text-decoration:none; font-weight:900;
+  padding:.9rem 1.35rem; border-radius:999px;
+  background:linear-gradient(180deg,var(--orange-2),var(--orange));
+  color:#2b190a; border:2px solid color-mix(in srgb, var(--orange) 45%, black);
+  box-shadow:5px 7px 0 color-mix(in srgb, var(--orange) 30%, black);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover{ transform:translate(-2px,-2px); box-shadow:9px 11px 0 color-mix(in srgb, var(--orange) 30%, black) }
+.btn.alt{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--sage) 35%, white), var(--sage));
+  color:#08130E; border-color:color-mix(in srgb, var(--sage) 45%, black);
+  box-shadow:5px 7px 0 color-mix(in srgb, var(--green) 28%, black);
+}
 
 /* Headings */
-h1,h2{font-family:"Bebas Neue",system-ui,sans-serif;letter-spacing:.4px}
-h2{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.05;border-bottom:8px solid var(--orange);display:inline-block;margin-bottom:1rem}
-
-/* Header — transparent over hero */
-.site-header{
-  position:sticky;top:0;z-index:30;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:.9rem 1.1rem;
-  background:color-mix(in srgb,var(--cream) 92%,white);
-  border-bottom:3px solid color-mix(in srgb,var(--green) 18%,transparent);
-  transition:background .2s ease,border-color .2s ease, box-shadow .2s ease;
-}
-.site-header nav a{text-decoration:none;color:var(--ink);font-weight:800;opacity:.85;margin-left:1rem}
-.site-header nav a:hover{opacity:1;color:var(--green)}
-/* When body is at top of hero, hide the divider & background for a clean cover */
-.at-top .site-header{
-  background: transparent;
-  border-bottom: none;
-  box-shadow: none;
+h2{
+  font-family:"Bebas Neue",system-ui,sans-serif;
+  letter-spacing:.4px; font-size:clamp(1.9rem,4vw,2.8rem); line-height:1.05;
+  display:inline-block; padding-bottom:.25rem; margin-bottom:1rem;
+  border-bottom:8px solid var(--orange);
 }
 
-/* Sections */
-section{padding:3.5rem 1.25rem;max-width:1120px;margin-inline:auto}
-
-/* Buttons */
-.btn{display:inline-block;text-decoration:none;font-weight:900;padding:.9rem 1.35rem;border-radius:999px;background:linear-gradient(180deg,var(--orange-2),var(--orange));color:#2b190a;border:2px solid color-mix(in srgb,var(--orange) 45%,black);box-shadow:5px 7px 0 color-mix(in srgb,var(--orange) 30%,black);transition:transform .12s ease,box-shadow .12s ease}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:9px 11px 0 color-mix(in srgb,var(--orange) 30%,black)}
-.btn.alt{background:linear-gradient(180deg,color-mix(in srgb,var(--sage) 35%,white),var(--sage));color:#08130E;border-color:color-mix(in srgb,var(--sage) 45%,black);box-shadow:5px 7px 0 color-mix(in srgb,var(--green) 28%,black)}
-
-/* ===== NEW: Lime hero with bold orange headline ===== */
-.hero--pop-lime{
-  position:relative;min-height:100vh;display:grid;place-items:center;overflow:hidden;
-  padding: clamp(3rem, 6vw, 5rem) 1rem 3rem;
+/* =========================
+   FULL-BLEED LIME HERO
+   ========================= */
+.hero--limewashed{
+  position:relative;
+  min-height:100vh;
+  width:100%;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  /* remove site section max-width & side padding for full bleed */
+  padding:0;
+  max-width:none;
 }
-.hero--pop-lime .lime-bg{
-  position:absolute;inset:0;z-index:0;
-  /* Lime like your reference */
-  background: radial-gradient(1200px 600px at 50% 120%, #7bbd2a 0%, transparent 60%),
-              #8dd63f;  /* main lime */
+
+/* Lime background with washed/garment effect */
+.hero--limewashed::before{
+  content:"";
+  position:absolute; inset:0; z-index:0;
+  background:
+    /* big soft darker areas */
+    radial-gradient(1200px 700px at 20% 10%, rgba(0,0,0,.12), transparent 60%),
+    radial-gradient(900px 600px at 80% 20%, rgba(0,0,0,.10), transparent 60%),
+    /* soft light wash */
+    radial-gradient(1200px 800px at 50% 120%, var(--lime-wash), transparent 60%),
+    var(--lime);
 }
+
+/* Fine speckle to feel “washed” */
+.hero--limewashed::after{
+  content:"";
+  position:absolute; inset:-40px; z-index:0; pointer-events:none;
+  opacity:.25;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 2px, rgba(0,0,0,.04) 2px 4px);
+  mix-blend-mode:overlay;
+  animation:grain 14s linear infinite;
+}
+@keyframes grain{ 0%{transform:translate(0,0)} 100%{transform:translate(-6%,-6%)} }
+
+/* Content block */
+.hero--limewashed .hero-content{
+  position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:1rem;               /* reduces space so buttons sit closer (higher) */
+  text-align:center;
+  padding: clamp(2rem, 5vw, 4rem) 1rem;  /* internal breathing room */
+}
+
+/* Huge orange headline centered */
 .mega-pop{
-  /* Big, poppy, orange headline */
-  font-family: "Shrikhand", system-ui, sans-serif;
-  font-size: clamp(3.2rem, 14vw, 12rem);
-  line-height: .9;
-  text-transform: none;
-  text-align:center;
-  color:#ff6a00; /* bright orange */
+  font-family:"Shrikhand", system-ui, sans-serif;
+  font-size: clamp(3.4rem, 14.5vw, 12rem);
+  line-height:.88;
+  color: var(--orange);
   text-shadow:
-    0 12px 30px rgba(0,0,0,.25),
-    -2px -2px 0 #ffd7b8,
+    0 14px 34px rgba(0,0,0,.28),
+    -2px -2px 0 #ffe0c8,
     2px 2px 0 #ff9d66;
-  margin: 0 0 .5rem;
+  margin:0;
 }
-.hero--pop-lime .tagline{
-  text-align:center;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  color: #19330f; /* deep green for contrast on lime */
-  margin: .35rem auto 1.2rem;
-  max-width: 70ch;
+
+/* Tagline contrast on lime */
+.hero--limewashed .tagline{
+  color:#14310f;          /* deep green for readability on lime */
+  font-size:clamp(1.05rem, 2vw, 1.35rem);
+  max-width:70ch;
+  margin:0;
 }
-.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
 
-/* ====== (All your existing sections below: Work, Past Commissions, Poster Wall, Pricing, Form, etc.) ===== */
+.hero-cta{ display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center }
 
-/* Work gallery */
-#work .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:1rem;align-items:stretch}
-#work .gallery figure{display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;background:#fff;border:2px solid color-mix(in srgb,var(--green) 18%,transparent);border-radius:18px;box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 20%,black);transition:transform .15s ease,box-shadow .15s ease}
-#work .gallery img{width:100%;height:360px;object-fit:cover}
-#work .gallery figcaption{width:100%;padding:.75rem 1rem;color:#3f4338;background:color-mix(in srgb,var(--cream) 87%,white);border-top:2px solid color-mix(in srgb,var(--orange) 30%,transparent)}
-.gallery .card:hover figure{transform:translate(-2px,-2px);box-shadow:10px 12px 0 color-mix(in srgb,var(--green) 20%,black)}
-.explore-more{text-align:center;margin-top:1.6rem}
+/* =========================
+   Work Gallery
+   ========================= */
+#work{ padding:3.5rem 1.25rem; max-width:1120px; margin-inline:auto }
+#work .gallery{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+  gap:1.1rem; margin-top:1rem; align-items:stretch;
+}
+#work .gallery figure{
+  display:flex; flex-direction:column; align-items:center; text-align:center; overflow:hidden;
+  background:#fff; border:2px solid color-mix(in srgb, var(--green) 18%, transparent);
+  border-radius:18px; box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+#work .gallery img{ width:100%; height:360px; object-fit:cover }
+#work .gallery figcaption{
+  width:100%; padding:.75rem 1rem; color:#3f4338;
+  background: color-mix(in srgb, var(--cream) 87%, white);
+  border-top:2px solid color-mix(in srgb, var(--orange) 30%, transparent);
+}
+.gallery .card:hover figure{ transform:translate(-2px,-2px); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 20%, black) }
+.explore-more{ text-align:center; margin-top:1.6rem }
 
-/* Past Commissions */
-#commissions .section-lead{color:#3f4338}
-.commission-grid{margin-top:.8rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;align-items:stretch}
-.commission-card{position:relative;background:#fff;border:3px solid color-mix(in srgb,var(--green) 28%,black);border-radius:12px;overflow:hidden;box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 20%,black);transition:transform .12s ease,box-shadow .12s ease}
-.commission-card img{width:100%;height:300px;object-fit:cover;display:block}
-.commission-card figcaption{position:relative;padding:.8rem 1rem 1rem;background:color-mix(in srgb,var(--cream) 88%,white);border-top:2px solid color-mix(in srgb,var(--orange) 30%,transparent)}
-.commission-card .badge{position:absolute;top:-14px;left:1rem;background:linear-gradient(180deg,var(--orange-2),var(--orange));color:#2b190a;font-weight:900;font-size:.8rem;padding:.2rem .55rem;border-radius:999px;border:2px solid color-mix(in srgb,var(--orange) 45%,black);box-shadow:3px 4px 0 color-mix(in srgb,var(--orange) 30%,black)}
-.commission-card:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:10px 12px 0 color-mix(in srgb,var(--green) 22%,black)}
-.rotate-1{transform:rotate(-1.5deg)}.rotate-2{transform:rotate(1.5deg)}
-.commissions-cta{text-align:center;margin-top:1.2rem}
+/* =========================
+   Past Commissions
+   ========================= */
+#commissions .section-lead{ color:#3f4338 }
+.commission-grid{
+  margin-top:.8rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1rem; align-items:stretch;
+}
+.commission-card{
+  position:relative; background:#fff;
+  border:3px solid color-mix(in srgb, var(--green) 28%, black);
+  border-radius:12px; overflow:hidden;
+  box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.commission-card img{ width:100%; height:300px; object-fit:cover; display:block }
+.commission-card figcaption{
+  position:relative; padding:.8rem 1rem 1rem;
+  background:color-mix(in srgb, var(--cream) 88%, white);
+  border-top:2px solid color-mix(in srgb, var(--orange) 30%, transparent);
+}
+.commission-card .badge{
+  position:absolute; top:-14px; left:1rem;
+  background:linear-gradient(180deg, var(--orange-2), var(--orange));
+  color:#2b190a; font-weight:900; font-size:.8rem;
+  padding:.2rem .55rem; border-radius:999px;
+  border:2px solid color-mix(in srgb, var(--orange) 45%, black);
+  box-shadow:3px 4px 0 color-mix(in srgb, var(--orange) 30%, black);
+}
+.commission-card:hover{ transform:translate(-2px,-2px) rotate(-1deg); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black) }
+.rotate-1{ transform:rotate(-1.5deg) } .rotate-2{ transform:rotate(1.5deg) }
+.commissions-cta{ text-align:center; margin-top:1.2rem }
 
-/* Poster Wall */
-#poster-wall .section-lead{color:#3f4338}
-.poster-reel{--speed:34s;margin-top:.8rem;display:flex;gap:1.1rem;overflow:hidden;padding:.4rem 0}
-.poster-reel[data-auto]{animation:posterScroll var(--speed) linear infinite}
-@keyframes posterScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.puck{position:relative;flex:0 0 auto;width:150px;height:150px;border-radius:50%;background:#fff;border:3px solid color-mix(in srgb,var(--green) 22%, black);box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 20%, black);overflow:hidden;display:grid;place-items:center;transition:transform .12s ease, box-shadow .12s ease;text-decoration:none}
-.puck:hover{transform:translateY(-3px) rotate(-3deg);box-shadow:10px 12px 0 color-mix(in srgb,var(--green) 22%, black)}
-.puck img{position:absolute;inset:8% 8% 8% 8%;border-radius:50%;object-fit:cover;filter:contrast(110%) saturate(110%)}
+/* =========================
+   Poster Wall reel
+   ========================= */
+#poster-wall .section-lead{ color:#3f4338 }
+.poster-reel{ --speed:34s; margin-top:.8rem; display:flex; gap:1.1rem; overflow:hidden; padding:.4rem 0 }
+.poster-reel[data-auto]{ animation:posterScroll var(--speed) linear infinite }
+@keyframes posterScroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.puck{
+  position:relative; flex:0 0 auto; width:150px; height:150px; border-radius:50%;
+  background:#fff; border:3px solid color-mix(in srgb, var(--green) 22%, black);
+  box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
+  overflow:hidden; display:grid; place-items:center; transition:transform .12s ease, box-shadow .12s ease; text-decoration:none
+}
+.puck:hover{ transform:translateY(-3px) rotate(-3deg); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black) }
+.puck img{ position:absolute; inset:8% 8% 8% 8%; border-radius:50%; object-fit:cover; filter:contrast(110%) saturate(110%) }
 
-/* Pricing & Forms */
-#pricing ul{list-style:none;padding:0;display:grid;gap:.8rem}
-#pricing li{background:#fff;padding:1rem 1.1rem;border-left:8px solid var(--orange);border:2px solid color-mix(in srgb,var(--green) 16%,transparent);box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 18%,black)}
-form{background:#fff;padding:1.5rem;border-radius:18px;border:2px solid color-mix(in srgb,var(--green) 16%,transparent);box-shadow:6px 8px 0 color-mix(in srgb,var(--green) 18%,black)}
-form label{display:block;margin:.75rem 0 .35rem;font-weight:800;color:var(--ink)}
-form input,form select,form textarea{width:100%;padding:.7rem .85rem;border-radius:14px;border:2px solid color-mix(in srgb,var(--green) 16%,transparent);background:#fff;color:var(--ink)}
-form input:focus,form select:focus,form textarea:focus{outline:3px solid var(--ring)}
-form button{margin-top:.25rem}
+/* =========================
+   Pricing & Form
+   ========================= */
+#pricing ul{ list-style:none; padding:0; display:grid; gap:.8rem }
+#pricing li{
+  background:#fff; padding:1rem 1.1rem; border-left:8px solid var(--orange);
+  border:2px solid color-mix(in srgb, var(--green) 16%, transparent);
+  box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 18%, black);
+}
+form{
+  background:#fff; padding:1.5rem; border-radius:18px;
+  border:2px solid color-mix(in srgb, var(--green) 16%, transparent);
+  box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 18%, black);
+}
+form label{ display:block; margin:.75rem 0 .35rem; font-weight:800; color:var(--ink) }
+form input, form select, form textarea{
+  width:100%; padding:.7rem .85rem; border-radius:14px;
+  border:2px solid color-mix(in srgb, var(--green) 16%, transparent);
+  background:#fff; color:var(--ink);
+}
+form input:focus, form select:focus, form textarea:focus{ outline:3px solid var(--ring) }
+form button{ margin-top:.25rem }
 
 /* Reveal */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
-.reveal.is-visible{opacity:1;transform:translateY(0)}
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease }
+.reveal.is-visible{ opacity:1; transform:translateY(0) }
 
+/* Responsive tweaks */
 @media (max-width:980px){
-  #work .gallery img{height:300px}
-  .commission-card img{height:260px}
-  .puck{width:130px;height:130px}
+  #work .gallery img{ height:300px }
+  .commission-card img{ height:260px }
+  .puck{ width:130px; height:130px }
 }
 @media (prefers-reduced-motion:reduce){
-  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  *{ transition:none !important; animation:none !important; scroll-behavior:auto !important }
 }
