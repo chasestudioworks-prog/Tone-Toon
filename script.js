@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (y) y.textContent = new Date().getFullYear();
 });
 
-// 2) Toggle "at-top" class for header styling (safe even if CSS doesn't use it)
+// 2) Toggle "at-top" class for header styling
 const setTopClass = () => {
   if (window.scrollY < 10) document.body.classList.add("at-top");
   else document.body.classList.remove("at-top");
@@ -16,7 +16,7 @@ const setTopClass = () => {
 setTopClass();
 window.addEventListener("scroll", setTopClass, { passive: true });
 
-// 3) Reveal-on-scroll (adds .reveal -> .is-visible)
+// 3) Reveal-on-scroll
 (() => {
   const io = new IntersectionObserver(
     (entries) => {
@@ -51,14 +51,11 @@ window.addEventListener("scroll", setTopClass, { passive: true });
       const dy = (e.clientY - cy) / (r.height / 2);
       fig.style.transform = `rotateX(${(-dy * maxDeg).toFixed(2)}deg) rotateY(${(dx * maxDeg).toFixed(2)}deg)`;
     });
-    card.addEventListener("pointerleave", () => {
-      fig.style.transform = "";
-    });
+    card.addEventListener("pointerleave", () => { fig.style.transform = ""; });
   });
 })();
 
-// 5) Draggable Poster Wall (for marquee version)
-// If you also keep the old .poster-reel version somewhere, the previous handlers won’t conflict.
+// 5) Draggable Poster Wall (marquee version)
 (() => {
   const marquee = document.querySelector(".marquee");
   const track = document.querySelector(".marquee .track");
@@ -66,13 +63,12 @@ window.addEventListener("scroll", setTopClass, { passive: true });
 
   let dragging = false;
   let startX = 0;
-  let baseOffset = 0; // px offset while paused
+  let baseOffset = 0;
 
-  // Helper to read current inline transform translateX (if any)
   const getInlineTx = () => {
     const m = /translateX\(([-\d.]+)px\)/.exec(track.style.transform || "");
     return m ? parseFloat(m[1]) : 0;
-    };
+  };
 
   const start = (e) => {
     dragging = true;
@@ -92,7 +88,6 @@ window.addEventListener("scroll", setTopClass, { passive: true });
   const end = () => {
     if (!dragging) return;
     dragging = false;
-    // Resume the infinite loop cleanly (remove inline transform)
     track.style.transform = "";
     track.style.animationPlayState = "running";
     marquee.classList.remove("dragging");
@@ -101,7 +96,6 @@ window.addEventListener("scroll", setTopClass, { passive: true });
   marquee.addEventListener("mousedown", start);
   marquee.addEventListener("mousemove", move);
   window.addEventListener("mouseup", end);
-
   marquee.addEventListener("touchstart", start, { passive: true });
   marquee.addEventListener("touchmove", move, { passive: true });
   marquee.addEventListener("touchend", end);
