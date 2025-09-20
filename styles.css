@@ -39,7 +39,7 @@ a{ color:inherit; }
   position:fixed; inset:0 0 auto 0; height:72px;
   display:flex; align-items:center; z-index:50;
   background: transparent;               /* no separating bar */
-  pointer-events:none;                    /* let hero be clickable except links */
+  pointer-events:none;                    /* hero still clickable; links are enabled below */
 }
 .site-nav a, .site-nav ul{ pointer-events:auto; }
 
@@ -73,7 +73,7 @@ a{ color:inherit; }
   text-shadow: 0 2px 0 rgba(0,0,0,.08);
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (only background changed) ================= */
 .hero{
   position:relative; min-height:100svh;
   display:flex; align-items:center; justify-content:center;
@@ -126,14 +126,27 @@ a{ color:inherit; }
 }
 .scroll-cue:hover{ transform: translateX(-50%) translateY(-2px) }
 
-/* --- Textured Lime Background --- */
+/* --- Textured Lime Background (from your refs) --- */
 .hero--limewashed::before{
   content:""; position:absolute; inset:0; z-index:0;
   background:
-    radial-gradient(1200px 800px at 12% 6%,  color-mix(in srgb, var(--orange) 26%, transparent) 0 55%, transparent 60%),
-    radial-gradient(900px 700px  at 85% 12%, color-mix(in srgb, var(--lime-wash) 40%, transparent) 0 60%, transparent 65%),
-    radial-gradient(1400px 900px at 88% 95%, color-mix(in srgb, var(--green) 18%, transparent) 0 55%, transparent 60%),
-    radial-gradient(1200px 900px at 45% 48%, color-mix(in srgb, var(--cream) 35%, transparent) 0 50%, transparent 60%),
+    /* warm orange wash (top-left) */
+    radial-gradient(1200px 800px at 12% 6%,
+      color-mix(in srgb, var(--orange) 26%, transparent) 0 55%,
+      transparent 60%),
+    /* lime glow (top-right) */
+    radial-gradient(900px 700px at 85% 12%,
+      color-mix(in srgb, var(--lime-wash) 40%, transparent) 0 60%,
+      transparent 65%),
+    /* green depth (bottom-right) */
+    radial-gradient(1400px 900px at 88% 95%,
+      color-mix(in srgb, var(--green) 18%, transparent) 0 55%,
+      transparent 60%),
+    /* warm cream lift (center) */
+    radial-gradient(1200px 900px at 45% 48%,
+      color-mix(in srgb, var(--cream) 35%, transparent) 0 50%,
+      transparent 60%),
+    /* base lime */
     var(--lime);
 }
 
@@ -149,7 +162,7 @@ a{ color:inherit; }
   0%{background-position:0 0} 100%{background-position:120% 120%}
 }
 
-/* Airbrush sprays */
+/* Airbrush sprays (subtle motion) */
 .hero--limewashed .sprays{
   position:absolute; inset:0; z-index:2; pointer-events:none;
   mix-blend-mode:multiply;
@@ -189,9 +202,7 @@ main section{ max-width:1100px; margin:0 auto; padding:4rem 1.25rem; }
   display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
   gap:1.1rem; margin-top:1rem; align-items:stretch;
 }
-.card{
-  display:block; text-decoration:none; color:inherit;
-}
+.card{ display:block; text-decoration:none; color:inherit; }
 .gallery figure{
   display:flex; flex-direction:column; align-items:center; text-align:center; overflow:hidden;
   background:#fff;
@@ -246,6 +257,10 @@ form input, form select, form textarea{
   background:#fff; color:var(--ink);
 }
 form input:focus, form select:focus, form textarea:focus{ outline:3px solid color-mix(in srgb, var(--orange) 55%, white) }
+
+/* Reveal animation classes used by script.js */
+.reveal{ opacity:0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease }
+.is-visible{ opacity:1; transform: translateY(0) }
 
 /* Footer */
 .site-footer{
