@@ -4,186 +4,193 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tone & Toon — Art by Chase Tone</title>
-  <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
+  <meta name="description" content="Custom paintings made from your ideas — bold, colorful, unforgettable. Commissions open." />
 
-  <!-- Headline (bold pop) + PC/terminal vibe for nav/tagline/buttons -->
-  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <!-- Fonts: big pop headline + retro mono nav -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="at-top">
-  <!-- Header -->
-  <header class="site-header">
-    <!-- Left brand (kept) -->
-    <h1 class="brand">🎨 TONE & TOON</h1>
+<body>
 
-    <!-- Center arched wordmark (new) -->
-    <div class="header-arch" aria-hidden="true">
-      <!-- Simple SVG arc with text -->
-      <svg width="280" height="70" viewBox="-140 0 280 70" role="img">
-        <defs>
-          <path id="arc" d="M -120 60 A 120 120 0 0 1 120 60" />
-        </defs>
-        <text class="arch-text" text-anchor="middle">
-          <textPath href="#arc" startOffset="50%">TONE &amp; TOON</textPath>
-        </text>
-      </svg>
-    </div>
+  <!-- ================= NAVBAR (centered brand, transparent over hero) ================= -->
+  <header class="site-nav">
+    <nav class="nav-grid">
+      <ul class="nav-left mono">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#commissions">Past Commissions</a></li>
+        <li><a href="#poster">Poster Wall</a></li>
+      </ul>
 
-    <!-- Right nav (now in mono “old PC” font) -->
-    <nav class="pc-font">
-      <a href="#work">Work</a>
-      <a href="#commissions">Past Commissions</a>
-      <a href="#poster-wall">Poster Wall</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#commission">Commission</a>
-      <a href="#contact">Contact</a>
+      <a href="#" class="brand">
+        <!-- Optional logo image. If missing, only text shows. -->
+        <img src="assets/logo.png" alt="" onerror="this.style.display='none'">
+        <span>TONE & TOON</span>
+      </a>
+
+      <ul class="nav-right mono">
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#commission">Commission</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main>
-    <!-- ===== FULL-BLEED LIME HERO ===== -->
-    <section class="hero hero--limewashed">
-      <div class="hero-content">
-        <h1 class="mega-pop">IMAGINE IT.<br />HANG IT.</h1>
-        <!-- Tagline now in PC font -->
-        <p class="tagline pc-font">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
+  <!-- ================= HERO (washed lime, sprays, paper grain) ================= -->
+  <section class="hero hero--limewashed">
+    <!-- Airbrush sprays + paper noise (pure CSS) -->
+    <div class="sprays" aria-hidden="true">
+      <span class="spray s1"></span>
+      <span class="spray s2"></span>
+      <span class="spray s3"></span>
+      <span class="spray s4"></span>
+      <span class="spray s5"></span>
+    </div>
+    <div class="noise" aria-hidden="true"></div>
 
-        <div class="hero-cta pc-font">
-          <a class="btn pop" href="#work">🎨 Explore Work</a>
-          <a class="btn alt" href="#commission">💌 Request a Commission</a>
-        </div>
+    <div class="hero-content">
+      <h1>IMAGINE IT.<br>HANG IT.</h1>
+      <p class="mono subline">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
+
+      <div class="hero-cta">
+        <a class="btn btn-orange" href="#work">🎨 Explore Work</a>
+        <a class="btn btn-green" href="#commission">💌 Request a Commission</a>
       </div>
-    </section>
+    </div>
 
-    <!-- ===== Recent Work ===== -->
+    <a class="scroll-cue mono" href="#work" aria-label="Scroll to gallery">⌄</a>
+  </section>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- ===== Work / Gallery ===== -->
     <section id="work">
-      <h2>Recent Work</h2>
+      <h2 class="section-title">Recent Work</h2>
+
       <div class="gallery">
         <a class="card" href="darthvader.html">
           <figure>
-            <img src="assets/darthvader.paint.jpg" alt="Darth Vader painting" />
+            <img src="assets/darthvader.paint.jpg" alt="Darth Vader painting">
             <figcaption>Darth Vader — Pop art with comic energy</figcaption>
           </figure>
         </a>
+
         <a class="card" href="spongebob.html">
           <figure>
-            <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
+            <img src="assets/spongebob.paint.jpg" alt="Spongebob painting">
             <figcaption>Spongebob — playful underwater love scene</figcaption>
           </figure>
         </a>
+
         <a class="card" href="spiderman.html">
           <figure>
-            <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
+            <img src="assets/spiderman.paint.jpg" alt="Spiderman & Mary Jane painting">
             <figcaption>Spiderman &amp; Mary Jane — classic comic vibe</figcaption>
           </figure>
         </a>
       </div>
 
       <div class="explore-more">
-        <a class="btn" href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn-orange" href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F" target="_blank" rel="noopener noreferrer">
           Explore More Works →
         </a>
       </div>
     </section>
 
-    <!-- ===== Past Commissions ===== -->
+    <!-- ===== Past Commissions (your 3 images) ===== -->
     <section id="commissions">
-      <h2>Past Commissions</h2>
-      <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
+      <h2 class="section-title">Past Commissions</h2>
 
-      <div class="commission-grid">
-        <figure class="commission-card rotate-1">
-          <img src="assets/Buzz.paint.jpg" alt="Buzz Lightyear jacket commission" />
-          <figcaption>
-            <span class="badge">Jacket</span>
-            <strong>Buzz Lightyear Back Graphic</strong>
-            <small>Acrylic on workwear</small>
-          </figcaption>
+      <div class="gallery">
+        <figure class="card">
+          <img src="assets/Buzz.paint.jpg" alt="Hand-painted Buzz Lightyear on workwear">
+          <figcaption>Hand-painted workwear — Buzz Lightyear</figcaption>
         </figure>
 
-        <figure class="commission-card">
-          <img src="assets/Sunsetcommision.paint.jpg" alt="Sunset couple painting commission" />
-          <figcaption>
-            <span class="badge">Portrait</span>
-            <strong>Sunset Couple</strong>
-            <small>Warm gradient sky, soft silhouettes</small>
-          </figcaption>
+        <figure class="card">
+          <img src="assets/Sunsetcommision.paint.jpg" alt="Sunset couple portrait commission">
+          <figcaption>Commission — Sunset Couple Portrait</figcaption>
         </figure>
 
-        <figure class="commission-card rotate-2">
-          <img src="assets/sunsetcommision2.paint.jpg" alt="Silhouette couple sunset commission" />
-          <figcaption>
-            <span class="badge">Diptych</span>
-            <strong>Twilight Kiss (2-panel)</strong>
-            <small>Night-sky stars, comic edges</small>
-          </figcaption>
+        <figure class="card">
+          <img src="assets/sunsetcommision2.paint.jpg" alt="Sunset silhouette mini canvases">
+          <figcaption>Mini series — Sunset Silhouette</figcaption>
         </figure>
-      </div>
-
-      <div class="commissions-cta">
-        <a class="btn alt" href="#commission">Start your commission</a>
       </div>
     </section>
 
-    <!-- ===== Poster Wall ===== -->
-    <section id="poster-wall">
-      <h2>Poster Wall</h2>
-      <p class="section-lead">A rolling strip of paintings — tap/drag to browse.</p>
-
-      <div class="poster-reel" data-auto>
-        <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt="Darth Vader"></a>
-        <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt="Spongebob"></a>
-        <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt="Spiderman & Mary Jane"></a>
-        <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt=""></a>
-        <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt=""></a>
-        <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt=""></a>
+    <!-- ===== Poster Wall (horizontal scroll marquee) ===== -->
+    <section id="poster">
+      <h2 class="section-title">Poster Wall</h2>
+      <div class="marquee">
+        <div class="track">
+          <!-- Add/remove images as you like -->
+          <img src="assets/darthvader.paint.jpg" alt="">
+          <img src="assets/spongebob.paint.jpg" alt="">
+          <img src="assets/spiderman.paint.jpg" alt="">
+          <img src="assets/Sunsetcommision.paint.jpg" alt="">
+          <img src="assets/Buzz.paint.jpg" alt="">
+          <img src="assets/sunsetcommision2.paint.jpg" alt="">
+          <!-- duplicate for seamless loop -->
+          <img src="assets/darthvader.paint.jpg" alt="">
+          <img src="assets/spongebob.paint.jpg" alt="">
+          <img src="assets/spiderman.paint.jpg" alt="">
+          <img src="assets/Sunsetcommision.paint.jpg" alt="">
+          <img src="assets/Buzz.paint.jpg" alt="">
+          <img src="assets/sunsetcommision2.paint.jpg" alt="">
+        </div>
       </div>
     </section>
 
     <!-- ===== Pricing ===== -->
     <section id="pricing">
-      <h2>Simple Pricing</h2>
-      <ul>
+      <h2 class="section-title">Simple Pricing</h2>
+      <ul class="pricing mono">
         <li><strong>Small</strong> (8×10 / 9×12): $80–$150</li>
         <li><strong>Medium</strong> (12×16 / 16×20): $180–$350</li>
         <li><strong>Large</strong> (18×24 / 24×30): $380–$700</li>
       </ul>
-      <p>Final quotes depend on time, detail, and shipping.</p>
+      <p class="mono note">Final quotes depend on time, detail, and shipping.</p>
     </section>
 
-    <!-- ===== Commission form ===== -->
+    <!-- ===== Commission Form ===== -->
     <section id="commission">
-      <h2>Request a Commission</h2>
-      <form action="https://formspree.io/f/mandkyor" method="POST">
-        <label>Your Name: <input type="text" name="name" required></label><br>
-        <label>Email: <input type="email" name="email" required></label><br>
-        <label>Size:
+      <h2 class="section-title">Request a Commission</h2>
+
+      <form class="mono" action="https://formspree.io/f/mandkyor" method="POST">
+        <label>Your Name
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Size
           <select name="size" required>
             <option>Small</option>
             <option>Medium</option>
             <option>Large</option>
             <option>Custom</option>
           </select>
-        </label><br>
-        <label>Details:<br>
-          <textarea name="details" rows="5"></textarea>
-        </label><br>
-        <button type="submit" class="btn pop">Send Request</button>
+        </label>
+        <label>Details
+          <textarea name="details" rows="5" placeholder="Tell me the vibe, colors, subject, deadline…"></textarea>
+        </label>
+        <button type="submit" class="btn btn-orange">Send Request</button>
       </form>
     </section>
 
     <!-- ===== Contact ===== -->
     <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:chasestudioworks@gmail.com">chasestudioworks@gmail.com</a></p>
-      <p>Instagram: <a href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F">@im_just_a_drawing_nerd</a></p>
+      <h2 class="section-title">Contact</h2>
+      <p class="mono">Email: <a href="mailto:chasestudioworks@gmail.com">chasestudioworks@gmail.com</a></p>
+      <p class="mono">Instagram: <a href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F">@im_just_a_drawing_nerd</a></p>
     </section>
   </main>
 
-  <footer>
-    <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
+  <footer class="site-footer mono">
+    © <span id="year"></span> Tone & Toon — Art by Chase Tone
   </footer>
 
-  <script src="script.js?v=9"></script>
+  <script src="script.js"></script>
 </body>
 </html>
