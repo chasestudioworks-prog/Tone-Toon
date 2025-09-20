@@ -57,36 +57,9 @@ window.addEventListener("scroll", setTopClass, { passive: true });
   });
 })();
 
-// 5) Draggable Poster Wall
-// Supports EITHER:
-//   A) old structure:   .poster-reel  (native scroll drag)
-//   B) current marquee: .marquee .track (pause CSS animation and drag)
+// 5) Draggable Poster Wall (for marquee version)
+// If you also keep the old .poster-reel version somewhere, the previous handlers won’t conflict.
 (() => {
-  // A) Old structure
-  const reel = document.querySelector(".poster-reel");
-  if (reel) {
-    let isDown = false, startX = 0, scrollLeft = 0;
-    const start = (e) => {
-      isDown = true;
-      startX = (e.pageX || e.touches?.[0]?.pageX || 0);
-      scrollLeft = reel.scrollLeft;
-    };
-    const move = (e) => {
-      if (!isDown) return;
-      const x = (e.pageX || e.touches?.[0]?.pageX || 0);
-      reel.scrollLeft = scrollLeft - (x - startX);
-    };
-    const end = () => { isDown = false; };
-    reel.addEventListener("mousedown", start);
-    reel.addEventListener("mousemove", move);
-    window.addEventListener("mouseup", end);
-    reel.addEventListener("touchstart", start, { passive: true });
-    reel.addEventListener("touchmove", move, { passive: true });
-    reel.addEventListener("touchend", end);
-    return; // don’t also bind marquee handlers
-  }
-
-  // B) Current marquee structure
   const marquee = document.querySelector(".marquee");
   const track = document.querySelector(".marquee .track");
   if (!marquee || !track) return;
@@ -99,7 +72,7 @@ window.addEventListener("scroll", setTopClass, { passive: true });
   const getInlineTx = () => {
     const m = /translateX\(([-\d.]+)px\)/.exec(track.style.transform || "");
     return m ? parseFloat(m[1]) : 0;
-  };
+    };
 
   const start = (e) => {
     dragging = true;
