@@ -41,7 +41,7 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
   font-weight:700; font-size:20px; letter-spacing:.16em; fill:#ffffff;
   text-transform:uppercase;
   paint-order:stroke fill;
-  stroke:#000; stroke-width:2px; /* slight outline for pop on lime */
+  stroke:#000; stroke-width:2px;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
 }
 @media (max-width:900px){ .header-arch{ display:none } }
@@ -108,7 +108,7 @@ h2{
 .hero--limewashed .tagline{ color:#14310f; font-size:clamp(1rem, 2vw, 1.15rem); max-width:70ch; margin:0 }
 .hero-cta{ display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center }
 
-/* ===== Work (unchanged) ===== */
+/* ===== Work ===== */
 #work{ padding:3.5rem 1.25rem; max-width:1120px; margin-inline:auto }
 #work .gallery{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.1rem; margin-top:1rem; align-items:stretch }
 #work .gallery figure{
@@ -131,15 +131,35 @@ h2{
   transition:transform .12s ease, box-shadow .12s ease;
 }
 .commission-card img{ width:100%; height:300px; object-fit:cover; display:block }
-.commission-card figcaption{ position:relative; padding:.8rem 1rem 1rem; background:color-mix(in srgb, var(--cream) 88%, white); border-top:2px solid color-mix(in srgb, var(--orange) 30%, transparent) }
-.commission-card .badge{
-  position:absolute; top:-14px; left:1rem; background:linear-gradient(180deg, var(--orange-2), var(--orange));
-  color:#2b190a; font-weight:900; font-size:.8rem; padding:.2rem .55rem; border-radius:999px;
-  border:2px solid color-mix(in srgb, var(--orange) 45%, black); box-shadow:3px 4px 0 color-mix(in srgb, var(--orange) 30%, black);
+.commission-card figcaption{
+  position:relative; padding:1.1rem 1rem 1.1rem;
+  background:color-mix(in srgb, var(--cream) 88%, white);
+  border-top:2px solid color-mix(in srgb, var(--orange) 30%, transparent)
 }
+
+/* >>> Bigger, higher badges for POP <<< */
+.commission-card .badge{
+  position:absolute; left:1rem;
+  background:linear-gradient(180deg, var(--orange-2), var(--orange));
+  color:#2b190a; font-weight:900; border-radius:999px;
+  border:3px solid color-mix(in srgb, var(--orange) 45%, black);
+  box-shadow:4px 6px 0 color-mix(in srgb, var(--orange) 30%, black);
+  z-index:2;
+}
+.badge--big{
+  top:-30px;                 /* moved up */
+  font-size:1rem;            /* larger text */
+  padding:.35rem .9rem;      /* bigger pill */
+  letter-spacing:.02em;
+}
+
 .commission-card:hover{ transform:translate(-2px,-2px) rotate(-1deg); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black) }
 .rotate-1{ transform:rotate(-1.5deg) } .rotate-2{ transform:rotate(1.5deg) }
-.commissions-cta{ text-align:center; margin-top:1.2rem }
+
+/* CTA area with two buttons */
+.commissions-cta{
+  text-align:center; margin-top:1.2rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;
+}
 
 /* ===== Poster Wall ===== */
 #poster-wall .section-lead{ color:#3f4338 }
