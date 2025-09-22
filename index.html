@@ -6,15 +6,31 @@
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
 
-  <!-- Fonts (headline pop + body) -->
-  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <!-- Headline (bold pop) + PC/terminal vibe for nav/tagline/buttons -->
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body class="at-top">
-  <!-- Header (lime when at top; cream after scroll) -->
+  <!-- Header -->
   <header class="site-header">
+    <!-- Left brand (kept) -->
     <h1 class="brand">🎨 TONE & TOON</h1>
-    <nav>
+
+    <!-- Center arched wordmark (new) -->
+    <div class="header-arch" aria-hidden="true">
+      <!-- Simple SVG arc with text -->
+      <svg width="280" height="70" viewBox="-140 0 280 70" role="img">
+        <defs>
+          <path id="arc" d="M -120 60 A 120 120 0 0 1 120 60" />
+        </defs>
+        <text class="arch-text" text-anchor="middle">
+          <textPath href="#arc" startOffset="50%">TONE &amp; TOON</textPath>
+        </text>
+      </svg>
+    </div>
+
+    <!-- Right nav (now in mono “old PC” font) -->
+    <nav class="pc-font">
       <a href="#work">Work</a>
       <a href="#commissions">Past Commissions</a>
       <a href="#poster-wall">Poster Wall</a>
@@ -27,12 +43,12 @@
   <main>
     <!-- ===== FULL-BLEED LIME HERO ===== -->
     <section class="hero hero--limewashed">
-      <!-- background & wash layers are in CSS -->
       <div class="hero-content">
         <h1 class="mega-pop">IMAGINE IT.<br />HANG IT.</h1>
-        <p class="tagline dark">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
+        <!-- Tagline now in PC font -->
+        <p class="tagline pc-font">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
 
-        <div class="hero-cta">
+        <div class="hero-cta pc-font">
           <a class="btn pop" href="#work">🎨 Explore Work</a>
           <a class="btn alt" href="#commission">💌 Request a Commission</a>
         </div>
@@ -49,14 +65,12 @@
             <figcaption>Darth Vader — Pop art with comic energy</figcaption>
           </figure>
         </a>
-
         <a class="card" href="spongebob.html">
           <figure>
             <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
             <figcaption>Spongebob — playful underwater love scene</figcaption>
           </figure>
         </a>
-
         <a class="card" href="spiderman.html">
           <figure>
             <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
@@ -111,7 +125,7 @@
       </div>
     </section>
 
-    <!-- ===== Poster Wall (horizontal reel) ===== -->
+    <!-- ===== Poster Wall ===== -->
     <section id="poster-wall">
       <h2>Poster Wall</h2>
       <p class="section-lead">A rolling strip of paintings — tap/drag to browse.</p>
@@ -120,7 +134,6 @@
         <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt="Darth Vader"></a>
         <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt="Spongebob"></a>
         <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt="Spiderman & Mary Jane"></a>
-        <!-- duplicates for seamless loop -->
         <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt=""></a>
         <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt=""></a>
         <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt=""></a>
@@ -171,6 +184,6 @@
     <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
   </footer>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>
