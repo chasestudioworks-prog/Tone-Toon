@@ -269,6 +269,32 @@ form input:focus, form select:focus, form textarea:focus{ outline:3px solid colo
   border-top:3px solid color-mix(in srgb, var(--green) 18%, transparent);
 }
 
+/* -------- Past Commissions: bigger, higher orange tags & see-more button -------- */
+#commissions .gallery figure{ position:relative; } /* allow absolute tag */
+
+.pc-tag{
+  position:absolute;
+  top:10px;                 /* moved up */
+  left:10px;
+  background: linear-gradient(180deg, var(--orange-2), var(--orange));
+  color:#111;
+  font-weight:900;
+  font-size:1.05rem;        /* bigger */
+  padding:.45rem .85rem;
+  border-radius:10px;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.35);
+  border:2px solid rgba(0,0,0,.15);
+}
+
+.see-more-container{
+  margin-top:2.2rem;
+  text-align:center;
+}
+.see-more-btn{
+  font-size:1.05rem;
+  padding:.9rem 1.4rem;
+}
+
 /* Responsive */
 @media (max-width: 900px){
   .nav-left, .nav-right{ gap:.9rem; }
