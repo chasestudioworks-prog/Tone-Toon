@@ -98,13 +98,31 @@ h2{
 @keyframes grain{ 0%{transform:translate(0,0)} 100%{transform:translate(-6%,-6%)} }
 
 .hero--limewashed .hero-content{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:1rem; text-align:center; padding: clamp(2rem, 5vw, 4rem) 1rem }
+
+/* === Hero headline (with fade-in animation) === */
 .mega-pop{
   font-family:"Shrikhand", system-ui, sans-serif;
   font-size:clamp(3.4rem, 14.5vw, 12rem); line-height:.88;
   color:var(--orange);
   text-shadow:0 14px 34px rgba(0,0,0,.28), -2px -2px 0 #ffe0c8, 2px 2px 0 #ff9d66;
   margin:0;
+
+  /* fade-in start state */
+  opacity:0;
+  transform: translateY(14px) scale(0.985);
 }
+body.page-ready .mega-pop{
+  opacity:1;
+  transform:none;
+  transition: opacity 900ms cubic-bezier(.22,.8,.2,1),
+              transform 900ms cubic-bezier(.22,.8,.2,1);
+  will-change: opacity, transform;
+}
+@media (prefers-reduced-motion: reduce){
+  .mega-pop{ opacity:1; transform:none; }
+  body.page-ready .mega-pop{ transition:none; }
+}
+
 .hero--limewashed .tagline{ color:#14310f; font-size:clamp(1rem, 2vw, 1.15rem); max-width:70ch; margin:0 }
 .hero-cta{ display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center }
 
@@ -136,30 +154,18 @@ h2{
   background:color-mix(in srgb, var(--cream) 88%, white);
   border-top:2px solid color-mix(in srgb, var(--orange) 30%, transparent)
 }
-
-/* >>> Bigger, higher badges for POP <<< */
 .commission-card .badge{
-  position:absolute; left:1rem;
+  position:absolute; left:1rem; top:-30px;
   background:linear-gradient(180deg, var(--orange-2), var(--orange));
-  color:#2b190a; font-weight:900; border-radius:999px;
+  color:#2b190a; font-weight:900; font-size:1rem;
+  padding:.35rem .9rem; border-radius:999px;
   border:3px solid color-mix(in srgb, var(--orange) 45%, black);
   box-shadow:4px 6px 0 color-mix(in srgb, var(--orange) 30%, black);
-  z-index:2;
-}
-.badge--big{
-  top:-30px;                 /* moved up */
-  font-size:1rem;            /* larger text */
-  padding:.35rem .9rem;      /* bigger pill */
   letter-spacing:.02em;
 }
-
 .commission-card:hover{ transform:translate(-2px,-2px) rotate(-1deg); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black) }
 .rotate-1{ transform:rotate(-1.5deg) } .rotate-2{ transform:rotate(1.5deg) }
-
-/* CTA area with two buttons */
-.commissions-cta{
-  text-align:center; margin-top:1.2rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;
-}
+.commissions-cta{ text-align:center; margin-top:1.2rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap }
 
 /* ===== Poster Wall ===== */
 #poster-wall .section-lead{ color:#3f4338 }
@@ -189,27 +195,6 @@ form button{ margin-top:.25rem }
   .commission-card img{ height:260px }
   .puck{ width:130px; height:130px }
 }
-
-/* === Hero headline fade-in on page load === */
-.mega-pop{
-  opacity: 0;
-  transform: translateY(14px) scale(0.985);
-}
-
-body.page-ready .mega-pop{
-  opacity: 1;
-  transform: none;
-  transition: opacity 900ms cubic-bezier(.22,.8,.2,1),
-              transform 900ms cubic-bezier(.22,.8,.2,1);
-  will-change: opacity, transform;
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .mega-pop{ opacity: 1; transform: none; }
-  body.page-ready .mega-pop{ transition: none; }
-}
-
 @media (prefers-reduced-motion:reduce){
   *{ transition:none !important; animation:none !important; scroll-behavior:auto !important }
 }
