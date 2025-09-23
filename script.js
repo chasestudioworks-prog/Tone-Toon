@@ -61,7 +61,8 @@ document.querySelectorAll("section, .card").forEach((el) => {
   reel.addEventListener("touchend", end);
 })();
 
-// Trigger the hero headline fade-in once the DOM is ready
+// Trigger the hero sequence once the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
+  // one frame later so CSS initial state is painted first
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
 });
