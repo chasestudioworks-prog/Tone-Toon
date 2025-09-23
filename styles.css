@@ -100,31 +100,65 @@ h2{
 .hero--limewashed .hero-content{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:1rem; text-align:center; padding: clamp(2rem, 5vw, 4rem) 1rem }
 
 /* === Hero headline (with fade-in animation) === */
-.mega-pop{
-  font-family:"Shrikhand", system-ui, sans-serif;
-  font-size:clamp(3.4rem, 14.5vw, 12rem); line-height:.88;
-  color:var(--orange);
-  text-shadow:0 14px 34px rgba(0,0,0,.28), -2px -2px 0 #ffe0c8, 2px 2px 0 #ff9d66;
-  margin:0;
+/* ===== Sequenced fade-in on the hero =====
+   Stage 1 (0.0–0.6s): header + tagline
+   Stage 2 (0.6–1.2s): CTA buttons
+   Stage 3 (1.2–2.0s): main headline
+   (Respects prefers-reduced-motion)
+*/
 
-  /* fade-in start state */
-  opacity:0;
-  transform: translateY(14px) scale(0.985);
+/* initial states */
+.site-header,
+.hero--limewashed .tagline,
+.hero--limewashed .hero-cta,
+.hero--limewashed .mega-pop{
+  opacity: 0;
+  transform: translateY(12px) scale(0.985);
 }
-body.page-ready .mega-pop{
-  opacity:1;
-  transform:none;
-  transition: opacity 900ms cubic-bezier(.22,.8,.2,1),
-              transform 900ms cubic-bezier(.22,.8,.2,1);
+
+/* stage 1 — header + small tagline (0.0s) */
+body.page-ready .site-header,
+body.page-ready .hero--limewashed .tagline{
+  opacity: 1;
+  transform: none;
+  transition: opacity 600ms cubic-bezier(.22,.8,.2,1),
+              transform 600ms cubic-bezier(.22,.8,.2,1);
+  transition-delay: 0ms;
   will-change: opacity, transform;
 }
-@media (prefers-reduced-motion: reduce){
-  .mega-pop{ opacity:1; transform:none; }
-  body.page-ready .mega-pop{ transition:none; }
+
+/* stage 2 — buttons (0.6s) */
+body.page-ready .hero--limewashed .hero-cta{
+  opacity: 1;
+  transform: none;
+  transition: opacity 600ms cubic-bezier(.22,.8,.2,1),
+              transform 600ms cubic-bezier(.22,.8,.2,1);
+  transition-delay: 600ms;
+  will-change: opacity, transform;
 }
 
-.hero--limewashed .tagline{ color:#14310f; font-size:clamp(1rem, 2vw, 1.15rem); max-width:70ch; margin:0 }
-.hero-cta{ display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center }
+/* stage 3 — main phrase (1.2s) */
+body.page-ready .hero--limewashed .mega-pop{
+  opacity: 1;
+  transform: none;
+  transition: opacity 800ms cubic-bezier(.22,.8,.2,1),
+              transform 800ms cubic-bezier(.22,.8,.2,1);
+  transition-delay: 1200ms;
+  will-change: opacity, transform;
+}
+
+/* accessibility: disable motion */
+@media (prefers-reduced-motion: reduce){
+  .site-header,
+  .hero--limewashed .tagline,
+  .hero--limewashed .hero-cta,
+  .hero--limewashed .mega-pop{
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 
 /* ===== Work ===== */
 #work{ padding:3.5rem 1.25rem; max-width:1120px; margin-inline:auto }
