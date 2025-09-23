@@ -190,29 +190,24 @@ form button{ margin-top:.25rem }
   .puck{ width:130px; height:130px }
 }
 
-/* === Hero headline: fade/slide in on first load === */
+/* === Hero headline fade-in on page load === */
 .mega-pop{
-  /* start hidden, then animate in */
   opacity: 0;
-  transform: translateY(12px) scale(0.985);
-  animation: heroFadeIn 900ms cubic-bezier(.22,.8,.2,1) 120ms forwards;
-  will-change: transform, opacity;
+  transform: translateY(14px) scale(0.985);
 }
 
-@keyframes heroFadeIn{
-  to{
-    opacity: 1;
-    transform: none; /* back to your current scaling/position */
-  }
+body.page-ready .mega-pop{
+  opacity: 1;
+  transform: none;
+  transition: opacity 900ms cubic-bezier(.22,.8,.2,1),
+              transform 900ms cubic-bezier(.22,.8,.2,1);
+  will-change: opacity, transform;
 }
 
-/* Respect reduced motion preferences */
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .mega-pop{
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .mega-pop{ opacity: 1; transform: none; }
+  body.page-ready .mega-pop{ transition: none; }
 }
 
 @media (prefers-reduced-motion:reduce){
