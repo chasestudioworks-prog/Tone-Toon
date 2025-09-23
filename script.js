@@ -63,6 +63,5 @@ document.querySelectorAll("section, .card").forEach((el) => {
 
 // Trigger the hero headline fade-in once the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  // one frame later so CSS can apply the initial state first
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
 });
