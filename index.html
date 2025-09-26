@@ -6,29 +6,24 @@
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
 
-  <!-- Headline (bold pop) + PC/terminal vibe for nav/tagline/buttons -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body class="at-top">
   <!-- Header -->
-  <header class="site-header">
-    <!-- Left brand (kept) -->
+  <header class="site-header fade-a">
     <h1 class="brand">🎨 TONE & TOON</h1>
 
-    <!-- Center arched wordmark (kept) -->
     <div class="header-arch" aria-hidden="true">
       <svg width="280" height="70" viewBox="-140 0 280 70" role="img">
-        <defs>
-          <path id="arc" d="M -120 60 A 120 120 0 0 1 120 60" />
-        </defs>
+        <defs><path id="arc" d="M -120 60 A 120 120 0 0 1 120 60" /></defs>
         <text class="arch-text" text-anchor="middle">
           <textPath href="#arc" startOffset="50%">TONE &amp; TOON</textPath>
         </text>
       </svg>
     </div>
 
-    <!-- Right nav (PC font) -->
     <nav class="pc-font">
       <a href="#work">Work</a>
       <a href="#commissions">Past Commissions</a>
@@ -40,13 +35,13 @@
   </header>
 
   <main>
-    <!-- ===== FULL-BLEED LIME HERO ===== -->
+    <!-- ===== LIME HERO ===== -->
     <section class="hero hero--limewashed">
       <div class="hero-content">
-        <h1 class="mega-pop">IMAGINE IT.<br />HANG IT.</h1>
-        <p class="tagline pc-font">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
+        <h1 class="mega-pop fade-c">IMAGINE IT.<br />HANG IT.</h1>
+        <p class="tagline pc-font fade-a">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
 
-        <div class="hero-cta pc-font">
+        <div class="hero-cta pc-font fade-b">
           <a class="btn pop" href="#work">🎨 Explore Work</a>
           <a class="btn alt" href="#commission">💌 Request a Commission</a>
         </div>
@@ -84,7 +79,7 @@
       </div>
     </section>
 
-    <!-- ===== Past Commissions (enhanced badges + CTA) ===== -->
+    <!-- ===== Past Commissions ===== -->
     <section id="commissions">
       <h2>Past Commissions</h2>
       <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
@@ -93,7 +88,7 @@
         <figure class="commission-card rotate-1">
           <img src="assets/Buzz.paint.jpg" alt="Buzz Lightyear jacket commission" />
           <figcaption>
-            <span class="badge badge--big">Jacket</span>
+            <span class="badge">Jacket</span>
             <strong>Buzz Lightyear Back Graphic</strong>
             <small>Acrylic on workwear</small>
           </figcaption>
@@ -102,7 +97,7 @@
         <figure class="commission-card">
           <img src="assets/Sunsetcommision.paint.jpg" alt="Sunset couple painting commission" />
           <figcaption>
-            <span class="badge badge--big">Portrait</span>
+            <span class="badge">Portrait</span>
             <strong>Sunset Couple</strong>
             <small>Warm gradient sky, soft silhouettes</small>
           </figcaption>
@@ -111,7 +106,7 @@
         <figure class="commission-card rotate-2">
           <img src="assets/sunsetcommision2.paint.jpg" alt="Silhouette couple sunset commission" />
           <figcaption>
-            <span class="badge badge--big">Diptych</span>
+            <span class="badge">Diptych</span>
             <strong>Twilight Kiss (2-panel)</strong>
             <small>Night-sky stars, comic edges</small>
           </figcaption>
@@ -120,22 +115,60 @@
 
       <div class="commissions-cta">
         <a class="btn alt" href="#commission">Start your commission</a>
-        <a class="btn pop" href="commissions.html">See more commissions →</a>
       </div>
     </section>
 
-    <!-- ===== Poster Wall ===== -->
+    <!-- ===== Poster Wall (ENDLESS LOOP with all your images) ===== -->
     <section id="poster-wall">
       <h2>Poster Wall</h2>
       <p class="section-lead">A rolling strip of paintings — tap/drag to browse.</p>
 
-      <div class="poster-reel" data-auto>
-        <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt="Darth Vader"></a>
-        <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt="Spongebob"></a>
-        <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt="Spiderman & Mary Jane"></a>
-        <a class="puck" href="darthvader.html"><img src="assets/darthvader.paint.jpg" alt=""></a>
-        <a class="puck" href="spongebob.html"><img src="assets/spongebob.paint.jpg" alt=""></a>
-        <a class="puck" href="spiderman.html"><img src="assets/spiderman.paint.jpg" alt=""></a>
+      <div class="poster-reel" data-auto aria-label="Scrolling gallery of paintings">
+        <!-- ONE SET -->
+        <a class="puck" href="#" aria-label="Boba Fett"><img loading="lazy" src="assets/bobafett.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/donaldduck.paint.jpg" alt="Donald Duck cover"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/doodle.paint.jpg" alt="Doodle collage"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/doodlepen.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/doodlepen4.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/fuckoff.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/jordannike.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/ketch.paint.jpg" alt="Ketchup"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/mrkrab.paint.jpg" alt="Mr. Krabs"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/spongebobdoodle3.paint.jpg" alt=""></a>
+
+        <a class="puck" href="#"><img loading="lazy" src="assets/burger.paint.jpg" alt="Burger piece"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/customcase.paint.jpg" alt="Custom case"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/customwallet.paint.jpg" alt="Custom wallet"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/jacket5.paint.jpg" alt="Garfield jacket"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/mandm.paint.jpg" alt="M and M’s"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/portrait.paint.jpg" alt="Color portrait"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/rose.paint.jpg" alt="Rose painting"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/sunset.paint.JPG" alt="Sunset landscape"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/spidermandoodle.paint.jpg" alt="Spider-Man page"></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/spongebobdoodle.paint.JPG" alt="Spongebob doodle"></a>
+
+        <!-- DUPLICATE THE SET FOR SEAMLESS LOOP -->
+        <a class="puck" href="#"><img loading="lazy" src="assets/bobafett.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/donaldduck.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/doodle.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/doodlepen.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/doodlepen4.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/fuckoff.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/jordannike.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/ketch.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/mrkrab.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/spongebobdoodle3.paint.jpg" alt=""></a>
+
+        <a class="puck" href="#"><img loading="lazy" src="assets/burger.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/customcase.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/customwallet.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/jacket5.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/mandm.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/portrait.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/rose.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/sunset.paint.JPG" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/spidermandoodle.paint.jpg" alt=""></a>
+        <a class="puck" href="#"><img loading="lazy" src="assets/spongebobdoodle.paint.JPG" alt=""></a>
       </div>
     </section>
 
@@ -183,6 +216,6 @@
     <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
   </footer>
 
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>
