@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (y) y.textContent = new Date().getFullYear();
 });
 
-// Toggle lime header at top vs cream after scroll
+// Toggle lime header color at very top
 const setTopClass = () => {
   if (window.scrollY < 10) document.body.classList.add("at-top");
   else document.body.classList.remove("at-top");
@@ -45,23 +45,34 @@ document.querySelectorAll("section, .card").forEach((el) => {
   });
 })();
 
-// Draggable Poster Wall (mouse + touch)
+// Drag-to-scroll Poster Wall (works with the new .track)
 (() => {
   const reel = document.querySelector(".poster-reel");
   if (!reel) return;
+  const track = reel.querySelector(".track");
+
   let isDown = false, startX = 0, scrollLeft = 0;
   const start = (e) => { isDown = true; startX = (e.pageX || e.touches?.[0]?.pageX || 0); scrollLeft = reel.scrollLeft; };
   const move  = (e) => { if (!isDown) return; const x = (e.pageX || e.touches?.[0]?.pageX || 0); reel.scrollLeft = scrollLeft - (x - startX); };
   const end   = () => { isDown = false; };
+
   reel.addEventListener("mousedown", start);
   reel.addEventListener("mousemove", move);
   window.addEventListener("mouseup", end);
   reel.addEventListener("touchstart", start, { passive:true });
   reel.addEventListener("touchmove", move, { passive:true });
   reel.addEventListener("touchend", end);
+
+  // Pause auto-scroll while the user is interacting
+  const pause = () => track.style.animationPlayState = "paused";
+  const play  = () => track.style.animationPlayState = "running";
+  reel.addEventListener("mouseenter", pause);
+  reel.addEventListener("mouseleave", play);
+  reel.addEventListener("touchstart", pause, { passive:true });
+  reel.addEventListener("touchend", play,   { passive:true });
 })();
 
-// Kick off the staged hero fade-ins
+// Kick off staggered hero fade-ins
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
 });
