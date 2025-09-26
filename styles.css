@@ -27,29 +27,22 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
 .site-header .brand{ font-weight:900; letter-spacing:.5px }
 .site-header nav a{ text-decoration:none; color:var(--ink); font-weight:700; margin-left:1rem; opacity:.92 }
 .site-header nav a:hover{ opacity:1; color:var(--green) }
-
-/* At top: lime header w/ no divider */
 .at-top .site-header{ background:var(--lime); border-bottom:none; box-shadow:none }
 
 /* Center arched wordmark */
-.header-arch{
-  position:absolute; left:50%; top:2px; transform:translateX(-50%);
-  pointer-events:none;
-}
+.header-arch{ position:absolute; left:50%; top:2px; transform:translateX(-50%); pointer-events:none; }
 .header-arch .arch-text{
   font-family:"Space Mono", ui-monospace, monospace;
   font-weight:700; font-size:20px; letter-spacing:.16em; fill:#ffffff;
-  text-transform:uppercase;
-  paint-order:stroke fill;
-  stroke:#000; stroke-width:2px;
+  text-transform:uppercase; paint-order:stroke fill; stroke:#000; stroke-width:2px;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
 }
 @media (max-width:900px){ .header-arch{ display:none } }
 
-/* PC/old terminal vibe */
+/* PC vibe */
 .pc-font{ font-family:"Space Mono", ui-monospace, monospace; letter-spacing:.06em }
 
-/* ===== Sections (default) ===== */
+/* ===== Sections ===== */
 section{ padding:3.5rem 1.25rem; max-width:1120px; margin-inline:auto }
 
 /* ===== Buttons ===== */
@@ -59,8 +52,7 @@ section{ padding:3.5rem 1.25rem; max-width:1120px; margin-inline:auto }
   background:linear-gradient(180deg,var(--orange-2),var(--orange));
   color:#2b190a; border:2px solid color-mix(in srgb, var(--orange) 45%, black);
   box-shadow:5px 7px 0 color-mix(in srgb, var(--orange) 30%, black);
-  transition:transform .12s ease, box-shadow .12s ease;
-  text-transform:uppercase;
+  transition:transform .12s ease, box-shadow .12s ease; text-transform:uppercase;
 }
 .btn:hover{ transform:translate(-2px,-2px); box-shadow:9px 11px 0 color-mix(in srgb, var(--orange) 30%, black) }
 .btn.alt{
@@ -98,27 +90,26 @@ h2{
 @keyframes grain{ 0%{transform:translate(0,0)} 100%{transform:translate(-6%,-6%)} }
 
 .hero--limewashed .hero-content{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:1rem; text-align:center; padding: clamp(2rem, 5vw, 4rem) 1rem }
+.mega-pop{
+  font-family:"Shrikhand", system-ui, sans-serif;
+  font-size:clamp(3.4rem, 14.5vw, 12rem); line-height:.88;
+  color:var(--orange);
+  text-shadow:0 14px 34px rgba(0,0,0,.28), -2px -2px 0 #ffe0c8, 2px 2px 0 #ff9d66;
+  margin:0;
+}
 
-/* === Staggered fade-in A/B/C (overlapped) === */
+/* === Overlapped fade-in (A -> B -> C) === */
 .fade-a,.fade-b,.fade-c{ opacity:0; transform:translateY(12px) scale(.985) }
 body.page-ready .fade-a{
-  opacity:1; transform:none;
-  transition:opacity .6s cubic-bezier(.22,.8,.2,1), transform .6s cubic-bezier(.22,.8,.2,1);
-  transition-delay:0ms;
+  opacity:1; transform:none; transition:opacity .6s cubic-bezier(.22,.8,.2,1), transform .6s cubic-bezier(.22,.8,.2,1); transition-delay:0ms;
 }
 body.page-ready .fade-b{
-  opacity:1; transform:none;
-  transition:opacity .6s cubic-bezier(.22,.8,.2,1), transform .6s cubic-bezier(.22,.8,.2,1);
-  transition-delay:300ms; /* overlaps */
+  opacity:1; transform:none; transition:opacity .6s cubic-bezier(.22,.8,.2,1), transform .6s cubic-bezier(.22,.8,.2,1); transition-delay:300ms;
 }
 body.page-ready .fade-c{
-  opacity:1; transform:none;
-  transition:opacity .8s cubic-bezier(.22,.8,.2,1), transform .8s cubic-bezier(.22,.8,.2,1);
-  transition-delay:900ms;
+  opacity:1; transform:none; transition:opacity .8s cubic-bezier(.22,.8,.2,1), transform .8s cubic-bezier(.22,.8,.2,1); transition-delay:900ms;
 }
-@media (prefers-reduced-motion:reduce){
-  .fade-a,.fade-b,.fade-c{ opacity:1; transform:none }
-}
+@media (prefers-reduced-motion:reduce){ .fade-a,.fade-b,.fade-c{ opacity:1; transform:none } }
 
 /* ===== Work ===== */
 #work{ padding:3.5rem 1.25rem; max-width:1120px; margin-inline:auto }
@@ -161,20 +152,26 @@ body.page-ready .fade-c{
 .rotate-1{ transform:rotate(-1.5deg) } .rotate-2{ transform:rotate(1.5deg) }
 .commissions-cta{ text-align:center; margin-top:1.2rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap }
 
-/* ===== Poster Wall ===== */
+/* ===== Poster Wall (fixed) ===== */
 #poster-wall .section-lead{ color:#3f4338 }
-.poster-reel{ --speed:38s; margin-top:.8rem; display:flex; gap:1.1rem; overflow:hidden; padding:.4rem 0 }
-.poster-reel[data-auto]{ animation:posterScroll var(--speed) linear infinite }
-@keyframes posterScroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.poster-reel{ overflow:hidden; padding:.4rem 0; }
+.poster-reel .track{
+  display:flex; gap:1.1rem; width:max-content; padding:0 .5rem;
+  animation:posterScroll 40s linear infinite;
+}
+/* Seamless loop: track is two identical sets; move by 50% */
+@keyframes posterScroll{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+
 .puck{
   position:relative; flex:0 0 auto; width:150px; height:150px; border-radius:50%;
   background:#fff; border:3px solid color-mix(in srgb, var(--green) 22%, black);
+  /* allow shadows to show – NOT clipped */
   box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
   overflow:hidden; display:grid; place-items:center;
   transition:transform .12s ease, box-shadow .12s ease; text-decoration:none
 }
 .puck:hover{ transform:translateY(-3px) rotate(-3deg); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black) }
-.puck img{ position:absolute; inset:8% 8% 8% 8%; border-radius:50%; object-fit:cover; width:84%; height:84%; }
+.puck img{ position:absolute; inset:8% 8% 8% 8%; border-radius:50%; object-fit:cover; width:auto; height:auto; }
 
 /* ===== Pricing & Form ===== */
 #pricing ul{ list-style:none; padding:0; display:grid; gap:.8rem }
@@ -185,7 +182,7 @@ form input, form select, form textarea{ width:100%; padding:.7rem .85rem; border
 form input:focus, form select:focus, form textarea:focus{ outline:3px solid var(--ring) }
 form button{ margin-top:.25rem }
 
-/* Reveal */
+/* Reveal on scroll (unchanged) */
 .reveal{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease }
 .reveal.is-visible{ opacity:1; transform:translateY(0) }
 
