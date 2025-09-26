@@ -45,7 +45,7 @@ document.querySelectorAll("section, .card").forEach((el) => {
   });
 })();
 
-// Draggable Poster Wall
+// Draggable Poster Wall (mouse + touch)
 (() => {
   const reel = document.querySelector(".poster-reel");
   if (!reel) return;
@@ -61,8 +61,7 @@ document.querySelectorAll("section, .card").forEach((el) => {
   reel.addEventListener("touchend", end);
 })();
 
-// Trigger the hero sequence once the DOM is ready
+// Kick off the staged hero fade-ins
 document.addEventListener("DOMContentLoaded", () => {
-  // one frame later so CSS initial state is painted first
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
 });
