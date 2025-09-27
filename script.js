@@ -45,7 +45,7 @@ document.querySelectorAll("section, .card").forEach((el) => {
   });
 })();
 
-// Drag-to-scroll Poster Wall
+// Drag-to-scroll Poster Wall + pause on hover
 (() => {
   const reel = document.querySelector(".poster-reel");
   if (!reel) return;
@@ -63,13 +63,64 @@ document.querySelectorAll("section, .card").forEach((el) => {
   reel.addEventListener("touchmove", move, { passive:true });
   reel.addEventListener("touchend", end);
 
-  // Pause auto-scroll while the user interacts
   const pause = () => track.style.animationPlayState = "paused";
   const play  = () => track.style.animationPlayState = "running";
   reel.addEventListener("mouseenter", pause);
   reel.addEventListener("mouseleave", play);
   reel.addEventListener("touchstart", pause, { passive:true });
   reel.addEventListener("touchend", play,   { passive:true });
+})();
+
+// Lightbox: enlarge Poster Wall images
+(() => {
+  const modal = document.getElementById("lightbox");
+  const imgEl = document.getElementById("lightbox-img");
+  const captionEl = document.getElementById("lightbox-caption");
+  const backBtn = document.getElementById("lightbox-back");
+  const closeTargets = modal.querySelectorAll("[data-close]");
+
+  if (!modal || !imgEl) return;
+
+  const open = (src, alt) => {
+    imgEl.src = src;
+    imgEl.alt = alt || "";
+    captionEl.textContent = alt || "";
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.documentElement.style.overflow = "hidden"; // prevent page scroll
+  };
+
+  const close = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.documentElement.style.overflow = ""; // restore scroll
+    // Ensure #poster-wall is in view after closing if user clicked the back button
+    // (the anchor <a> will handle scrolling, but if closed by X/backdrop we do nothing)
+  };
+
+  // Hook up pucks
+  document.querySelectorAll(".poster-reel .puck").forEach(a => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const img = a.querySelector("img");
+      if (img) open(img.src, img.alt);
+    });
+  });
+
+  // Close actions
+  closeTargets.forEach(el => el.addEventListener("click", close));
+  modal.addEventListener("click", (e) => {
+    if (e.target.matches(".lightbox__backdrop")) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+  });
+
+  // When “Back to Poster Wall” is clicked, close then jump
+  backBtn.addEventListener("click", () => {
+    close();
+    // anchor handles the scroll
+  });
 })();
 
 // Kick off staggered hero fade-ins
