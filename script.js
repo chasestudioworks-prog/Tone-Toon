@@ -45,7 +45,7 @@ document.querySelectorAll("section, .card").forEach((el) => {
   });
 })();
 
-// Drag-to-scroll Poster Wall (works with the new .track)
+// Drag-to-scroll Poster Wall
 (() => {
   const reel = document.querySelector(".poster-reel");
   if (!reel) return;
@@ -63,7 +63,7 @@ document.querySelectorAll("section, .card").forEach((el) => {
   reel.addEventListener("touchmove", move, { passive:true });
   reel.addEventListener("touchend", end);
 
-  // Pause auto-scroll while the user is interacting
+  // Pause auto-scroll while the user interacts
   const pause = () => track.style.animationPlayState = "paused";
   const play  = () => track.style.animationPlayState = "running";
   reel.addEventListener("mouseenter", pause);
