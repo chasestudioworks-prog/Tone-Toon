@@ -151,7 +151,7 @@ body.page-ready .fade-c{
 .rotate-1{ transform:rotate(-1.5deg) } .rotate-2{ transform:rotate(1.5deg) }
 .commissions-cta{ text-align:center; margin-top:1.2rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap }
 
-/* ===== Poster Wall (seamless & visible) ===== */
+/* ===== Poster Wall ===== */
 #poster-wall .section-lead{ color:#3f4338 }
 .poster-reel{ overflow:hidden; padding:.4rem 0; }
 .poster-reel .track{
@@ -168,12 +168,40 @@ body.page-ready .fade-c{
   transition:transform .12s ease, box-shadow .12s ease; text-decoration:none
 }
 .puck:hover{ transform:translateY(-3px) rotate(-3deg); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black) }
-/* explicit sizing so images always render */
 .puck img{
   position:absolute; left:50%; top:50%;
   width:84%; height:84%; transform:translate(-50%,-50%);
   border-radius:50%; object-fit:cover;
 }
+
+/* ===== Lightbox ===== */
+.lightbox{
+  position:fixed; inset:0; z-index:1000;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .2s ease;
+}
+.lightbox.is-open{ opacity:1; pointer-events:auto; }
+.lightbox__backdrop{
+  position:absolute; inset:0; background:rgba(0,0,0,.55);
+}
+.lightbox__dialog{
+  position:relative; z-index:1; max-width:min(92vw,1200px); max-height:90vh;
+  background:#fff; border-radius:16px; padding:1rem 1rem 1.1rem;
+  border:3px solid color-mix(in srgb, var(--green) 24%, black);
+  box-shadow:0 20px 80px rgba(0,0,0,.55);
+  display:flex; flex-direction:column; gap:.75rem;
+}
+.lightbox__close{
+  position:absolute; right:.6rem; top:.4rem;
+  width:36px; height:36px; border-radius:50%;
+  border:2px solid #0002; background:#fff; font-size:22px; line-height:1;
+  cursor:pointer; box-shadow:3px 4px 0 rgba(0,0,0,.25);
+}
+#lightbox-img{
+  width:100%; height:65vh; object-fit:contain; background:#fafafa; border-radius:10px;
+}
+#lightbox-caption{ color:#3f4338; padding:0 .25rem; }
+.lightbox__actions{ display:flex; gap:.6rem; flex-wrap:wrap; justify-content:flex-end }
 
 /* ===== Pricing & Form ===== */
 #pricing ul{ list-style:none; padding:0; display:grid; gap:.8rem }
@@ -184,7 +212,7 @@ form input, form select, form textarea{ width:100%; padding:.7rem .85rem; border
 form input:focus, form select:focus, form textarea:focus{ outline:3px solid var(--ring) }
 form button{ margin-top:.25rem }
 
-/* Reveal on scroll */
+/* Reveal */
 .reveal{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease }
 .reveal.is-visible{ opacity:1; transform:translateY(0) }
 
