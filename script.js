@@ -77,9 +77,8 @@ document.querySelectorAll("section, .card").forEach((el) => {
   const imgEl = document.getElementById("lightbox-img");
   const captionEl = document.getElementById("lightbox-caption");
   const backBtn = document.getElementById("lightbox-back");
-  const closeTargets = modal.querySelectorAll("[data-close]");
-
   if (!modal || !imgEl) return;
+  const closeTargets = modal.querySelectorAll("[data-close]");
 
   const open = (src, alt) => {
     imgEl.src = src;
@@ -87,18 +86,15 @@ document.querySelectorAll("section, .card").forEach((el) => {
     captionEl.textContent = alt || "";
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
-    document.documentElement.style.overflow = "hidden"; // prevent page scroll
+    document.documentElement.style.overflow = "hidden";
   };
 
   const close = () => {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
-    document.documentElement.style.overflow = ""; // restore scroll
-    // Ensure #poster-wall is in view after closing if user clicked the back button
-    // (the anchor <a> will handle scrolling, but if closed by X/backdrop we do nothing)
+    document.documentElement.style.overflow = "";
   };
 
-  // Hook up pucks
   document.querySelectorAll(".poster-reel .puck").forEach(a => {
     a.addEventListener("click", (e) => {
       e.preventDefault();
@@ -107,7 +103,6 @@ document.querySelectorAll("section, .card").forEach((el) => {
     });
   });
 
-  // Close actions
   closeTargets.forEach(el => el.addEventListener("click", close));
   modal.addEventListener("click", (e) => {
     if (e.target.matches(".lightbox__backdrop")) close();
@@ -115,15 +110,11 @@ document.querySelectorAll("section, .card").forEach((el) => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("is-open")) close();
   });
-
-  // When “Back to Poster Wall” is clicked, close then jump
-  backBtn.addEventListener("click", () => {
-    close();
-    // anchor handles the scroll
-  });
+  if (backBtn) backBtn.addEventListener("click", close);
 })();
 
 // Kick off staggered hero fade-ins
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
+  console.log("TT build v15 loaded");
 });
