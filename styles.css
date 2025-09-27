@@ -88,7 +88,6 @@ h2{
   mix-blend-mode:overlay; animation:grain 14s linear infinite;
 }
 @keyframes grain{ 0%{transform:translate(0,0)} 100%{transform:translate(-6%,-6%)} }
-
 .hero--limewashed .hero-content{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:1rem; text-align:center; padding: clamp(2rem, 5vw, 4rem) 1rem }
 .mega-pop{
   font-family:"Shrikhand", system-ui, sans-serif;
@@ -152,26 +151,29 @@ body.page-ready .fade-c{
 .rotate-1{ transform:rotate(-1.5deg) } .rotate-2{ transform:rotate(1.5deg) }
 .commissions-cta{ text-align:center; margin-top:1.2rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap }
 
-/* ===== Poster Wall (fixed) ===== */
+/* ===== Poster Wall (seamless & visible) ===== */
 #poster-wall .section-lead{ color:#3f4338 }
 .poster-reel{ overflow:hidden; padding:.4rem 0; }
 .poster-reel .track{
   display:flex; gap:1.1rem; width:max-content; padding:0 .5rem;
-  animation:posterScroll 40s linear infinite;
+  animation:posterScroll 40s linear infinite; will-change:transform;
 }
-/* Seamless loop: track is two identical sets; move by 50% */
 @keyframes posterScroll{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
 
 .puck{
   position:relative; flex:0 0 auto; width:150px; height:150px; border-radius:50%;
   background:#fff; border:3px solid color-mix(in srgb, var(--green) 22%, black);
-  /* allow shadows to show – NOT clipped */
   box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
   overflow:hidden; display:grid; place-items:center;
   transition:transform .12s ease, box-shadow .12s ease; text-decoration:none
 }
 .puck:hover{ transform:translateY(-3px) rotate(-3deg); box-shadow:10px 12px 0 color-mix(in srgb, var(--green) 22%, black) }
-.puck img{ position:absolute; inset:8% 8% 8% 8%; border-radius:50%; object-fit:cover; width:auto; height:auto; }
+/* explicit sizing so images always render */
+.puck img{
+  position:absolute; left:50%; top:50%;
+  width:84%; height:84%; transform:translate(-50%,-50%);
+  border-radius:50%; object-fit:cover;
+}
 
 /* ===== Pricing & Form ===== */
 #pricing ul{ list-style:none; padding:0; display:grid; gap:.8rem }
@@ -182,7 +184,7 @@ form input, form select, form textarea{ width:100%; padding:.7rem .85rem; border
 form input:focus, form select:focus, form textarea:focus{ outline:3px solid var(--ring) }
 form button{ margin-top:.25rem }
 
-/* Reveal on scroll (unchanged) */
+/* Reveal on scroll */
 .reveal{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease }
 .reveal.is-visible{ opacity:1; transform:translateY(0) }
 
