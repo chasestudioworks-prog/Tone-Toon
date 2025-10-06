@@ -203,9 +203,40 @@ body.page-ready .fade-c{
 #lightbox-caption{ color:#3f4338; padding:0 .25rem; }
 .lightbox__actions{ display:flex; gap:.6rem; flex-wrap:wrap; justify-content:flex-end }
 
-/* ===== Pricing & Form ===== */
-#pricing ul{ list-style:none; padding:0; display:grid; gap:.8rem }
-#pricing li{ background:#fff; padding:1rem 1.1rem; border-left:8px solid var(--orange); border:2px solid color-mix(in srgb, var(--green) 16%, transparent); box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 18%, black) }
+/* ===== Pricing (NEW) ===== */
+/* Replaces old #pricing ul/li blocks and adds table layout */
+#pricing.tt-section { padding: min(6vw, 48px) 0; }
+#pricing .tt-container { width: min(1100px, 92%); margin: 0 auto; }
+#pricing .tt-header { margin-bottom: 10px; }
+#pricing .tt-hl { margin: 0; font-size: clamp(1.6rem, 1rem + 2.2vw, 2.2rem); }
+#pricing .tt-sub { opacity: .8; margin: .2rem 0 1.1rem; }
+
+#pricing .tt-card {
+  background: var(--card-bg, rgba(255,255,255,.06));
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 16px;
+  padding: clamp(16px, 2vw, 24px);
+  margin: 18px 0;
+  backdrop-filter: blur(6px);
+}
+#pricing .tt-card.tt-accent { border-color: rgba(255,165,0,.35); box-shadow: 0 6px 24px rgba(255,165,0,.12); }
+#pricing .tt-card.tt-soft { opacity: .98; }
+
+#pricing .tt-title { margin: 0 0 10px; font-size: clamp(1.15rem, .9rem + 1vw, 1.5rem); }
+
+#pricing .tt-tablewrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); }
+#pricing .tt-table { width: 100%; border-collapse: collapse; font-size: clamp(.92rem, .86rem + .2vw, 1rem); }
+#pricing .tt-table th, 
+#pricing .tt-table td { padding: 12px 14px; text-align: left; vertical-align: top; }
+#pricing .tt-table thead th { position: sticky; top: 0; background: var(--table-head, rgba(0,0,0,.06)); backdrop-filter: blur(4px); }
+#pricing .tt-table tbody tr:nth-child(odd) { background: rgba(0,0,0,.03); }
+#pricing .tt-table tbody tr:hover { background: rgba(0,0,0,.06); }
+
+#pricing .tt-muted { opacity: .75; margin-top: 8px; }
+#pricing .tt-list { margin: 8px 0 0 18px; line-height: 1.6; }
+#pricing .tt-tagline { margin-top: 10px; font-style: italic; opacity: .85; }
+
+/* Keep form styles from your original file */
 form{ background:#fff; padding:1.5rem; border-radius:18px; border:2px solid color-mix(in srgb, var(--green) 16%, transparent); box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 18%, black) }
 form label{ display:block; margin:.75rem 0 .35rem; font-weight:800; color:var(--ink) }
 form input, form select, form textarea{ width:100%; padding:.7rem .85rem; border-radius:14px; border:2px solid color-mix(in srgb, var(--green) 16%, transparent); background:#fff; color:var(--ink) }
