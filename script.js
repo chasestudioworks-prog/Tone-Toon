@@ -21,7 +21,9 @@ const io = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.12 });
-document.querySelectorAll("section, .card").forEach((el) => {
+
+// include sections, work cards, and new pricing cards
+document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
   el.classList.add("reveal");
   io.observe(el);
 });
