@@ -124,20 +124,20 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ===== Tone & Toon Pricing Config (edit here) ===== */
 const TT_PRICING = {
   canvas: [
-    { size: "Small", dims: '8" × 10"', price: "$120 CAD", notes: "Simple portrait or single subject" },
-    { size: "Medium", dims: '12" × 16"', price: "$180 CAD", notes: "Up to 2 subjects or detailed background" },
-    { size: "Large", dims: '18" × 24"', price: "$250 CAD", notes: "Complex scenes, full backgrounds" },
-    { size: "Extra-Large", dims: '24" × 36"+', price: "$350+ CAD", notes: "Statement pieces or multi-character compositions" },
+    { size: "Small", dims: '~ 8" × 10"', price: "$120 CAD" },
+    { size: "Medium", dims: '~ 12" × 16"', price: "$180 CAD" },
+    { size: "Large", dims: '~ 18" × 24"', price: "$250 CAD" },
+    { size: "Extra-Large", dims: '24" × 36"+', price: "$350+ CAD" },
   ],
   fabric: [
-    { type: "Single Design", price: "$30–$50 CAD", detail: "1 small logo or illustration" },
-    { type: "Multiple Designs", price: "$60–$90 CAD", detail: "2–3 designs or larger coverage" },
-    { type: "Special Fabric / Material", price: "Quote Only", detail: "Depends on supplier & printing method" },
+    { type: "Single Design", price: "$70–$100 CAD", detail: "1 small logo or illustration" },
+    { type: "Multiple Designs", price: "$120–$180 CAD", detail: "2–3 designs or larger coverage" },
+    { type: "Full Back Designs", price: "$200–$300+ CAD", detail: "Depends on designs, materials & method" },
   ],
   rush: [
     { level: "Standard", time: "2–4 weeks", fee: "No extra charge" },
     { level: "Express", time: "7–10 days", fee: "+20% of total price" },
-    { level: "Priority", time: "3–5 days", fee: "+35% of total price" },
+    { level: "Priority", time: "3–5 days", fee: "+40% of total price" },
   ],
 };
 
