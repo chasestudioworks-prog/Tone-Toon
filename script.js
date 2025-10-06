@@ -136,41 +136,73 @@ const TT_PRICING = {
   ],
   rush: [
     { level: "Standard", time: "2–4 weeks", fee: "No extra charge" },
-    { level: "Express", time: "7–10 days", fee: "+20% of total price" },
-    { level: "Priority", time: "3–5 days", fee: "+40% of total price" },
+    { level: "Express",  time: "7–10 days", fee: "+20% of total price" },
+    { level: "Priority", time: "3–5 days",  fee: "+40% of total price" },
   ],
 };
 
-/* Build table rows from config — no HTML changes needed */
-(function applyPricingFromConfig(){
-  const tables = document.querySelectorAll('#pricing .tt-card .tt-table');
-  if (!tables.length) return;
+function ttSafeHTML(text){ return String(text).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
 
-  // Canvas table is first
-  const canvasBody = tables[0].querySelector('tbody');
+function ttTableBodyFor(title){
+  // Finds the table body in the card with the matching h3 title text
+  const cards = document.querySelectorAll('#pricing .tt-card');
+  for (const card of cards) {
+    const h3 = card.querySelector('.tt-title');
+    if (!h3) continue;
+    if (h3.textContent.trim().toLowerCase() === title.toLowerCase()) {
+      return card.querySelector('tbody');
+    }
+  }
+  return null;
+}
+
+function applyPricingFromConfig(){
+  // Canvas
+  const canvasBody = ttTableBodyFor('Canvas Paintings');
   if (canvasBody && TT_PRICING.canvas) {
-    canvasBody.innerHTML = TT_PRICING.canvas.map(
-      r => `<tr><td>${r.size}</td><td>${r.dims.replace(/"/g,"&quot;")}</td><td>${r.price}</td><td>${r.notes}</td></tr>`
+    canvasBody.innerHTML = TT_PRICING.canvas.map(r =>
+      `<tr>
+        <td>${ttSafeHTML(r.size)}</td>
+        <td>${ttSafeHTML(r.dims)}</td>
+        <td>${ttSafeHTML(r.price)}</td>
+        <td>${ttSafeHTML(r.notes)}</td>
+      </tr>`
     ).join('');
   }
 
-  // Fabric / Apparel table is second
-  const fabricBody = tables[1]?.querySelector('tbody');
+  // Fabric / Apparel
+  const fabricBody = ttTableBodyFor('Fabric / Apparel');
   if (fabricBody && TT_PRICING.fabric) {
-    fabricBody.innerHTML = TT_PRICING.fabric.map(
-      r => `<tr><td>${r.type}</td><td>${r.price}</td><td>${r.detail}</td></tr>`
+    fabricBody.innerHTML = TT_PRICING.fabric.map(r =>
+      `<tr>
+        <td>${ttSafeHTML(r.type)}</td>
+        <td>${ttSafeHTML(r.price)}</td>
+        <td>${ttSafeHTML(r.detail)}</td>
+      </tr>`
     ).join('');
   }
 
-  // Other/Special Requests (third table) — usually stays descriptive.
-  // If you want to control it via config too, add a TT_PRICING.other array and fill here.
-
-  // Rush Orders table is fourth (index 3)
-  const rushBody = tables[3]?.querySelector('tbody');
+  // Rush Orders
+  const rushBody = ttTableBodyFor('Rush Orders');
   if (rushBody && TT_PRICING.rush) {
-    rushBody.innerHTML = TT_PRICING.rush.map(
-      r => `<tr><td>${r.level}</td><td>${r.time}</td><td>${r.fee}</td></tr>`
+    rushBody.innerHTML = TT_PRICING.rush.map(r =>
+      `<tr>
+        <td>${ttSafeHTML(r.level)}</td>
+        <td>${ttSafeHTML(r.time)}</td>
+        <td>${ttSafeHTML(r.fee)}</td>
+      </tr>`
     ).join('');
   }
-})();
+
+  console.log('[TT] Pricing applied from config.');
+}
+
+// Ensure DOM is ready and section exists before applying
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('#pricing')) applyPricingFromConfig();
+  });
+} else {
+  if (document.querySelector('#pricing')) applyPricingFromConfig();
+}
 
