@@ -7,6 +7,50 @@
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=15" />
+
+  <!-- Scoped styles for the Pricing section only -->
+  <style>
+    /* ---- Tone & Toon Pricing (scoped) ---- */
+    #pricing.tt-section { padding: min(6vw, 48px) 0; }
+    #pricing .tt-container { width: min(1100px, 92%); margin: 0 auto; }
+    #pricing .tt-header { margin-bottom: 10px; }
+    #pricing .tt-hl { margin: 0; font-size: clamp(1.6rem, 1rem + 2.2vw, 2.2rem); }
+    #pricing .tt-sub { opacity: .8; margin: .2rem 0 1.1rem; }
+
+    #pricing .tt-card {
+      background: var(--card-bg, rgba(255,255,255,.06));
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding: clamp(16px, 2vw, 24px);
+      margin: 18px 0;
+      backdrop-filter: blur(6px);
+    }
+    #pricing .tt-card.tt-accent { border-color: rgba(255,165,0,.35); box-shadow: 0 6px 24px rgba(255,165,0,.12); }
+    #pricing .tt-card.tt-soft { opacity: .98; }
+
+    #pricing .tt-title { margin: 0 0 10px; font-size: clamp(1.15rem, .9rem + 1vw, 1.5rem); }
+
+    #pricing .tt-tablewrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); }
+    #pricing .tt-table { width: 100%; border-collapse: collapse; font-size: clamp(.92rem, .86rem + .2vw, 1rem); }
+    #pricing .tt-table th,
+    #pricing .tt-table td { padding: 12px 14px; text-align: left; vertical-align: top; }
+    #pricing .tt-table thead th { position: sticky; top: 0; background: var(--table-head, rgba(0,0,0,.06)); backdrop-filter: blur(4px); }
+    #pricing .tt-table tbody tr:nth-child(odd) { background: rgba(0,0,0,.03); }
+    #pricing .tt-table tbody tr:hover { background: rgba(0,0,0,.06); }
+
+    #pricing .tt-muted { opacity: .75; margin-top: 8px; }
+    #pricing .tt-list { margin: 8px 0 0 18px; line-height: 1.6; }
+    #pricing .tt-tagline { margin-top: 10px; font-style: italic; opacity: .85; }
+
+    /* Dark-friendly tweaks */
+    @media (prefers-color-scheme: dark) {
+      #pricing .tt-card { border-color: rgba(255,255,255,.12); }
+      #pricing .tt-tablewrap { border-color: rgba(255,255,255,.12); }
+      #pricing .tt-table thead th { background: rgba(255,255,255,.06); }
+      #pricing .tt-table tbody tr:nth-child(odd) { background: rgba(255,255,255,.03); }
+      #pricing .tt-table tbody tr:hover { background: rgba(255,255,255,.06); }
+    }
+  </style>
 </head>
 <body class="at-top">
   <!-- Header -->
@@ -72,7 +116,7 @@
 
       <div class="explore-more">
         <a class="btn" href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F" target="_blank" rel="noopener noreferrer">
-          Explore More Works →
+          Explore More Works → 
         </a>
       </div>
     </section>
@@ -171,15 +215,115 @@
       </div>
     </section>
 
-    <!-- ===== Pricing ===== -->
-    <section id="pricing">
-      <h2>Simple Pricing</h2>
-      <ul>
-        <li><strong>Small</strong> (8×10 / 9×12): $80–$150</li>
-        <li><strong>Medium</strong> (12×16 / 16×20): $180–$350</li>
-        <li><strong>Large</strong> (18×24 / 24×30): $380–$700</li>
-      </ul>
-      <p>Final quotes depend on time, detail, and shipping.</p>
+    <!-- ===== Pricing (UPDATED) ===== -->
+    <section id="pricing" class="tt-section">
+      <div class="tt-container">
+        <header class="tt-header">
+          <h2 class="tt-hl">Tone &amp; Toon — Pricing Guide</h2>
+          <p class="tt-sub">Custom Pop-Art &amp; Cartoon Commissions</p>
+        </header>
+
+        <!-- Canvas -->
+        <article class="tt-card">
+          <h3 class="tt-title">Canvas Paintings</h3>
+          <div class="tt-tablewrap">
+            <table class="tt-table">
+              <thead>
+                <tr>
+                  <th>Size</th>
+                  <th>Dimensions (approx.)</th>
+                  <th>Base Price</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Small</td><td>8&quot; × 10&quot;</td><td>$120 CAD</td><td>Simple portrait or single subject</td></tr>
+                <tr><td>Medium</td><td>12&quot; × 16&quot;</td><td>$180 CAD</td><td>Up to 2 subjects or detailed background</td></tr>
+                <tr><td>Large</td><td>18&quot; × 24&quot;</td><td>$250 CAD</td><td>Complex scenes, full backgrounds</td></tr>
+                <tr><td>Extra-Large</td><td>24&quot; × 36&quot;+</td><td>$350+ CAD</td><td>Statement pieces or multi-character compositions</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tt-muted">Final price may vary based on complexity, background detail, and special effects (e.g., metallic / glow paint).</p>
+        </article>
+
+        <!-- Fabric / Apparel -->
+        <article class="tt-card">
+          <h3 class="tt-title">Fabric / Apparel</h3>
+          <div class="tt-tablewrap">
+            <table class="tt-table">
+              <thead>
+                <tr>
+                  <th>Item Type</th>
+                  <th>Base Price</th>
+                  <th>Customization Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Single Design</td><td>$30–$50 CAD</td><td>1 small logo or illustration</td></tr>
+                <tr><td>Multiple Designs</td><td>$60–$90 CAD</td><td>2–3 designs or larger coverage</td></tr>
+                <tr><td>Special Fabric / Material</td><td>Quote Only</td><td>Depends on supplier &amp; printing method</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tt-muted">Price varies with material, color count, and print type (painted, transfer, or screen print).</p>
+        </article>
+
+        <!-- Other / Special Requests -->
+        <article class="tt-card">
+          <h3 class="tt-title">Other / Special Requests</h3>
+          <div class="tt-tablewrap">
+            <table class="tt-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Pricing</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Accessories</td><td>Discuss</td><td>Phone cases, book covers, stationery sets</td></tr>
+                <tr><td>Digital Artwork</td><td>From $80 CAD</td><td>Custom digital pop-art piece</td></tr>
+                <tr><td>Bulk / Collabs</td><td>Discounted</td><td>Brand or event projects</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- Rush Orders -->
+        <article class="tt-card tt-accent">
+          <h3 class="tt-title">Rush Orders</h3>
+          <div class="tt-tablewrap">
+            <table class="tt-table">
+              <thead>
+                <tr>
+                  <th>Rush Level</th>
+                  <th>Delivery Time</th>
+                  <th>Extra Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Standard</td><td>2–4 weeks</td><td>No extra charge</td></tr>
+                <tr><td>Express</td><td>7–10 days</td><td>+20% of total price</td></tr>
+                <tr><td>Priority</td><td>3–5 days</td><td>+35% of total price</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tt-muted">Rush availability depends on current workload — confirmed at order.</p>
+        </article>
+
+        <!-- Policies -->
+        <article class="tt-card tt-soft">
+          <h3 class="tt-title">Payment &amp; Policies</h3>
+          <ul class="tt-list">
+            <li>50% deposit required to begin commission.</li>
+            <li>Remaining balance due upon completion.</li>
+            <li>Shipping costs calculated separately based on destination.</li>
+            <li>Progress updates available upon request.</li>
+          </ul>
+          <p class="tt-tagline">“Turn your moments into art.” — Tone &amp; Toon</p>
+        </article>
+      </div>
     </section>
 
     <!-- ===== Commission form ===== -->
