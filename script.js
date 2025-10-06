@@ -120,3 +120,57 @@ document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
   console.log("TT build v15 loaded");
 });
+
+/* ===== Tone & Toon Pricing Config (edit here) ===== */
+const TT_PRICING = {
+  canvas: [
+    { size: "Small", dims: '8" × 10"', price: "$120 CAD", notes: "Simple portrait or single subject" },
+    { size: "Medium", dims: '12" × 16"', price: "$180 CAD", notes: "Up to 2 subjects or detailed background" },
+    { size: "Large", dims: '18" × 24"', price: "$250 CAD", notes: "Complex scenes, full backgrounds" },
+    { size: "Extra-Large", dims: '24" × 36"+', price: "$350+ CAD", notes: "Statement pieces or multi-character compositions" },
+  ],
+  fabric: [
+    { type: "Single Design", price: "$30–$50 CAD", detail: "1 small logo or illustration" },
+    { type: "Multiple Designs", price: "$60–$90 CAD", detail: "2–3 designs or larger coverage" },
+    { type: "Special Fabric / Material", price: "Quote Only", detail: "Depends on supplier & printing method" },
+  ],
+  rush: [
+    { level: "Standard", time: "2–4 weeks", fee: "No extra charge" },
+    { level: "Express", time: "7–10 days", fee: "+20% of total price" },
+    { level: "Priority", time: "3–5 days", fee: "+35% of total price" },
+  ],
+};
+
+/* Build table rows from config — no HTML changes needed */
+(function applyPricingFromConfig(){
+  const tables = document.querySelectorAll('#pricing .tt-card .tt-table');
+  if (!tables.length) return;
+
+  // Canvas table is first
+  const canvasBody = tables[0].querySelector('tbody');
+  if (canvasBody && TT_PRICING.canvas) {
+    canvasBody.innerHTML = TT_PRICING.canvas.map(
+      r => `<tr><td>${r.size}</td><td>${r.dims.replace(/"/g,"&quot;")}</td><td>${r.price}</td><td>${r.notes}</td></tr>`
+    ).join('');
+  }
+
+  // Fabric / Apparel table is second
+  const fabricBody = tables[1]?.querySelector('tbody');
+  if (fabricBody && TT_PRICING.fabric) {
+    fabricBody.innerHTML = TT_PRICING.fabric.map(
+      r => `<tr><td>${r.type}</td><td>${r.price}</td><td>${r.detail}</td></tr>`
+    ).join('');
+  }
+
+  // Other/Special Requests (third table) — usually stays descriptive.
+  // If you want to control it via config too, add a TT_PRICING.other array and fill here.
+
+  // Rush Orders table is fourth (index 3)
+  const rushBody = tables[3]?.querySelector('tbody');
+  if (rushBody && TT_PRICING.rush) {
+    rushBody.innerHTML = TT_PRICING.rush.map(
+      r => `<tr><td>${r.level}</td><td>${r.time}</td><td>${r.fee}</td></tr>`
+    ).join('');
+  }
+})();
+
