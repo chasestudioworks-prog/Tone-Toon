@@ -253,6 +253,67 @@ form button{ margin-top:.25rem }
   .commission-card img{ height:260px }
   .puck{ width:130px; height:130px }
 }
+
+/* =========================
+   Mobile polish (phones)
+   ========================= */
+@media (max-width: 640px) {
+  /* Header: smaller brand + tighter nav */
+  .site-header { padding: .55rem .8rem; }
+  .site-header .brand { font-size: 1.25rem; line-height: 1; }
+  .site-header nav a {
+    font-size: .9rem;            /* smaller link text */
+    margin-left: .6rem;           /* tighter spacing */
+    letter-spacing: .02em;
+  }
+
+  /* Less vertical space for sections */
+  section { padding: 2rem 1rem; }
+
+  /* H2 smaller underline */
+  h2 { font-size: clamp(1.6rem, 6vw, 2rem); border-bottom-width: 6px; }
+
+  /* Hero: reduce height a bit on phones */
+  .hero--limewashed { min-height: 82vh; }
+
+  /* Recent Work grid: smaller, cleaner cards */
+  #work .gallery { gap: .75rem; }
+  #work .gallery img { height: 220px; }         /* was 360px */
+  #work .gallery figure {
+    border-radius: 14px;
+    box-shadow: 4px 6px 0 color-mix(in srgb, var(--green) 20%, black);
+  }
+  .gallery .card:hover figure {
+    transform: translate(-1px,-1px);
+    box-shadow: 6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
+  }
+
+  /* Past Commissions cards: shrink images, tighter spacing */
+  .commission-grid { gap: .75rem; }
+  .commission-card img { height: 200px; }       /* was 300px/260px */
+  .commission-card { border-radius: 12px; box-shadow: 4px 6px 0 color-mix(in srgb, var(--green) 20%, black); }
+  .commission-card .badge { transform: scale(.9); top: -26px; }
+
+  /* Poster Wall pucks: a bit smaller */
+  .puck { width: 110px; height: 110px; }
+  .puck:hover { transform: translateY(-2px) rotate(-2deg); }
+
+  /* Pricing cards: slightly denser on phones */
+  #pricing .tt-card { padding: 14px; margin: 14px 0; }
+  #pricing .tt-table th, #pricing .tt-table td { padding: 10px 12px; }
+  #pricing .tt-hl { font-size: clamp(1.3rem, 5vw, 1.6rem); }
+  #pricing .tt-title { font-size: 1.05rem; }
+  #pricing .tt-tablewrap { border-radius: 10px; }
+}
+
+/* Even smaller devices */
+@media (max-width: 420px) {
+  .site-header nav a { font-size: .85rem; margin-left: .5rem; }
+  #work .gallery img { height: 200px; }
+  .commission-card img { height: 180px; }
+  .puck { width: 100px; height: 100px; }
+}
+
 @media (prefers-reduced-motion:reduce){
   *{ transition:none !important; animation:none !important; scroll-behavior:auto !important }
 }
