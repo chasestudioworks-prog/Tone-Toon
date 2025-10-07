@@ -326,26 +326,41 @@
       </div>
     </section>
 
-    <!-- ===== Commission form ===== -->
-    <section id="commission">
-      <h2>Request a Commission</h2>
-      <form action="https://formspree.io/f/mandkyor" method="POST">
-        <label>Your Name: <input type="text" name="name" required></label><br>
-        <label>Email: <input type="email" name="email" required></label><br>
-        <label>Size:
-          <select name="size" required>
-            <option>Small</option>
-            <option>Medium</option>
-            <option>Large</option>
-            <option>Custom</option>
-          </select>
-        </label><br>
-        <label>Details:<br>
-          <textarea name="details" rows="5"></textarea>
-        </label><br>
-        <button type="submit" class="btn pop">Send Request</button>
-      </form>
-    </section>
+   <!-- ===== Commission form ===== -->
+<section id="commission">
+  <h2>Request a Commission</h2>
+  <form action="https://formspree.io/f/mandkyor" method="POST">
+    <label>Your Name: <input type="text" name="name" required></label><br>
+    <label>Email: <input type="email" name="email" required></label><br>
+
+    <!-- UPDATED: Size / Type -->
+    <label>Size / Type:
+      <select name="size" required>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+        <option>Extra-Large</option>
+        <option>Fabric/Apparel</option>
+        <option>Special Request</option>
+      </select>
+    </label><br>
+
+    <!-- NEW: Rush Order -->
+    <label>Rush Order:
+      <select name="rush" required>
+        <option>Standard</option>
+        <option>Express</option>
+        <option>Priority</option>
+      </select>
+    </label><br>
+
+    <label>Details:<br>
+      <textarea name="details" rows="5" placeholder="Tell me your idea, colors, references, deadlines, etc."></textarea>
+    </label><br>
+
+    <button type="submit" class="btn pop">Send Request</button>
+  </form>
+</section>
 
     <!-- ===== Contact ===== -->
     <section id="contact">
