@@ -8,6 +8,10 @@
   --cream:#F4E6C6;
   --sage:#6E896A; --green:#325434; --ink:#0F0F0D;
   --ring: color-mix(in srgb, var(--orange) 55%, white);
+
+  /* >>> Adjust these two to change logo size <<< */
+  --logo-h-desktop: 110px;  /* was 60px */
+  --logo-h-mobile:  80px;   /* was 48px */
 }
 
 /* Base */
@@ -22,18 +26,28 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
   padding:.9rem 1.1rem;
   background:var(--lime);
   transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
+
+  /* ensure room for larger logo */
+  min-height: calc(var(--logo-h-desktop) + 12px);
 }
-/* Force logo to display larger on all screens */
-.header-left .brand-logo {
-  height: 100px !important;  /* increase or reduce as you want */
-  width: auto !important;
-  display: block;
+@media (max-width:768px){
+  .site-header{ min-height: calc(var(--logo-h-mobile) + 12px); }
 }
 
-/* Adjust for mobile */
-@media (max-width: 768px) {
-  .header-left .brand-logo {
-    height: 80px !important;
+.header-left{ display:flex; align-items:center; gap:.5rem; flex:0 0 auto; }
+.brand{ display:inline-flex; align-items:center; text-decoration:none; flex:0 0 auto; }
+
+/* >>> FORCE logo size (more specific selector + !important) <<< */
+.header-left .brand .brand-logo{
+  height: var(--logo-h-desktop) !important;
+  width: auto !important;
+  display: block;
+  max-width: none;     /* prevent unintended shrinking */
+  flex: 0 0 auto;
+}
+@media (max-width:768px){
+  .header-left .brand .brand-logo{
+    height: var(--logo-h-mobile) !important;
   }
 }
 
