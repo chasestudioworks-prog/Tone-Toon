@@ -1,10 +1,10 @@
-// Year in footer
+// Year
 document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 });
 
-// Toggle lime header color at very top
+// Toggle lime header color at very top (restored)
 const setTopClass = () => {
   if (window.scrollY < 10) document.body.classList.add("at-top");
   else document.body.classList.remove("at-top");
@@ -53,8 +53,10 @@ document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
   const track = reel.querySelector(".track");
 
   let isDown = false, startX = 0, scrollLeft = 0;
-  const start = (e) => { isDown = true; startX = (e.pageX || e.touches?.[0]?.pageX || 0); scrollLeft = reel.scrollLeft; };
-  const move  = (e) => { if (!isDown) return; const x = (e.pageX || e.touches?.[0]?.pageX || 0); reel.scrollLeft = scrollLeft - (x - startX); };
+  const pageX = (e) => (e.pageX ?? e.touches?.[0]?.pageX ?? 0);
+
+  const start = (e) => { isDown = true; startX = pageX(e); scrollLeft = reel.scrollLeft; };
+  const move  = (e) => { if (!isDown) return; reel.scrollLeft = scrollLeft - (pageX(e) - startX); };
   const end   = () => { isDown = false; };
 
   reel.addEventListener("mousedown", start);
@@ -117,20 +119,8 @@ document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
 // Kick off staggered hero fade-ins
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
-  console.log("TT build v19 loaded");
+  console.log("TT build v30 loaded");
 });
-
-/* ===== Pricing config (optional hook, currently static tables) ===== */
-// Example of dynamic fill if you want to switch later.
-// (Left in place for your future updates.)
-const TT_PRICING = {
-  canvas: [
-    { size: "Small", dims: '~ 8" × 10"', price: "$120 CAD", notes: "Simple portrait or single subject" },
-    { size: "Medium", dims: '~ 12" × 16"', price: "$180 CAD", notes: "Up to 2 subjects or detailed background" },
-    { size: "Large", dims: '~ 18" × 24"', price: "$250 CAD", notes: "Complex scenes, full backgrounds" },
-    { size: "Extra-Large", dims: '24" × 36"+', price: "$350+ CAD", notes: "Statement piece" },
-  ],
-};
 
 /* ===== Mobile Menu Toggle (hamburger only on mobile) ===== */
 (() => {
