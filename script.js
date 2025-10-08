@@ -1,4 +1,4 @@
-// Year
+// Year in footer
 document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
@@ -22,7 +22,6 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 
-// include sections, work cards, and new pricing cards
 document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
   el.classList.add("reveal");
   io.observe(el);
@@ -73,7 +72,7 @@ document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
   reel.addEventListener("touchend", play,   { passive:true });
 })();
 
-// Lightbox: enlarge Poster Wall images
+// Lightbox
 (() => {
   const modal = document.getElementById("lightbox");
   const imgEl = document.getElementById("lightbox-img");
@@ -118,119 +117,43 @@ document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
 // Kick off staggered hero fade-ins
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
-  console.log("TT build v15 loaded");
+  console.log("TT build v19 loaded");
 });
 
-/* ===== Tone & Toon Pricing Config (edit here) ===== */
+/* ===== Pricing config (optional hook, currently static tables) ===== */
+// Example of dynamic fill if you want to switch later.
+// (Left in place for your future updates.)
 const TT_PRICING = {
   canvas: [
-    { size: "Small", dims: '~ 8" × 10"', price: "$120 CAD" },
-    { size: "Medium", dims: '~ 12" × 16"', price: "$180 CAD" },
-    { size: "Large", dims: '~ 18" × 24"', price: "$250 CAD" },
-    { size: "Extra-Large", dims: '24" × 36"+', price: "$350+ CAD" },
-  ],
-  fabric: [
-    { type: "Single Design", price: "$70–$100 CAD", detail: "1 small logo or illustration" },
-    { type: "Multiple Designs", price: "$120–$180 CAD", detail: "2–3 designs or larger coverage" },
-    { type: "Full Back Designs", price: "$200–$300+ CAD", detail: "Depends on designs, materials & method" },
-  ],
-  rush: [
-    { level: "Standard", time: "2–4 weeks", fee: "No extra charge" },
-    { level: "Express",  time: "7–10 days", fee: "+20% of total price" },
-    { level: "Priority", time: "3–5 days",  fee: "+40% of total price" },
+    { size: "Small", dims: '~ 8" × 10"', price: "$120 CAD", notes: "Simple portrait or single subject" },
+    { size: "Medium", dims: '~ 12" × 16"', price: "$180 CAD", notes: "Up to 2 subjects or detailed background" },
+    { size: "Large", dims: '~ 18" × 24"', price: "$250 CAD", notes: "Complex scenes, full backgrounds" },
+    { size: "Extra-Large", dims: '24" × 36"+', price: "$350+ CAD", notes: "Statement piece" },
   ],
 };
 
-function ttSafeHTML(text){ return String(text).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
-
-function ttTableBodyFor(title){
-  // Finds the table body in the card with the matching h3 title text
-  const cards = document.querySelectorAll('#pricing .tt-card');
-  for (const card of cards) {
-    const h3 = card.querySelector('.tt-title');
-    if (!h3) continue;
-    if (h3.textContent.trim().toLowerCase() === title.toLowerCase()) {
-      return card.querySelector('tbody');
-    }
-  }
-  return null;
-}
-
-function applyPricingFromConfig(){
-  // Canvas
-  const canvasBody = ttTableBodyFor('Canvas Paintings');
-  if (canvasBody && TT_PRICING.canvas) {
-    canvasBody.innerHTML = TT_PRICING.canvas.map(r =>
-      `<tr>
-        <td>${ttSafeHTML(r.size)}</td>
-        <td>${ttSafeHTML(r.dims)}</td>
-        <td>${ttSafeHTML(r.price)}</td>
-        <td>${ttSafeHTML(r.notes)}</td>
-      </tr>`
-    ).join('');
-  }
-
-  // Fabric / Apparel
-  const fabricBody = ttTableBodyFor('Fabric / Apparel');
-  if (fabricBody && TT_PRICING.fabric) {
-    fabricBody.innerHTML = TT_PRICING.fabric.map(r =>
-      `<tr>
-        <td>${ttSafeHTML(r.type)}</td>
-        <td>${ttSafeHTML(r.price)}</td>
-        <td>${ttSafeHTML(r.detail)}</td>
-      </tr>`
-    ).join('');
-  }
-
-  // Rush Orders
-  const rushBody = ttTableBodyFor('Rush Orders');
-  if (rushBody && TT_PRICING.rush) {
-    rushBody.innerHTML = TT_PRICING.rush.map(r =>
-      `<tr>
-        <td>${ttSafeHTML(r.level)}</td>
-        <td>${ttSafeHTML(r.time)}</td>
-        <td>${ttSafeHTML(r.fee)}</td>
-      </tr>`
-    ).join('');
-  }
-
-  console.log('[TT] Pricing applied from config.');
-}
-
-// Ensure DOM is ready and section exists before applying
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.querySelector('#pricing')) applyPricingFromConfig();
-  });
-} else {
-  if (document.querySelector('#pricing')) applyPricingFromConfig();
-}
-
-// ===== Mobile menu toggle (clean slide) =====
+/* ===== Mobile Menu Toggle (hamburger only on mobile) ===== */
 (() => {
   const header = document.querySelector('[data-mobile-nav]');
   const btn = header?.querySelector('.menu-toggle');
-  const nav = header?.querySelector('nav');
+  const nav = header?.querySelector('#site-nav');
   if (!header || !btn || !nav) return;
 
-  const close = () => {
-    header.classList.remove('nav-open');
-    btn.setAttribute('aria-expanded', 'false');
-  };
-  const open = () => {
-    header.classList.add('nav-open');
-    btn.setAttribute('aria-expanded', 'true');
+  const toggleMenu = () => {
+    header.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', header.classList.contains('nav-open'));
   };
 
-  btn.addEventListener('click', () => {
-    header.classList.contains('nav-open') ? close() : open();
-  });
+  btn.addEventListener('click', toggleMenu);
 
   // Close when a link is tapped
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    header.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
 
-  // Reset if resizing to desktop
+  // Force-close when resizing to desktop
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) close();
+    if (window.innerWidth > 768) header.classList.remove('nav-open');
   }, { passive:true });
 })();
