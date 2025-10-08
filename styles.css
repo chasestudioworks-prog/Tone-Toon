@@ -318,54 +318,51 @@ form button{ margin-top:.25rem }
   *{ transition:none !important; animation:none !important; scroll-behavior:auto !important }
 }
 
-/* ========== Mobile hamburger menu ========== */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  line-height: 1;
-  color: var(--ink);
+/* ===== Mobile hamburger header (compact & clean) ===== */
+.menu-toggle{ display:none; background:none; border:0; padding:.25rem; margin-left:auto; }
+.menu-toggle .bar{
+  display:block; width:26px; height:3px; border-radius:2px;
+  background:var(--ink); margin:5px 0; transition:transform .25s ease, opacity .2s ease, background .2s ease;
 }
 
-/* Show hamburger on small screens */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-    z-index: 100;
+/* compact header on phones */
+@media (max-width: 768px){
+  .site-header{ padding:.5rem .8rem; gap:.5rem; }
+  .site-header .brand{ font-size:1.1rem; line-height:1; }
+  .menu-toggle{ display:block; }
+  .site-header nav{
+    /* hidden by default on phones */
+    position:relative;
+    width:100%;
+    display:block;
+    overflow:hidden;
+    max-height:0;
+    padding:0;
+    margin-top:.35rem;
+    background:var(--cream);
+    border:2px solid color-mix(in srgb, var(--green) 18%, transparent);
+    border-radius:12px;
+    box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 20%, black);
+    transition:max-height .28s ease, padding .2s ease;
   }
+  .site-header nav a{
+    display:block; text-decoration:none; color:var(--ink);
+    padding:.7rem 1rem; margin:0; font-weight:800;
+    border-bottom:1px dashed color-mix(in srgb, var(--green) 20%, transparent);
+  }
+  .site-header nav a:last-child{ border-bottom:none; }
+  /* open state */
+  .site-header.nav-open nav{ max-height:420px; padding:.35rem 0; }
+  /* animate hamburger to X */
+  .site-header.nav-open .menu-toggle .bar:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+  .site-header.nav-open .menu-toggle .bar:nth-child(2){ opacity:0; }
+  .site-header.nav-open .menu-toggle .bar:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+  /* keep the hero tall area visible */
+  .header-arch{ display:none; }
+}
 
-  .site-header {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .site-header nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background: var(--cream);
-    border-top: 2px solid color-mix(in srgb, var(--green) 18%, transparent);
-    padding: 0.75rem 1rem;
-    gap: 0.6rem;
-    text-align: center;
-  }
-
-  .site-header nav a {
-    margin: 0;
-    display: block;
-    padding: 0.5rem 0;
-    border-radius: 8px;
-  }
-
-  .site-header nav a:hover {
-    background: color-mix(in srgb, var(--lime) 40%, white);
-  }
-
-  /* When menu is active */
-  .site-header.nav-open nav {
-    display: flex;
-  }
+/* Optional: even smaller phones tidy */
+@media (max-width: 420px){
+  .site-header .brand{ font-size:1rem; }
+  .menu-toggle .bar{ width:24px; }
 }
