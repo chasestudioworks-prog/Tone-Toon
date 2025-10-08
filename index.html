@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
-  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;900&display=swap" rel="sheet" />
+  <!-- FIXED: rel must be stylesheet -->
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=17" />
 
   <!-- Scoped styles for the Pricing section only -->
@@ -40,7 +41,8 @@
 
     #pricing .tt-muted { opacity: .75; margin-top: 8px; }
     #pricing .tt-list { margin: 8px 0 0 18px; line-height: 1.6; }
-    #pricing .tt-tagline { margin-top: 10px; font-: italic; opacity: .85; }
+    /* FIXED: font-style (was font-) */
+    #pricing .tt-tagline { margin-top: 10px; font-style: italic; opacity: .85; }
 
     /* Dark-friendly tweaks */
     @media (prefers-color-scheme: dark) {
@@ -50,7 +52,7 @@
       #pricing .tt-table tbody tr:nth-child(odd) { background: rgba(255,255,255,.03); }
       #pricing .tt-table tbody tr:hover { background: rgba(255,255,255,.06); }
     }
-  </>
+  </style> <!-- FIXED: proper closing tag -->
 </head>
 <body class="at-top">
   
@@ -67,7 +69,6 @@
     <span class="bar"></span>
   </button>
 
-  <!-- Hidden arc text removed on mobile for clean look -->
   <nav id="site-nav" class="pc-font">
     <a href="#work">Work</a>
     <a href="#commissions">Past Commissions</a>
@@ -77,9 +78,6 @@
     <a href="#contact">Contact</a>
   </nav>
 </header>
-
-
-
 
   <main>
     <!-- ===== Lime Hero ===== -->
