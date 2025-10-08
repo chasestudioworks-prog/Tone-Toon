@@ -206,3 +206,13 @@ if (document.readyState === 'loading') {
   if (document.querySelector('#pricing')) applyPricingFromConfig();
 }
 
+// ===== Mobile hamburger menu toggle =====
+(() => {
+  const header = document.querySelector(".site-header");
+  const toggle = document.querySelector(".menu-toggle");
+  if (!header || !toggle) return;
+
+  toggle.addEventListener("click", () => {
+    header.classList.toggle("nav-open");
+  });
+})();
