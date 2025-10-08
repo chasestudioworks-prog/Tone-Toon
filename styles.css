@@ -34,12 +34,12 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
 
 /* Only change → bigger logo */
 .brand-logo{
-  height:90px;   /* logo larger than original */
+  height:100px;   /* logo larger than original */
   width:auto;
   display:block;
 }
 @media (max-width:768px){
-  .brand-logo{ height:70px; }
+  .brand-logo{ height:80px; }
 }
 
 /* Desktop nav (visible by default) */
