@@ -6,12 +6,10 @@
   --lime-dark:#6bb52a;
   --lime-wash:#a6e664;
   --cream:#F4E6C6;
-  --sage:#6E896A; --green:#325434; --ink:#0F0F0D;
+  --sage:#6E896A; 
+  --green:#325434; 
+  --ink:#0F0F0D;
   --ring: color-mix(in srgb, var(--orange) 55%, white);
-
-  /* Logo size only — change these if needed */
-  --logo-h-desktop: 84px;
-  --logo-h-mobile:  64px;
 }
 
 /* Base */
@@ -21,42 +19,57 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
 
 /* ===== Header (desktop shows full nav, mobile shows hamburger) ===== */
 .site-header{
-  position:sticky; top:0; z-index:50;
-  display:flex; align-items:center; justify-content:space-between;
-  /* Back to tighter padding so the bar isn't tall */
-  padding:.6rem 1.1rem;
+  position:sticky; 
+  top:0; 
+  z-index:50;
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between;
+  padding:.5rem 1.1rem;   /* original padding restored */
   background:var(--lime);
   transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
-.header-left{ display:flex; align-items:center; gap:.5rem; flex:0 0 auto; }
-.brand{ display:inline-flex; align-items:center; text-decoration:none; flex:0 0 auto; }
+.header-left{ display:flex; align-items:center; gap:.5rem }
+.brand{ display:inline-flex; align-items:center; text-decoration:none }
 
-/* Only change: bigger logo (no extra min-height) */
-.header-left .brand .brand-logo{
-  height: var(--logo-h-desktop) !important;
-  width: auto !important;
-  display: block;
+/* Only change → bigger logo */
+.brand-logo{
+  height:90px;   /* logo larger than original */
+  width:auto;
+  display:block;
 }
 @media (max-width:768px){
-  .header-left .brand .brand-logo{ height: var(--logo-h-mobile) !important; }
+  .brand-logo{ height:70px; }
 }
 
 /* Desktop nav (visible by default) */
 #site-nav{ display:flex; gap:1rem; }
-#site-nav a{ text-decoration:none; color:var(--ink); font-weight:700; opacity:.92; font-family:"Space Mono", ui-monospace, monospace; }
+#site-nav a{
+  text-decoration:none; 
+  color:var(--ink); 
+  font-weight:700; 
+  opacity:.92; 
+  font-family:"Space Mono", ui-monospace, monospace;
+}
 #site-nav a:hover{ opacity:1; color:var(--green) }
 
 /* Hamburger hidden on desktop */
 .menu-toggle{
-  display:none; background:none; border:none; cursor:pointer;
-  padding:.25rem; flex-direction:column; gap:4px; align-items:center; justify-content:center;
+  display:none; 
+  background:none; 
+  border:none; 
+  cursor:pointer;
+  padding:.25rem; 
+  flex-direction:column; 
+  gap:4px; 
+  align-items:center; 
+  justify-content:center;
 }
 .menu-toggle .bar{ width:26px; height:3px; border-radius:2px; background:var(--ink); }
 
 /* Mobile styles */
 @media (max-width:768px){
   .menu-toggle{ display:flex }
-  /* hide desktop nav until opened */
   #site-nav{
     position:absolute; top:100%; left:0; width:100%;
     background:var(--cream);
@@ -68,7 +81,6 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
   .site-header.nav-open #site-nav{ max-height:420px; padding:.4rem 0 }
   #site-nav a{ display:block; width:100%; text-align:center; padding:.8rem 1rem; border-bottom:1px dashed color-mix(in srgb, var(--green) 25%, transparent) }
   #site-nav a:last-child{ border-bottom:none }
-  /* hamburger X animation */
   .site-header.nav-open .menu-toggle .bar:nth-child(1){ transform:translateY(7px) rotate(45deg) }
   .site-header.nav-open .menu-toggle .bar:nth-child(2){ opacity:0 }
   .site-header.nav-open .menu-toggle .bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg) }
@@ -200,90 +212,30 @@ body.page-ready .fade-c{ opacity:1; transform:none; transition:opacity .8s cubic
   border-radius:50%; object-fit:cover;
 }
 
-/* ===== Lightbox ===== */
-.lightbox{ position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .2s ease }
-.lightbox.is-open{ opacity:1; pointer-events:auto }
-.lightbox__backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.55) }
-.lightbox__dialog{
-  position:relative; z-index:1; max-width:min(92vw,1200px); max-height:90vh;
-  background:#fff; border-radius:16px; padding:1rem 1rem 1.1rem;
-  border:3px solid color-mix(in srgb, var(--green) 24%, black);
-  box-shadow:0 20px 80px rgba(0,0,0,.55);
-  display:flex; flex-direction:column; gap:.75rem;
-}
-.lightbox__close{ position:absolute; right:.6rem; top:.4rem; width:36px; height:36px; border-radius:50%; border:2px solid #0002; background:#fff; font-size:22px; line-height:1; cursor:pointer; box-shadow:3px 4px 0 rgba(0,0,0,.25) }
-#lightbox-img{ width:100%; height:65vh; object-fit:contain; background:#fafafa; border-radius:10px }
-#lightbox-caption{ color:#3f4338; padding:0 .25rem }
-.lightbox__actions{ display:flex; gap:.6rem; flex-wrap:wrap; justify-content:flex-end }
-
-/* ===== Pricing tables ===== */
-#pricing.tt-section { padding: min(6vw, 48px) 0; }
-#pricing .tt-container { width: min(1100px, 92%); margin: 0 auto; }
-#pricing .tt-header { margin-bottom: 10px; }
-#pricing .tt-hl { margin: 0; font-size: clamp(1.6rem, 1rem + 2.2vw, 2.2rem); }
-#pricing .tt-sub { opacity: .8; margin: .2rem 0 1.1rem; }
-#pricing .tt-card { background: var(--card-bg, rgba(255,255,255,.06)); border: 1px solid rgba(0,0,0,.08); border-radius: 16px; padding: clamp(16px, 2vw, 24px); margin: 18px 0; backdrop-filter: blur(6px) }
-#pricing .tt-card.tt-accent { border-color: rgba(255,165,0,.35); box-shadow: 0 6px 24px rgba(255,165,0,.12) }
-#pricing .tt-card.tt-soft { opacity: .98 }
-#pricing .tt-title { margin: 0 0 10px; font-size: clamp(1.15rem, .9rem + 1vw, 1.5rem) }
-#pricing .tt-tablewrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.08) }
-#pricing .tt-table { width: 100%; border-collapse: collapse; font-size: clamp(.92rem, .86rem + .2vw, 1rem) }
-#pricing .tt-table th, #pricing .tt-table td { padding: 12px 14px; text-align: left; vertical-align: top }
-#pricing .tt-table thead th { position: sticky; top: 0; background: var(--table-head, rgba(0,0,0,.06)); backdrop-filter: blur(4px) }
-#pricing .tt-table tbody tr:nth-child(odd) { background: rgba(0,0,0,.03) }
-#pricing .tt-table tbody tr:hover { background: rgba(0,0,0,.06) }
-#pricing .tt-muted { opacity: .75; margin-top: 8px }
-#pricing .tt-list { margin: 8px 0 0 18px; line-height: 1.6 }
-#pricing .tt-tagline { margin-top: 10px; font-style: italic; opacity: .85 }
-
-/* ===== Commission Form (restored) ===== */
+/* ===== Commission Form (original look) ===== */
 form{
+  margin-top:1.5rem;
   background:#fff;
-  padding:1.5rem;
-  border-radius:18px;
-  border:2px solid color-mix(in srgb, var(--green) 16%, transparent);
-  box-shadow:6px 8px 0 color-mix(in srgb, var(--green) 18%, black);
-  max-width:640px;
+  padding:1rem 1.2rem;
+  border-radius:20px;
+  border:3px solid color-mix(in srgb, var(--green) 25%, black);
+  box-shadow:8px 10px 0 color-mix(in srgb, var(--green) 25%, black);
+  max-width:540px;
 }
-form label{ display:block; margin:.75rem 0 .35rem; font-weight:800; color:var(--ink) }
+form label{ display:block; margin:.6rem 0 .25rem; font-weight:700 }
 form input, form select, form textarea{
   width:100%;
-  padding:.7rem .85rem;
-  border-radius:14px;
-  border:2px solid color-mix(in srgb, var(--green) 16%, transparent);
-  background:#fff; color:var(--ink)
+  padding:.5rem .75rem;
+  border:2px solid color-mix(in srgb, var(--green) 20%, transparent);
+  border-radius:12px;
+  font-size:1rem;
 }
-form textarea{ min-height:140px }
-form input:focus, form select:focus, form textarea:focus{ outline:3px solid var(--ring) }
-form button{ margin-top:.5rem }
+form textarea{ min-height:120px }
+form button{ margin-top:.75rem }
 
-/* Responsive tweaks */
-@media (max-width:980px){
-  #work .gallery img{ height:300px }
-  .commission-card img{ height:260px }
-  .puck{ width:130px; height:130px }
-}
+/* ===== Responsive tweaks ===== */
 @media (max-width:640px){
-  .site-header { padding:.55rem 1rem }
+  .site-header { padding:.4rem 1rem }
   section { padding:2rem 1rem }
   h2 { font-size: clamp(1.6rem, 6vw, 2rem); border-bottom-width:6px }
-  .hero--limewashed { min-height:82vh }
-  #work .gallery { gap:.75rem }
-  #work .gallery img { height:220px }
-  .commission-grid { gap:.75rem }
-  .commission-card img { height:200px }
-  .puck { width:110px; height:110px }
-  #pricing .tt-card { padding:14px; margin:14px 0 }
-  #pricing .tt-table th, #pricing .tt-table td { padding:10px 12px }
-  #pricing .tt-hl { font-size: clamp(1.3rem, 5vw, 1.6rem) }
-  #pricing .tt-title { font-size: 1.05rem }
-  #pricing .tt-tablewrap { border-radius:10px }
-}
-@media (max-width:420px){
-  #work .gallery img { height:200px }
-  .commission-card img { height:180px }
-  .puck { width:100px; height:100px }
-}
-@media (prefers-reduced-motion:reduce){
-  *{ transition:none !important; animation:none !important; scroll-behavior:auto !important }
 }
