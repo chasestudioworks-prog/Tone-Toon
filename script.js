@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (y) y.textContent = new Date().getFullYear();
 });
 
-// Toggle lime header color at very top (restored)
+// Toggle lime header color at very top
 const setTopClass = () => {
   if (window.scrollY < 10) document.body.classList.add("at-top");
   else document.body.classList.remove("at-top");
@@ -22,6 +22,7 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 
+// include sections and work/pricing cards
 document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
   el.classList.add("reveal");
   io.observe(el);
@@ -53,10 +54,8 @@ document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
   const track = reel.querySelector(".track");
 
   let isDown = false, startX = 0, scrollLeft = 0;
-  const pageX = (e) => (e.pageX ?? e.touches?.[0]?.pageX ?? 0);
-
-  const start = (e) => { isDown = true; startX = pageX(e); scrollLeft = reel.scrollLeft; };
-  const move  = (e) => { if (!isDown) return; reel.scrollLeft = scrollLeft - (pageX(e) - startX); };
+  const start = (e) => { isDown = true; startX = (e.pageX || e.touches?.[0]?.pageX || 0); scrollLeft = reel.scrollLeft; };
+  const move  = (e) => { if (!isDown) return; const x = (e.pageX || e.touches?.[0]?.pageX || 0); reel.scrollLeft = scrollLeft - (x - startX); };
   const end   = () => { isDown = false; };
 
   reel.addEventListener("mousedown", start);
@@ -74,7 +73,7 @@ document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
   reel.addEventListener("touchend", play,   { passive:true });
 })();
 
-// Lightbox
+// Lightbox: enlarge Poster Wall images
 (() => {
   const modal = document.getElementById("lightbox");
   const imgEl = document.getElementById("lightbox-img");
@@ -119,31 +118,34 @@ document.querySelectorAll("section, .card, .tt-card").forEach((el) => {
 // Kick off staggered hero fade-ins
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => document.body.classList.add("page-ready"));
-  console.log("TT build v30 loaded");
+  console.log("TT build v18 loaded");
 });
 
-/* ===== Mobile Menu Toggle (hamburger only on mobile) ===== */
+// ===== Mobile hamburger toggle =====
 (() => {
   const header = document.querySelector('[data-mobile-nav]');
   const btn = header?.querySelector('.menu-toggle');
-  const nav = header?.querySelector('#site-nav');
+  const nav = header?.querySelector('nav');
   if (!header || !btn || !nav) return;
 
-  const toggleMenu = () => {
-    header.classList.toggle('nav-open');
-    btn.setAttribute('aria-expanded', header.classList.contains('nav-open'));
-  };
-
-  btn.addEventListener('click', toggleMenu);
-
-  // Close when a link is tapped
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  const close = () => {
     header.classList.remove('nav-open');
     btn.setAttribute('aria-expanded', 'false');
-  }));
+  };
+  const open = () => {
+    header.classList.add('nav-open');
+    btn.setAttribute('aria-expanded', 'true');
+  };
 
-  // Force-close when resizing to desktop
+  btn.addEventListener('click', () => {
+    header.classList.contains('nav-open') ? close() : open();
+  });
+
+  // Close when a link is tapped
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+  // Reset if resizing to desktop
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) header.classList.remove('nav-open');
+    if (window.innerWidth > 768) close();
   }, { passive:true });
 })();
