@@ -206,13 +206,31 @@ if (document.readyState === 'loading') {
   if (document.querySelector('#pricing')) applyPricingFromConfig();
 }
 
-// ===== Mobile hamburger menu toggle =====
+// ===== Mobile menu toggle (clean slide) =====
 (() => {
-  const header = document.querySelector(".site-header");
-  const toggle = document.querySelector(".menu-toggle");
-  if (!header || !toggle) return;
+  const header = document.querySelector('[data-mobile-nav]');
+  const btn = header?.querySelector('.menu-toggle');
+  const nav = header?.querySelector('nav');
+  if (!header || !btn || !nav) return;
 
-  toggle.addEventListener("click", () => {
-    header.classList.toggle("nav-open");
+  const close = () => {
+    header.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  };
+  const open = () => {
+    header.classList.add('nav-open');
+    btn.setAttribute('aria-expanded', 'true');
+  };
+
+  btn.addEventListener('click', () => {
+    header.classList.contains('nav-open') ? close() : open();
   });
+
+  // Close when a link is tapped
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+  // Reset if resizing to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) close();
+  }, { passive:true });
 })();
