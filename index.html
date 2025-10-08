@@ -54,13 +54,13 @@
 </head>
 <body class="at-top">
   
-  <!-- Header -->
-<header class="site-header fade-a">
+<!-- Header -->
+<header class="site-header fade-a" data-mobile-nav>
   <h1 class="brand">🎨 TONE & TOON</h1>
 
-  <!-- Hamburger button (mobile) -->
-  <button class="menu-toggle" aria-label="Toggle menu">
-    ☰
+  <!-- Hamburger button -->
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
   </button>
 
   <div class="header-arch" aria-hidden="true">
@@ -72,7 +72,7 @@
     </svg>
   </div>
 
-  <nav class="pc-font">
+  <nav id="site-nav" class="pc-font">
     <a href="#work">Work</a>
     <a href="#commissions">Past Commissions</a>
     <a href="#poster-wall">Poster Wall</a>
@@ -81,6 +81,7 @@
     <a href="#contact">Contact</a>
   </nav>
 </header>
+
 
 
   <main>
