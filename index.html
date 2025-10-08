@@ -5,88 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
-  <!-- FIXED: rel must be stylesheet -->
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=17" />
-
-  <!-- Scoped styles for the Pricing section + header logo sizing -->
-  <style>
-    /* ---- Header logo ---- */
-    .brand { display: inline-flex; align-items: center; text-decoration: none; }
-    .brand-logo { height: 52px; width: auto; display: block; }
-    @media (min-width: 768px) { .brand-logo { height: 68px; } }
-
-    /* ---- Tone & Toon Pricing (scoped) ---- */
-    #pricing.tt-section { padding: min(6vw, 48px) 0; }
-    #pricing .tt-container { width: min(1100px, 92%); margin: 0 auto; }
-    #pricing .tt-header { margin-bottom: 10px; }
-    #pricing .tt-hl { margin: 0; font-size: clamp(1.6rem, 1rem + 2.2vw, 2.2rem); }
-    #pricing .tt-sub { opacity: .8; margin: .2rem 0 1.1rem; }
-
-    #pricing .tt-card {
-      background: var(--card-bg, rgba(255,255,255,.06));
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 16px;
-      padding: clamp(16px, 2vw, 24px);
-      margin: 18px 0;
-      backdrop-filter: blur(6px);
-    }
-    #pricing .tt-card.tt-accent { border-color: rgba(255,165,0,.35); box-shadow: 0 6px 24px rgba(255,165,0,.12); }
-    #pricing .tt-card.tt-soft { opacity: .98; }
-
-    #pricing .tt-title { margin: 0 0 10px; font-size: clamp(1.15rem, .9rem + 1vw, 1.5rem); }
-
-    #pricing .tt-tablewrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); }
-    #pricing .tt-table { width: 100%; border-collapse: collapse; font-size: clamp(.92rem, .86rem + .2vw, 1rem); }
-    #pricing .tt-table th,
-    #pricing .tt-table td { padding: 12px 14px; text-align: left; vertical-align: top; }
-    #pricing .tt-table thead th { position: sticky; top: 0; background: var(--table-head, rgba(0,0,0,.06)); backdrop-filter: blur(4px); }
-    #pricing .tt-table tbody tr:nth-child(odd) { background: rgba(0,0,0,.03); }
-    #pricing .tt-table tbody tr:hover { background: rgba(0,0,0,.06); }
-
-    #pricing .tt-muted { opacity: .75; margin-top: 8px; }
-    #pricing .tt-list { margin: 8px 0 0 18px; line-height: 1.6; }
-    /* FIXED: font-style (was font-) */
-    #pricing .tt-tagline { margin-top: 10px; font-style: italic; opacity: .85; }
-
-    /* Dark-friendly tweaks */
-    @media (prefers-color-scheme: dark) {
-      #pricing .tt-card { border-color: rgba(255,255,255,.12); }
-      #pricing .tt-tablewrap { border-color: rgba(255,255,255,.12); }
-      #pricing .tt-table thead th { background: rgba(255,255,255,.06); }
-      #pricing .tt-table tbody tr:nth-child(odd) { background: rgba(255,255,255,.03); }
-      #pricing .tt-table tbody tr:hover { background: rgba(255,255,255,.06); }
-    }
-  </style> <!-- FIXED: proper closing tag -->
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css?v=18" />
 </head>
+
 <body class="at-top">
-  
-<!-- Header -->
-<header class="site-header fade-a" data-mobile-nav>
-  <div class="header-left">
-    <!-- UPDATED: Use your transparent PNG logo -->
-    <!-- If your file is named 'Logo Final.png', keep the %20 for the space -->
-    <a href="#" class="brand" aria-label="Tone & Toon Home">
-      <img src="assets/Logo%20Final.png" alt="Tone & Toon Logo" class="brand-logo" />
-    </a>
-  </div>
+  <!-- ===== Header ===== -->
+  <header class="site-header fade-a" data-mobile-nav>
+    <div class="header-left">
+      <h1 class="brand">🎨 TONE & TOON</h1>
+    </div>
 
-  <!-- Hamburger button on the far right -->
-  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
+    <!-- Hamburger button (phones) -->
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
 
-  <nav id="site-nav" class="pc-font">
-    <a href="#work">Work</a>
-    <a href="#commissions">Past Commissions</a>
-    <a href="#poster-wall">Poster Wall</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#commission">Commission</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <nav id="site-nav" class="pc-font">
+      <a href="#work">Work</a>
+      <a href="#commissions">Past Commissions</a>
+      <a href="#poster-wall">Poster Wall</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#commission">Commission</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
   <main>
     <!-- ===== Lime Hero ===== -->
@@ -128,7 +74,7 @@
 
       <div class="explore-more">
         <a class="btn" href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F" target="_blank" rel="noopener noreferrer">
-          Explore More Works → 
+          Explore More Works →
         </a>
       </div>
     </section>
@@ -227,7 +173,7 @@
       </div>
     </section>
 
-    <!-- ===== Pricing (UPDATED) ===== -->
+    <!-- ===== Pricing ===== -->
     <section id="pricing" class="tt-section">
       <div class="tt-container">
         <header class="tt-header">
@@ -241,12 +187,7 @@
           <div class="tt-tablewrap">
             <table class="tt-table">
               <thead>
-                <tr>
-                  <th>Size</th>
-                  <th>Dimensions (approx.)</th>
-                  <th>Base Price</th>
-                  <th>Details</th>
-                </tr>
+                <tr><th>Size</th><th>Dimensions (approx.)</th><th>Base Price</th><th>Details</th></tr>
               </thead>
               <tbody>
                 <tr><td>Small</td><td>8&quot; × 10&quot;</td><td>$120 CAD</td><td>Simple portrait or single subject</td></tr>
@@ -265,11 +206,7 @@
           <div class="tt-tablewrap">
             <table class="tt-table">
               <thead>
-                <tr>
-                  <th>Item Type</th>
-                  <th>Base Price</th>
-                  <th>Customization Details</th>
-                </tr>
+                <tr><th>Item Type</th><th>Base Price</th><th>Customization Details</th></tr>
               </thead>
               <tbody>
                 <tr><td>Single Design</td><td>$30–$50 CAD</td><td>1 small logo or illustration</td></tr>
@@ -278,7 +215,7 @@
               </tbody>
             </table>
           </div>
-          <p class="tt-muted">Price varies with material, color count, and print type (painted, transfer, or screen print).</p>
+          <p class="tt-muted">Price varies with material, color count, and print type.</p>
         </article>
 
         <!-- Other / Special Requests -->
@@ -287,15 +224,11 @@
           <div class="tt-tablewrap">
             <table class="tt-table">
               <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Pricing</th>
-                  <th>Example</th>
-                </tr>
+                <tr><th>Category</th><th>Pricing</th><th>Example</th></tr>
               </thead>
               <tbody>
                 <tr><td>Accessories</td><td>Discuss</td><td>Phone cases, book covers, stationery sets</td></tr>
-                <tr><td>Digital Artwork</td><td>From $80 CAD</td><td>Custom digital art piece (e.g. logos, wallpapers, profile images)</td></tr>
+                <tr><td>Digital Artwork</td><td>From $80 CAD</td><td>Custom digital pop-art piece</td></tr>
                 <tr><td>Bulk / Collabs</td><td>Discounted</td><td>Brand or event projects</td></tr>
               </tbody>
             </table>
@@ -308,11 +241,7 @@
           <div class="tt-tablewrap">
             <table class="tt-table">
               <thead>
-                <tr>
-                  <th>Rush Level</th>
-                  <th>Delivery Time</th>
-                  <th>Extra Cost</th>
-                </tr>
+                <tr><th>Rush Level</th><th>Delivery Time</th><th>Extra Cost</th></tr>
               </thead>
               <tbody>
                 <tr><td>Standard</td><td>2–4 weeks</td><td>No extra charge</td></tr>
@@ -338,41 +267,39 @@
       </div>
     </section>
 
-   <!-- ===== Commission form ===== -->
-<section id="commission">
-  <h2>Request a Commission</h2>
-  <form action="https://formspree.io/f/mandkyor" method="POST">
-    <label>Your Name: <input type="text" name="name" required></label><br>
-    <label>Email: <input type="email" name="email" required></label><br>
+    <!-- ===== Commission form ===== -->
+    <section id="commission">
+      <h2>Request a Commission</h2>
+      <form action="https://formspree.io/f/mandkyor" method="POST">
+        <label>Your Name: <input type="text" name="name" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
 
-    <!-- UPDATED: Size / Type -->
-    <label>Size / Type:
-      <select name="size" required>
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-        <option>Extra-Large</option>
-        <option>Fabric/Apparel</option>
-        <option>Special Request</option>
-      </select>
-    </label><br>
+        <label>Size / Type:
+          <select name="size" required>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>Extra-Large</option>
+            <option>Fabric/Apparel</option>
+            <option>Special Request</option>
+          </select>
+        </label><br>
 
-    <!-- NEW: Rush Order -->
-    <label>Rush Order:
-      <select name="rush" required>
-        <option>Standard</option>
-        <option>Express</option>
-        <option>Priority</option>
-      </select>
-    </label><br>
+        <label>Rush Order:
+          <select name="rush" required>
+            <option>Standard</option>
+            <option>Express</option>
+            <option>Priority</option>
+          </select>
+        </label><br>
 
-    <label>Details:<br>
-      <textarea name="details" rows="5" placeholder="Tell me your idea, colors, references, deadlines, etc."></textarea>
-    </label><br>
+        <label>Details:<br>
+          <textarea name="details" rows="5" placeholder="Tell me your idea, colors, references, deadlines, etc."></textarea>
+        </label><br>
 
-    <button type="submit" class="btn pop">Send Request</button>
-  </form>
-</section>
+        <button type="submit" class="btn pop">Send Request</button>
+      </form>
+    </section>
 
     <!-- ===== Contact ===== -->
     <section id="contact">
@@ -400,6 +327,7 @@
     </figure>
   </div>
 
-<script src="script.js?v=17"></script>
+  <!-- Scripts -->
+  <script src="script.js?v=18"></script>
 </body>
 </html>
