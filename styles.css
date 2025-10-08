@@ -31,10 +31,11 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
 
 /* Logo styling */
 .site-logo img.logo-img {
-  height: 60px; /* adjust size as needed */
+  height: 120px; /* adjust size as needed */
   width: auto;
   display: block;
 }
+
 
 /* PC vibe */
 .pc-font{ font-family:"Space Mono", ui-monospace, monospace; letter-spacing:.06em }
