@@ -5,22 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tone & Toon — Art by Chase Tone</title>
   <meta name="description" content="Pop-art, adventure, and comic-inspired paintings. Commissions open." />
+  <!-- FIXED: rel must be stylesheet -->
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=30" />
+  <link rel="stylesheet" href="styles.css?v=17" />
+
+  <!-- Scoped styles for the Pricing section + header logo sizing -->
+  <style>
+    /* ---- Header logo ---- */
+    .brand { display: inline-flex; align-items: center; text-decoration: none; }
+    .brand-logo { height: 52px; width: auto; display: block; }
+    @media (min-width: 768px) { .brand-logo { height: 68px; } }
+
+    /* ---- Tone & Toon Pricing (scoped) ---- */
+    #pricing.tt-section { padding: min(6vw, 48px) 0; }
+    #pricing .tt-container { width: min(1100px, 92%); margin: 0 auto; }
+    #pricing .tt-header { margin-bottom: 10px; }
+    #pricing .tt-hl { margin: 0; font-size: clamp(1.6rem, 1rem + 2.2vw, 2.2rem); }
+    #pricing .tt-sub { opacity: .8; margin: .2rem 0 1.1rem; }
+
+    #pricing .tt-card {
+      background: var(--card-bg, rgba(255,255,255,.06));
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding: clamp(16px, 2vw, 24px);
+      margin: 18px 0;
+      backdrop-filter: blur(6px);
+    }
+    #pricing .tt-card.tt-accent { border-color: rgba(255,165,0,.35); box-shadow: 0 6px 24px rgba(255,165,0,.12); }
+    #pricing .tt-card.tt-soft { opacity: .98; }
+
+    #pricing .tt-title { margin: 0 0 10px; font-size: clamp(1.15rem, .9rem + 1vw, 1.5rem); }
+
+    #pricing .tt-tablewrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); }
+    #pricing .tt-table { width: 100%; border-collapse: collapse; font-size: clamp(.92rem, .86rem + .2vw, 1rem); }
+    #pricing .tt-table th,
+    #pricing .tt-table td { padding: 12px 14px; text-align: left; vertical-align: top; }
+    #pricing .tt-table thead th { position: sticky; top: 0; background: var(--table-head, rgba(0,0,0,.06)); backdrop-filter: blur(4px); }
+    #pricing .tt-table tbody tr:nth-child(odd) { background: rgba(0,0,0,.03); }
+    #pricing .tt-table tbody tr:hover { background: rgba(0,0,0,.06); }
+
+    #pricing .tt-muted { opacity: .75; margin-top: 8px; }
+    #pricing .tt-list { margin: 8px 0 0 18px; line-height: 1.6; }
+    /* FIXED: font-style (was font-) */
+    #pricing .tt-tagline { margin-top: 10px; font-style: italic; opacity: .85; }
+
+    /* Dark-friendly tweaks */
+    @media (prefers-color-scheme: dark) {
+      #pricing .tt-card { border-color: rgba(255,255,255,.12); }
+      #pricing .tt-tablewrap { border-color: rgba(255,255,255,.12); }
+      #pricing .tt-table thead th { background: rgba(255,255,255,.06); }
+      #pricing .tt-table tbody tr:nth-child(odd) { background: rgba(255,255,255,.03); }
+      #pricing .tt-table tbody tr:hover { background: rgba(255,255,255,.06); }
+    }
+  </style> <!-- FIXED: proper closing tag -->
 </head>
 <body class="at-top">
-
-<!-- ===== Header ===== -->
+  
+<!-- Header -->
 <header class="site-header fade-a" data-mobile-nav>
   <div class="header-left">
+    <!-- UPDATED: Use your transparent PNG logo -->
+    <!-- If your file is named 'Logo Final.png', keep the %20 for the space -->
     <a href="#" class="brand" aria-label="Tone & Toon Home">
-      <!-- Use your transparent logo file here -->
-      <!-- If your real filename is "Logo Final.png", keep the %20 -->
       <img src="assets/Logo%20Final.png" alt="Tone & Toon Logo" class="brand-logo" />
     </a>
   </div>
 
-  <!-- Hamburger (mobile only; hidden on desktop via CSS) -->
+  <!-- Hamburger button on the far right -->
   <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
     <span class="bar"></span>
     <span class="bar"></span>
@@ -37,311 +88,318 @@
   </nav>
 </header>
 
-<main>
-  <!-- ===== Lime Hero ===== -->
-  <section class="hero hero--limewashed">
-    <div class="hero-content">
-      <h1 class="mega-pop fade-c">IMAGINE IT.<br />HANG IT.</h1>
-      <p class="tagline pc-font fade-a">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
+  <main>
+    <!-- ===== Lime Hero ===== -->
+    <section class="hero hero--limewashed">
+      <div class="hero-content">
+        <h1 class="mega-pop fade-c">IMAGINE IT.<br />HANG IT.</h1>
+        <p class="tagline pc-font fade-a">Custom paintings made from your ideas — bold, colorful, unforgettable.</p>
 
-      <div class="hero-cta pc-font fade-b">
-        <a class="btn pop" href="#work">🎨 Explore Work</a>
-        <a class="btn alt" href="#commission">💌 Request a Commission</a>
+        <div class="hero-cta pc-font fade-b">
+          <a class="btn pop" href="#work">🎨 Explore Work</a>
+          <a class="btn alt" href="#commission">💌 Request a Commission</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== Recent Work ===== -->
-  <section id="work">
-    <h2>Recent Work</h2>
-    <div class="gallery">
-      <a class="card" href="darthvader.html">
-        <figure>
-          <img src="assets/darthvader.paint.jpg" alt="Darth Vader painting" />
-          <figcaption>Darth Vader — Pop art with comic energy</figcaption>
-        </figure>
-      </a>
-      <a class="card" href="spongebob.html">
-        <figure>
-          <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
-          <figcaption>Spongebob — playful underwater love scene</figcaption>
-        </figure>
-      </a>
-      <a class="card" href="spiderman.html">
-        <figure>
-          <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
-          <figcaption>Spiderman &amp; Mary Jane — classic comic vibe</figcaption>
-        </figure>
-      </a>
-    </div>
-
-    <div class="explore-more">
-      <a class="btn" href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F" target="_blank" rel="noopener noreferrer">
-        Explore More Works → 
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== Past Commissions ===== -->
-  <section id="commissions">
-    <h2>Past Commissions</h2>
-    <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
-
-    <div class="commission-grid">
-      <figure class="commission-card rotate-1">
-        <img src="assets/Buzz.paint.jpg" alt="Buzz Lightyear jacket commission" />
-        <figcaption>
-          <span class="badge">Jacket</span>
-          <strong>Buzz Lightyear Back Graphic</strong>
-          <small>Acrylic on workwear</small>
-        </figcaption>
-      </figure>
-
-      <figure class="commission-card">
-        <img src="assets/Sunsetcommision.paint.jpg" alt="Sunset couple painting commission" />
-        <figcaption>
-          <span class="badge">Portrait</span>
-          <strong>Sunset Couple</strong>
-          <small>Warm gradient sky, soft silhouettes</small>
-        </figcaption>
-      </figure>
-
-      <figure class="commission-card rotate-2">
-        <img src="assets/sunsetcommision2.paint.jpg" alt="Silhouette couple sunset commission" />
-        <figcaption>
-          <span class="badge">Diptych</span>
-          <strong>Twilight Kiss (2-panel)</strong>
-          <small>Night-sky stars, comic edges</small>
-        </figcaption>
-      </figure>
-    </div>
-
-    <div class="commissions-cta">
-      <a class="btn" href="commissions.html">See More Past Commissions →</a>
-      <a class="btn alt" href="#commission">Start your commission</a>
-    </div>
-  </section>
-
-  <!-- ===== Poster Wall ===== -->
-  <section id="poster-wall">
-    <h2>Poster Wall</h2>
-    <p class="section-lead">A rolling strip of paintings — tap/drag to browse.</p>
-
-    <div class="poster-reel">
-      <div class="track">
-        <!-- SET A -->
-        <a class="puck" href="#"><img src="assets/bobafett.paint.jpg" alt="Boba Fett – pop-helmet canvas"></a>
-        <a class="puck" href="#"><img src="assets/donaldduck.paint.jpg" alt="Donald Duck retro comics cover"></a>
-        <a class="puck" href="#"><img src="assets/doodle.paint.jpg" alt="Big doodle collage painting"></a>
-        <a class="puck" href="#"><img src="assets/doodlepen.paint.jpg" alt="Marker doodle burst"></a>
-        <a class="puck" href="#"><img src="assets/doodlepen4.paint.jpg" alt="Colorful doodle poster"></a>
-        <a class="puck" href="#"><img src="assets/fuckoff.paint.jpg" alt="UNO reverse parody painting"></a>
-        <a class="puck" href="#"><img src="assets/jordannike.paint.jpg" alt="Air Jordan drip painting"></a>
-        <a class="puck" href="#"><img src="assets/ketchup.paint.jpg" alt="Ketchup bottle pop art"></a>
-        <a class="puck" href="#"><img src="assets/mrkrab.paint.jpg" alt="Mr. Krabs with hearts texture"></a>
-        <a class="puck" href="#"><img src="assets/spongebobdoodle3.paint.jpg" alt="Spongebob doodle swarm"></a>
-        <a class="puck" href="#"><img src="assets/burger.paint.jpg" alt="Burger & fries pop painting"></a>
-        <a class="puck" href="#"><img src="assets/customcase.paint.jpg" alt="Hand-painted case"></a>
-        <a class="puck" href="#"><img src="assets/customwallet.paint.jpg" alt="Pop-art wallet"></a>
-        <a class="puck" href="#"><img src="assets/jacket5.paint.jpg" alt="Garfield jacket back art"></a>
-        <a class="puck" href="#"><img src="assets/mandm.paint.jpg" alt="M&amp;M’s retro ad canvas"></a>
-        <a class="puck" href="#"><img src="assets/portrait.paint.jpg" alt="Color geometric portrait"></a>
-        <a class="puck" href="#"><img src="assets/rose.paint.jpg" alt="Rose textured painting"></a>
-        <a class="puck" href="#"><img src="assets/sunset.paint.JPG" alt="Sunset landscape painting"></a>
-        <a class="puck" href="#"><img src="assets/spidermandoodle.paint.jpg" alt="Spider-Man page recreation"></a>
-        <a class="puck" href="#"><img src="assets/spongebobdoodle.paint.JPG" alt="Spongebob character sheet"></a>
-
-        <!-- SET B (duplicate for seamless loop) -->
-        <a class="puck" href="#"><img src="assets/bobafett.paint.jpg" alt="Boba Fett – pop-helmet canvas"></a>
-        <a class="puck" href="#"><img src="assets/donaldduck.paint.jpg" alt="Donald Duck retro comics cover"></a>
-        <a class="puck" href="#"><img src="assets/doodle.paint.jpg" alt="Big doodle collage painting"></a>
-        <a class="puck" href="#"><img src="assets/doodlepen.paint.jpg" alt="Marker doodle burst"></a>
-        <a class="puck" href="#"><img src="assets/doodlepen4.paint.jpg" alt="Colorful doodle poster"></a>
-        <a class="puck" href="#"><img src="assets/fuckoff.paint.jpg" alt="UNO reverse parody painting"></a>
-        <a class="puck" href="#"><img src="assets/jordannike.paint.jpg" alt="Air Jordan drip painting"></a>
-        <a class="puck" href="#"><img src="assets/ketchup.paint.jpg" alt="Ketchup bottle pop art"></a>
-        <a class="puck" href="#"><img src="assets/mrkrab.paint.jpg" alt="Mr. Krabs with hearts texture"></a>
-        <a class="puck" href="#"><img src="assets/spongebobdoodle3.paint.jpg" alt="Spongebob doodle swarm"></a>
-        <a class="puck" href="#"><img src="assets/burger.paint.jpg" alt="Burger & fries pop painting"></a>
-        <a class="puck" href="#"><img src="assets/customcase.paint.jpg" alt="Hand-painted case"></a>
-        <a class="puck" href="#"><img src="assets/customwallet.paint.jpg" alt="Pop-art wallet"></a>
-        <a class="puck" href="#"><img src="assets/jacket5.paint.jpg" alt="Garfield jacket back art"></a>
-        <a class="puck" href="#"><img src="assets/mandm.paint.jpg" alt="M&amp;M’s retro ad canvas"></a>
-        <a class="puck" href="#"><img src="assets/portrait.paint.jpg" alt="Color geometric portrait"></a>
-        <a class="puck" href="#"><img src="assets/rose.paint.jpg" alt="Rose textured painting"></a>
-        <a class="puck" href="#"><img src="assets/sunset.paint.JPG" alt="Sunset landscape painting"></a>
-        <a class="puck" href="#"><img src="assets/spidermandoodle.paint.jpg" alt="Spider-Man page recreation"></a>
-        <a class="puck" href="#"><img src="assets/spongebobdoodle.paint.JPG" alt="Spongebob character sheet"></a>
+    <!-- ===== Recent Work ===== -->
+    <section id="work">
+      <h2>Recent Work</h2>
+      <div class="gallery">
+        <a class="card" href="darthvader.html">
+          <figure>
+            <img src="assets/darthvader.paint.jpg" alt="Darth Vader painting" />
+            <figcaption>Darth Vader — Pop art with comic energy</figcaption>
+          </figure>
+        </a>
+        <a class="card" href="spongebob.html">
+          <figure>
+            <img src="assets/spongebob.paint.jpg" alt="Spongebob painting" />
+            <figcaption>Spongebob — playful underwater love scene</figcaption>
+          </figure>
+        </a>
+        <a class="card" href="spiderman.html">
+          <figure>
+            <img src="assets/spiderman.paint.jpg" alt="Spiderman painting" />
+            <figcaption>Spiderman &amp; Mary Jane — classic comic vibe</figcaption>
+          </figure>
+        </a>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== Pricing (tables) ===== -->
-  <section id="pricing" class="tt-section">
-    <div class="tt-container">
-      <header class="tt-header">
-        <h2 class="tt-hl">Tone &amp; Toon — Pricing Guide</h2>
-        <p class="tt-sub">Custom Pop-Art &amp; Cartoon Commissions</p>
-      </header>
+      <div class="explore-more">
+        <a class="btn" href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F" target="_blank" rel="noopener noreferrer">
+          Explore More Works → 
+        </a>
+      </div>
+    </section>
 
-      <article class="tt-card">
-        <h3 class="tt-title">Canvas Paintings</h3>
-        <div class="tt-tablewrap">
-          <table class="tt-table">
-            <thead>
-              <tr>
-                <th>Size</th>
-                <th>Dimensions (approx.)</th>
-                <th>Base Price</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Small</td><td>8&quot; × 10&quot;</td><td>$120 CAD</td><td>Simple portrait or single subject</td></tr>
-              <tr><td>Medium</td><td>12&quot; × 16&quot;</td><td>$180 CAD</td><td>Up to 2 subjects or detailed background</td></tr>
-              <tr><td>Large</td><td>18&quot; × 24&quot;</td><td>$250 CAD</td><td>Complex scenes, full backgrounds</td></tr>
-              <tr><td>Extra-Large</td><td>24&quot; × 36&quot;+</td><td>$350+ CAD</td><td>Statement pieces or multi-character compositions</td></tr>
-            </tbody>
-          </table>
+    <!-- ===== Past Commissions ===== -->
+    <section id="commissions">
+      <h2>Past Commissions</h2>
+      <p class="section-lead">Real client requests — jackets, portraits, and romantic scenes.</p>
+
+      <div class="commission-grid">
+        <figure class="commission-card rotate-1">
+          <img src="assets/Buzz.paint.jpg" alt="Buzz Lightyear jacket commission" />
+          <figcaption>
+            <span class="badge">Jacket</span>
+            <strong>Buzz Lightyear Back Graphic</strong>
+            <small>Acrylic on workwear</small>
+          </figcaption>
+        </figure>
+
+        <figure class="commission-card">
+          <img src="assets/Sunsetcommision.paint.jpg" alt="Sunset couple painting commission" />
+          <figcaption>
+            <span class="badge">Portrait</span>
+            <strong>Sunset Couple</strong>
+            <small>Warm gradient sky, soft silhouettes</small>
+          </figcaption>
+        </figure>
+
+        <figure class="commission-card rotate-2">
+          <img src="assets/sunsetcommision2.paint.jpg" alt="Silhouette couple sunset commission" />
+          <figcaption>
+            <span class="badge">Diptych</span>
+            <strong>Twilight Kiss (2-panel)</strong>
+            <small>Night-sky stars, comic edges</small>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="commissions-cta">
+        <a class="btn" href="commissions.html">See More Past Commissions →</a>
+        <a class="btn alt" href="#commission">Start your commission</a>
+      </div>
+    </section>
+
+    <!-- ===== Poster Wall (click to enlarge) ===== -->
+    <section id="poster-wall">
+      <h2>Poster Wall</h2>
+      <p class="section-lead">A rolling strip of paintings — tap/drag to browse.</p>
+
+      <div class="poster-reel">
+        <div class="track">
+          <!-- SET A -->
+          <a class="puck" href="#"><img src="assets/bobafett.paint.jpg" alt="Boba Fett – pop-helmet canvas"></a>
+          <a class="puck" href="#"><img src="assets/donaldduck.paint.jpg" alt="Donald Duck retro comics cover"></a>
+          <a class="puck" href="#"><img src="assets/doodle.paint.jpg" alt="Big doodle collage painting"></a>
+          <a class="puck" href="#"><img src="assets/doodlepen.paint.jpg" alt="Marker doodle burst"></a>
+          <a class="puck" href="#"><img src="assets/doodlepen4.paint.jpg" alt="Colorful doodle poster"></a>
+          <a class="puck" href="#"><img src="assets/fuckoff.paint.jpg" alt="UNO reverse parody painting"></a>
+          <a class="puck" href="#"><img src="assets/jordannike.paint.jpg" alt="Air Jordan drip painting"></a>
+          <a class="puck" href="#"><img src="assets/ketchup.paint.jpg" alt="Ketchup bottle pop art"></a>
+          <a class="puck" href="#"><img src="assets/mrkrab.paint.jpg" alt="Mr. Krabs with hearts texture"></a>
+          <a class="puck" href="#"><img src="assets/spongebobdoodle3.paint.jpg" alt="Spongebob doodle swarm"></a>
+          <a class="puck" href="#"><img src="assets/burger.paint.jpg" alt="Burger & fries pop painting"></a>
+          <a class="puck" href="#"><img src="assets/customcase.paint.jpg" alt="Hand-painted case"></a>
+          <a class="puck" href="#"><img src="assets/customwallet.paint.jpg" alt="Pop-art wallet"></a>
+          <a class="puck" href="#"><img src="assets/jacket5.paint.jpg" alt="Garfield jacket back art"></a>
+          <a class="puck" href="#"><img src="assets/mandm.paint.jpg" alt="M&amp;M’s retro ad canvas"></a>
+          <a class="puck" href="#"><img src="assets/portrait.paint.jpg" alt="Color geometric portrait"></a>
+          <a class="puck" href="#"><img src="assets/rose.paint.jpg" alt="Rose textured painting"></a>
+          <a class="puck" href="#"><img src="assets/sunset.paint.JPG" alt="Sunset landscape painting"></a>
+          <a class="puck" href="#"><img src="assets/spidermandoodle.paint.jpg" alt="Spider-Man page recreation"></a>
+          <a class="puck" href="#"><img src="assets/spongebobdoodle.paint.JPG" alt="Spongebob character sheet"></a>
+
+          <!-- SET B (duplicate for seamless loop) -->
+          <a class="puck" href="#"><img src="assets/bobafett.paint.jpg" alt="Boba Fett – pop-helmet canvas"></a>
+          <a class="puck" href="#"><img src="assets/donaldduck.paint.jpg" alt="Donald Duck retro comics cover"></a>
+          <a class="puck" href="#"><img src="assets/doodle.paint.jpg" alt="Big doodle collage painting"></a>
+          <a class="puck" href="#"><img src="assets/doodlepen.paint.jpg" alt="Marker doodle burst"></a>
+          <a class="puck" href="#"><img src="assets/doodlepen4.paint.jpg" alt="Colorful doodle poster"></a>
+          <a class="puck" href="#"><img src="assets/fuckoff.paint.jpg" alt="UNO reverse parody painting"></a>
+          <a class="puck" href="#"><img src="assets/jordannike.paint.jpg" alt="Air Jordan drip painting"></a>
+          <a class="puck" href="#"><img src="assets/ketchup.paint.jpg" alt="Ketchup bottle pop art"></a>
+          <a class="puck" href="#"><img src="assets/mrkrab.paint.jpg" alt="Mr. Krabs with hearts texture"></a>
+          <a class="puck" href="#"><img src="assets/spongebobdoodle3.paint.jpg" alt="Spongebob doodle swarm"></a>
+          <a class="puck" href="#"><img src="assets/burger.paint.jpg" alt="Burger & fries pop painting"></a>
+          <a class="puck" href="#"><img src="assets/customcase.paint.jpg" alt="Hand-painted case"></a>
+          <a class="puck" href="#"><img src="assets/customwallet.paint.jpg" alt="Pop-art wallet"></a>
+          <a class="puck" href="#"><img src="assets/jacket5.paint.jpg" alt="Garfield jacket back art"></a>
+          <a class="puck" href="#"><img src="assets/mandm.paint.jpg" alt="M&amp;M’s retro ad canvas"></a>
+          <a class="puck" href="#"><img src="assets/portrait.paint.jpg" alt="Color geometric portrait"></a>
+          <a class="puck" href="#"><img src="assets/rose.paint.jpg" alt="Rose textured painting"></a>
+          <a class="puck" href="#"><img src="assets/sunset.paint.JPG" alt="Sunset landscape painting"></a>
+          <a class="puck" href="#"><img src="assets/spidermandoodle.paint.jpg" alt="Spider-Man page recreation"></a>
+          <a class="puck" href="#"><img src="assets/spongebobdoodle.paint.JPG" alt="Spongebob character sheet"></a>
         </div>
-        <p class="tt-muted">Final price may vary based on complexity, background detail, and special effects (e.g., metallic / glow paint).</p>
-      </article>
+      </div>
+    </section>
 
-      <article class="tt-card">
-        <h3 class="tt-title">Fabric / Apparel</h3>
-        <div class="tt-tablewrap">
-          <table class="tt-table">
-            <thead>
-              <tr>
-                <th>Item Type</th>
-                <th>Base Price</th>
-                <th>Customization Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Single Design</td><td>$30–$50 CAD</td><td>1 small logo or illustration</td></tr>
-              <tr><td>Multiple Designs</td><td>$60–$90 CAD</td><td>2–3 designs or larger coverage</td></tr>
-              <tr><td>Special Fabric / Material</td><td>Quote Only</td><td>Depends on supplier &amp; printing method</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="tt-muted">Price varies with material, color count, and print type (painted, transfer, or screen print).</p>
-      </article>
+    <!-- ===== Pricing (UPDATED) ===== -->
+    <section id="pricing" class="tt-section">
+      <div class="tt-container">
+        <header class="tt-header">
+          <h2 class="tt-hl">Tone &amp; Toon — Pricing Guide</h2>
+          <p class="tt-sub">Custom Pop-Art &amp; Cartoon Commissions</p>
+        </header>
 
-      <article class="tt-card">
-        <h3 class="tt-title">Other / Special Requests</h3>
-        <div class="tt-tablewrap">
-          <table class="tt-table">
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Pricing</th>
-                <th>Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Accessories</td><td>Discuss</td><td>Phone cases, book covers, stationery sets</td></tr>
-              <tr><td>Digital Artwork</td><td>From $80 CAD</td><td>Custom digital art piece (e.g. logos, wallpapers, profile images)</td></tr>
-              <tr><td>Bulk / Collabs</td><td>Discounted</td><td>Brand or event projects</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
+        <!-- Canvas -->
+        <article class="tt-card">
+          <h3 class="tt-title">Canvas Paintings</h3>
+          <div class="tt-tablewrap">
+            <table class="tt-table">
+              <thead>
+                <tr>
+                  <th>Size</th>
+                  <th>Dimensions (approx.)</th>
+                  <th>Base Price</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Small</td><td>8&quot; × 10&quot;</td><td>$120 CAD</td><td>Simple portrait or single subject</td></tr>
+                <tr><td>Medium</td><td>12&quot; × 16&quot;</td><td>$180 CAD</td><td>Up to 2 subjects or detailed background</td></tr>
+                <tr><td>Large</td><td>18&quot; × 24&quot;</td><td>$250 CAD</td><td>Complex scenes, full backgrounds</td></tr>
+                <tr><td>Extra-Large</td><td>24&quot; × 36&quot;+</td><td>$350+ CAD</td><td>Statement pieces or multi-character compositions</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tt-muted">Final price may vary based on complexity, background detail, and special effects (e.g., metallic / glow paint).</p>
+        </article>
 
-      <article class="tt-card tt-accent">
-        <h3 class="tt-title">Rush Orders</h3>
-        <div class="tt-tablewrap">
-          <table class="tt-table">
-            <thead>
-              <tr>
-                <th>Rush Level</th>
-                <th>Delivery Time</th>
-                <th>Extra Cost</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Standard</td><td>2–4 weeks</td><td>No extra charge</td></tr>
-              <tr><td>Express</td><td>7–10 days</td><td>+20% of total price</td></tr>
-              <tr><td>Priority</td><td>3–5 days</td><td>+35% of total price</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="tt-muted">Rush availability depends on current workload — confirmed at order.</p>
-      </article>
+        <!-- Fabric / Apparel -->
+        <article class="tt-card">
+          <h3 class="tt-title">Fabric / Apparel</h3>
+          <div class="tt-tablewrap">
+            <table class="tt-table">
+              <thead>
+                <tr>
+                  <th>Item Type</th>
+                  <th>Base Price</th>
+                  <th>Customization Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Single Design</td><td>$30–$50 CAD</td><td>1 small logo or illustration</td></tr>
+                <tr><td>Multiple Designs</td><td>$60–$90 CAD</td><td>2–3 designs or larger coverage</td></tr>
+                <tr><td>Special Fabric / Material</td><td>Quote Only</td><td>Depends on supplier &amp; printing method</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tt-muted">Price varies with material, color count, and print type (painted, transfer, or screen print).</p>
+        </article>
 
-      <article class="tt-card tt-soft">
-        <h3 class="tt-title">Payment &amp; Policies</h3>
-        <ul class="tt-list">
-          <li>50% deposit required to begin commission.</li>
-          <li>Remaining balance due upon completion.</li>
-          <li>Shipping costs calculated separately based on destination.</li>
-          <li>Progress updates available upon request.</li>
-        </ul>
-        <p class="tt-tagline">“Turn your moments into art.” — Tone &amp; Toon</p>
-      </article>
-    </div>
-  </section>
+        <!-- Other / Special Requests -->
+        <article class="tt-card">
+          <h3 class="tt-title">Other / Special Requests</h3>
+          <div class="tt-tablewrap">
+            <table class="tt-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Pricing</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Accessories</td><td>Discuss</td><td>Phone cases, book covers, stationery sets</td></tr>
+                <tr><td>Digital Artwork</td><td>From $80 CAD</td><td>Custom digital art piece (e.g. logos, wallpapers, profile images)</td></tr>
+                <tr><td>Bulk / Collabs</td><td>Discounted</td><td>Brand or event projects</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
 
-  <!-- ===== Commission form ===== -->
-  <section id="commission">
-    <h2>Request a Commission</h2>
-    <form action="https://formspree.io/f/mandkyor" method="POST">
-      <label>Your Name: <input type="text" name="name" required></label><br>
-      <label>Email: <input type="email" name="email" required></label><br>
+        <!-- Rush Orders -->
+        <article class="tt-card tt-accent">
+          <h3 class="tt-title">Rush Orders</h3>
+          <div class="tt-tablewrap">
+            <table class="tt-table">
+              <thead>
+                <tr>
+                  <th>Rush Level</th>
+                  <th>Delivery Time</th>
+                  <th>Extra Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Standard</td><td>2–4 weeks</td><td>No extra charge</td></tr>
+                <tr><td>Express</td><td>7–10 days</td><td>+20% of total price</td></tr>
+                <tr><td>Priority</td><td>3–5 days</td><td>+35% of total price</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tt-muted">Rush availability depends on current workload — confirmed at order.</p>
+        </article>
 
-      <label>Size / Type:
-        <select name="size" required>
-          <option>Small</option>
-          <option>Medium</option>
-          <option>Large</option>
-          <option>Extra-Large</option>
-          <option>Fabric/Apparel</option>
-          <option>Special Request</option>
-        </select>
-      </label><br>
+        <!-- Policies -->
+        <article class="tt-card tt-soft">
+          <h3 class="tt-title">Payment &amp; Policies</h3>
+          <ul class="tt-list">
+            <li>50% deposit required to begin commission.</li>
+            <li>Remaining balance due upon completion.</li>
+            <li>Shipping costs calculated separately based on destination.</li>
+            <li>Progress updates available upon request.</li>
+          </ul>
+          <p class="tt-tagline">“Turn your moments into art.” — Tone &amp; Toon</p>
+        </article>
+      </div>
+    </section>
 
-      <label>Rush Order:
-        <select name="rush" required>
-          <option>Standard</option>
-          <option>Express</option>
-          <option>Priority</option>
-        </select>
-      </label><br>
+   <!-- ===== Commission form ===== -->
+<section id="commission">
+  <h2>Request a Commission</h2>
+  <form action="https://formspree.io/f/mandkyor" method="POST">
+    <label>Your Name: <input type="text" name="name" required></label><br>
+    <label>Email: <input type="email" name="email" required></label><br>
 
-      <label>Details:<br>
-        <textarea name="details" rows="5" placeholder="Tell me your idea, colors, references, deadlines, etc."></textarea>
-      </label><br>
+    <!-- UPDATED: Size / Type -->
+    <label>Size / Type:
+      <select name="size" required>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+        <option>Extra-Large</option>
+        <option>Fabric/Apparel</option>
+        <option>Special Request</option>
+      </select>
+    </label><br>
 
-      <button type="submit" class="btn pop">Send Request</button>
-    </form>
-  </section>
+    <!-- NEW: Rush Order -->
+    <label>Rush Order:
+      <select name="rush" required>
+        <option>Standard</option>
+        <option>Express</option>
+        <option>Priority</option>
+      </select>
+    </label><br>
 
-  <!-- ===== Contact ===== -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:chasestudioworks@gmail.com">chasestudioworks@gmail.com</a></p>
-    <p>Instagram: <a href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F">@im_just_a_drawing_nerd</a></p>
-  </section>
-</main>
+    <label>Details:<br>
+      <textarea name="details" rows="5" placeholder="Tell me your idea, colors, references, deadlines, etc."></textarea>
+    </label><br>
 
-<footer>
-  <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
-</footer>
+    <button type="submit" class="btn pop">Send Request</button>
+  </form>
+</section>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <div class="lightbox__backdrop" data-close></div>
-  <figure class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="Artwork preview">
-    <button type="button" class="lightbox__close" aria-label="Close" title="Close" data-close>×</button>
-    <img id="lightbox-img" src="" alt="">
-    <figcaption id="lightbox-caption" class="pc-font"></figcaption>
-    <div class="lightbox__actions">
-      <a class="btn alt" href="#commission" id="lightbox-request">Request Similar Commission</a>
-      <a class="btn" href="#poster-wall" id="lightbox-back">Back to Poster Wall</a>
-    </div>
-  </figure>
-</div>
+    <!-- ===== Contact ===== -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:chasestudioworks@gmail.com">chasestudioworks@gmail.com</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/im_just_a_drawing_nerd/?next=%2F">@im_just_a_drawing_nerd</a></p>
+    </section>
+  </main>
 
-<script src="script.js?v=30"></script>
+  <footer>
+    <p>© <span id="year"></span> Tone & Toon — Art by Chase Tone</p>
+  </footer>
+
+  <!-- ===== Lightbox Modal ===== -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox__backdrop" data-close></div>
+    <figure class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="Artwork preview">
+      <button type="button" class="lightbox__close" aria-label="Close" title="Close" data-close>×</button>
+      <img id="lightbox-img" src="" alt="">
+      <figcaption id="lightbox-caption" class="pc-font"></figcaption>
+      <div class="lightbox__actions">
+        <a class="btn alt" href="#commission" id="lightbox-request">Request Similar Commission</a>
+        <a class="btn" href="#poster-wall" id="lightbox-back">Back to Poster Wall</a>
+      </div>
+    </figure>
+  </div>
+
+<script src="script.js?v=17"></script>
 </body>
 </html>
