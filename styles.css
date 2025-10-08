@@ -29,6 +29,13 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
 .site-header nav a:hover{ opacity:1; color:var(--green) }
 .at-top .site-header{ background:var(--lime); border-bottom:none; box-shadow:none }
 
+/* Logo styling */
+.site-logo img.logo-img {
+  height: 60px; /* adjust size as needed */
+  width: auto;
+  display: block;
+}
+
 /* PC vibe */
 .pc-font{ font-family:"Space Mono", ui-monospace, monospace; letter-spacing:.06em }
 
