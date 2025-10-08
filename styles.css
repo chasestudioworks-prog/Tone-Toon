@@ -29,17 +29,27 @@ body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
 .site-header nav a:hover{ opacity:1; color:var(--green) }
 .at-top .site-header{ background:var(--lime); border-bottom:none; box-shadow:none }
 
-/* Logo styling */
-.site-logo img.logo-img {
-  height: 120px; /* adjust size as needed */
+/* ===== Logo: bigger without taller header ===== */
+.site-logo{
+  display:flex;
+  align-items:center;
+  height: 60px;          /* keep header content height the same */
+  overflow:hidden;       /* hide overflow so header doesn't grow */
+}
+
+.site-logo img.logo-img{
+  height: 120px;         /* make the image itself large */
   width: auto;
   display: block;
+  transform-origin: left center; /* crop from the right, not the left edge */
 }
-@media (max-width: 768px) {
-  .site-logo img.logo-img {
-    height: 80px;
-  }
+
+/* Tweak for phones so it doesn’t feel oversized */
+@media (max-width: 768px){
+  .site-logo{ height: 48px; }
+  .site-logo img.logo-img{ height: 96px; }
 }
+
 
 
 /* PC vibe */
