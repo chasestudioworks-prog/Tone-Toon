@@ -18,17 +18,17 @@
     </nav>
   </header>
 
-  <!-- New Split Layout -->
+  <!-- Split layout -->
   <main class="art-detail">
     <!-- Left side (image) -->
-    <figure class="art-media">
-      <img src="assets/darthvader.paint.jpg" alt="Darth Vader painting — pop-art style" />
-    </figure>
+    <div class="art-media">
+      <figure>
+        <img src="assets/darthvader.paint.jpg" alt="Darth Vader painting — pop-art style" />
+      </figure>
+    </div>
 
-    <!-- Right side (details) -->
+    <!-- Right side (details & CTAs pinned to bottom) -->
     <aside class="art-meta">
-      <a class="btn pop" href="index.html#commission">REQUEST A SIMILAR COMMISSION</a>
-
       <h1>Darth Vader</h1>
       <p class="lede">Pop-art treatment of an icon — bold contrasts, comic energy, and a clean color story.</p>
 
@@ -38,9 +38,11 @@
         <li><strong>Year:</strong> 2025</li>
       </ul>
 
-      <p style="margin-top:1rem;">
-        <a class="btn alt" href="index.html#work">← Back to Gallery</a>
-      </p>
+      <!-- Buttons at the bottom -->
+      <div class="cta-row">
+        <a class="btn pop" href="index.html#commission">REQUEST A SIMILAR COMMISSION</a>
+        <a class="btn alt" href="index.html#work">← BACK TO GALLERY</a>
+      </div>
     </aside>
   </main>
 
